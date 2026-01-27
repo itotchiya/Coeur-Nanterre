@@ -1,0 +1,134 @@
+---
+/**
+ * Navigation Header Component
+ * Company logo + Program logo + Section navigation + CTAs
+ */
+
+import Button from "../ui/Button.astro";
+import { Calculator, Phone } from "lucide-astro";
+---
+
+<header class="header" data-component="header" role="banner">
+  <div class="header__container">
+    <!-- Logos -->
+    <div class="header__branding">
+      <a href="/" class="header__logo-link" aria-label="Accueil Gambetta">
+        <img
+          src="/Assets/logo-gambetta.svg"
+          alt="Gambetta Immobilier"
+          class="header__logo header__logo--company"
+          width="120"
+          height="40"
+        />
+      </a>
+      <span class="header__separator" aria-hidden="true"></span>
+      <a
+        href="#"
+        class="header__logo-link"
+        aria-label="Programme Cœur Nanterre"
+      >
+        <img
+          src="/Assets/logo-nanterre.svg"
+          alt="Cœur Nanterre"
+          class="header__logo header__logo--program"
+          width="130"
+          height="36"
+        />
+      </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="header__nav" aria-label="Navigation principale">
+      <ul class="header__nav-list">
+        <li class="header__nav-item">
+          <a href="#projet" class="header__nav-link" data-nav="projet">
+            Le projet
+          </a>
+        </li>
+        <li class="header__nav-item">
+          <a href="#adresse" class="header__nav-link" data-nav="adresse">
+            L'adresse
+          </a>
+        </li>
+        <li class="header__nav-item">
+          <a
+            href="#architecture"
+            class="header__nav-link"
+            data-nav="architecture"
+          >
+            L'architecture
+          </a>
+        </li>
+        <li class="header__nav-item">
+          <a href="#programme" class="header__nav-link" data-nav="programme">
+            Le programme
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Actions -->
+    <div class="header__actions">
+      <Button href="#simulateur" variant="secondary" size="sm" icon>
+        <Calculator size={18} />
+        Simulateur
+      </Button>
+      <Button href="tel:+33100000000" variant="primary" size="sm" icon>
+        <Phone size={18} />
+        01 00 00 00 00
+      </Button>
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <button
+      class="header__menu-toggle"
+      type="button"
+      aria-label="Ouvrir le menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      data-action="toggle-menu"
+    >
+      <span class="header__menu-bar"></span>
+      <span class="header__menu-bar"></span>
+      <span class="header__menu-bar"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <nav
+    class="header__mobile-nav"
+    id="mobile-menu"
+    aria-label="Navigation mobile"
+    hidden
+  >
+    <ul class="header__mobile-list">
+      <li class="header__mobile-item">
+        <a href="#projet" class="header__mobile-link">Le projet</a>
+      </li>
+      <li class="header__mobile-item">
+        <a href="#adresse" class="header__mobile-link">L'adresse</a>
+      </li>
+      <li class="header__mobile-item">
+        <a href="#architecture" class="header__mobile-link">L'architecture</a>
+      </li>
+      <li class="header__mobile-item">
+        <a href="#programme" class="header__mobile-link">Le programme</a>
+      </li>
+      <li class="header__mobile-item">
+        <a href="#simulateur" class="header__mobile-link">Simulateur</a>
+      </li>
+      <li class="header__mobile-item">
+        <a
+          href="tel:+33100000000"
+          class="header__mobile-link header__mobile-link--phone"
+        >
+          01 00 00 00 00
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  @import "../../styles/header.css";
+</style>

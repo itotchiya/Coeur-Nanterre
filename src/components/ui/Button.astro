@@ -1,0 +1,136 @@
+---
+/**
+ * Button Component
+ * Reusable pill-shaped button for primary and secondary actions
+ */
+
+interface Props {
+  variant?: "primary" | "secondary" | "outline";
+  size?: "sm" | "md" | "lg";
+  href?: string;
+  type?: "button" | "submit" | "reset";
+  icon?: boolean;
+  class?: string;
+}
+
+const {
+  variant = "primary",
+  size = "md",
+  href,
+  type = "button",
+  icon = false,
+  class: className = "",
+} = Astro.props;
+
+const isLink = !!href;
+const Tag = isLink ? "a" : "button";
+---
+
+{
+  isLink ? (
+    <a
+      href={href}
+      class:list={[
+        "btn",
+        `btn--${variant}`,
+        `btn--${size}`,
+        { "btn--icon": icon },
+        className,
+      ]}
+      data-component="button"
+    >
+      <slot />
+    </a>
+  ) : (
+    <button
+      type={type}
+      class:list={[
+        "btn",
+        `btn--${variant}`,
+        `btn--${size}`,
+        { "btn--icon": icon },
+        className,
+      ]}
+      data-component="button"
+    >
+      <slot />
+    </button>
+  )
+}
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    font-family: var(--font-family-base);
+    font-weight: 500;
+    text-decoration: none;
+    border: none;
+    border-radius: 9999px; /* Pill shape */
+    cursor: pointer;
+    /* transition: all var(--transition-base); REMOVED for instant interaction */
+    white-space: nowrap;
+  }
+
+  /* Sizes */
+  .btn--sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .btn--md {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9375rem;
+  }
+
+  .btn--lg {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+
+  /* Primary variant */
+  .btn--primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  .btn--primary:hover {
+    background-color: var(--color-primary-dark);
+    /* No scaling */
+  }
+
+  /* Secondary variant */
+  .btn--secondary {
+    background-color: color-mix(in srgb, var(--color-primary) 4%, transparent);
+    color: var(--color-primary);
+  }
+
+  .btn--secondary:hover {
+    background-color: color-mix(in srgb, var(--color-primary) 8%, transparent);
+    /* No scaling */
+  }
+
+  /* Outline variant */
+  .btn--outline {
+    background-color: transparent;
+    color: var(--color-foreground);
+    border: 1px solid var(--color-border);
+  }
+
+  .btn--outline:hover {
+    background-color: var(--color-gray-100);
+    border-color: var(--color-gray-300);
+  }
+
+  /* Icon button modifier */
+  .btn--icon {
+    padding-right: 0.75rem;
+  }
+
+  .btn--icon :global(svg) {
+    width: 1.25em;
+    height: 1.25em;
+  }
+</style>

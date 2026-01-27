@@ -1,0 +1,38 @@
+---
+/**
+ * Cœur Nanterre — Main Page
+ * Programme immobilier à Nanterre
+ */
+
+import Layout from "../layouts/Layout.astro";
+
+// Import all section components
+// Import all section components
+import Header from "../components/sections/Header.astro";
+import Hero from "../components/sections/Hero.astro";
+import ProjectEssence from "../components/sections/ProjectEssence.astro";
+import Location from "../components/sections/Location.astro";
+import Connectivity from "../components/sections/Connectivity.astro";
+import Architecture from "../components/sections/Architecture.astro";
+import ProgramOverview from "../components/sections/ProgramOverview.astro";
+import Lifestyle from "../components/sections/Lifestyle.astro";
+import CreditSimulator from "../components/sections/CreditSimulator.astro";
+import LegalMentions from "../components/sections/LegalMentions.astro";
+import Footer from "../components/sections/Footer.astro";
+---
+
+<Layout title="Cœur Nanterre — Programme immobilier">
+  <Header />
+  <main id="main-content" data-page="home">
+    <Hero />
+    <ProjectEssence />
+    <Location />
+    <Connectivity />
+    <Architecture />
+    <ProgramOverview />
+    <Lifestyle />
+    <CreditSimulator />
+    <LegalMentions />
+  </main>
+  <Footer />
+</Layout>

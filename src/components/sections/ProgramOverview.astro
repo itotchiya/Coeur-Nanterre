@@ -1,0 +1,260 @@
+---
+/**
+ * Program Overview Section
+ * Le programme — Editorial Information Matrix
+ */
+import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
+import AnimatedOrbs from "../ui/AnimatedOrbs.astro";
+---
+
+<section
+  class="program-overview"
+  data-section="programme"
+  id="programme"
+  aria-labelledby="program-title"
+>
+  <div class="program-overview__container">
+    <!-- 1. HEADER -->
+    <header class="program-overview__header" data-animate="program-header">
+      <h2 id="program-title" class="program-overview__title type-section-title">
+        Le programme en quelques mots
+      </h2>
+      <p class="program-overview__subtitle">
+        Une opération à taille humaine, pensée pour s'intégrer harmonieusement
+        dans le tissu urbain existant.
+      </p>
+    </header>
+
+    <!-- 2. PROGRAM SNAPSHOT — Compact Animated Box -->
+    <div class="program-overview__snapshot" data-animate="program-snapshot">
+      <AnimatedOrbs />
+
+      <div class="program-overview__strip">
+        <!-- Top: Key Number with Glow -->
+        <div class="program-overview__number-block">
+          <span class="program-overview__number">~10</span>
+          <span class="program-overview__number-label">Logements</span>
+        </div>
+
+        <!-- Bottom: Feature Tags -->
+        <div class="program-overview__features">
+          <div class="program-overview__feature">
+            <span class="program-overview__feature-dot"></span>
+            <span class="program-overview__feature-text">Programme Mixte</span>
+          </div>
+          <div class="program-overview__feature">
+            <span class="program-overview__feature-dot"></span>
+            <span class="program-overview__feature-text"
+              >Réhabilitation + Neuf</span
+            >
+          </div>
+          <div class="program-overview__feature">
+            <span class="program-overview__feature-dot"></span>
+            <span class="program-overview__feature-text">Taille Humaine</span>
+          </div>
+          <div class="program-overview__feature">
+            <span class="program-overview__feature-dot"></span>
+            <span class="program-overview__feature-text"
+              >Architecture Cohérente</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. VERTICAL TIMELINE (Static) -->
+    <div class="program-overview__timeline" data-animate="program-timeline">
+      <!-- Node 1: Étude & Conception (CURRENT) -->
+      <div class="program-overview__node program-overview__node--current">
+        <div class="program-overview__node-dot"></div>
+        <div class="program-overview__node-content">
+          <span class="program-overview__node-label">Étape actuelle</span>
+          <span class="program-overview__node-title">Étude & Conception</span>
+          <p class="program-overview__node-description">
+            Définition du programme, études techniques et architecturales en
+            cours.
+          </p>
+        </div>
+      </div>
+
+      <!-- Node 2: Autorisations -->
+      <div class="program-overview__node">
+        <div class="program-overview__node-dot"></div>
+        <div class="program-overview__node-content">
+          <span class="program-overview__node-label">Prochainement</span>
+          <span class="program-overview__node-title"
+            >Autorisations administratives</span
+          >
+          <p class="program-overview__node-description">
+            Dépôt et instruction des permis de construire.
+          </p>
+        </div>
+      </div>
+
+      <!-- Node 3: Commercialisation -->
+      <div class="program-overview__node program-overview__node--future">
+        <div class="program-overview__node-dot"></div>
+        <div class="program-overview__node-content">
+          <span class="program-overview__node-label">À venir</span>
+          <span class="program-overview__node-title">Commercialisation</span>
+          <p class="program-overview__node-description">
+            Ouverture des réservations et accompagnement personnalisé.
+          </p>
+        </div>
+      </div>
+
+      <!-- Node 4: Travaux -->
+      <div class="program-overview__node program-overview__node--future">
+        <div class="program-overview__node-dot"></div>
+        <div class="program-overview__node-content">
+          <span class="program-overview__node-label">À venir</span>
+          <span class="program-overview__node-title">Travaux</span>
+          <p class="program-overview__node-description">
+            Construction et suivi de chantier.
+          </p>
+        </div>
+      </div>
+
+      <!-- Node 5: Livraison -->
+      <div class="program-overview__node program-overview__node--future">
+        <div class="program-overview__node-dot"></div>
+        <div class="program-overview__node-content">
+          <span class="program-overview__node-label">Horizon</span>
+          <span class="program-overview__node-title">Livraison</span>
+          <p class="program-overview__node-description">
+            Remise des clés et installation des propriétaires.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. VISUAL PLACEHOLDER -->
+    <div class="program-overview__visual" data-animate="program-visual">
+      <div class="program-overview__visual-icon">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="1.5"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 4.5H21m-3.75 4.5H21"
+          ></path>
+        </svg>
+      </div>
+      <p class="program-overview__visual-text">
+        Plans, schémas et visuels seront disponibles<br />
+        à l'avancement du projet.
+      </p>
+    </div>
+
+    <!-- 5. NOTICE / DISCLAIMER (Preserved) -->
+    <aside class="program-overview__notice" data-animate="program-notice">
+      <p class="program-overview__discrete">
+        Les informations détaillées seront précisées ultérieurement. Ce document
+        ne constitue pas un engagement contractuel.
+      </p>
+    </aside>
+  </div>
+</section>
+
+<style>
+  @import "../../styles/program-overview.css";
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const section = document.querySelector(".program-overview");
+    if (!section) return;
+
+    // Calm easing
+    const ease = "power2.out";
+
+    // 1. Header reveals first
+    gsap.fromTo(
+      '[data-animate="program-header"]',
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease,
+        scrollTrigger: {
+          trigger: section,
+          start: "top 70%",
+        },
+      },
+    );
+
+    // 2. Snapshot list reveals second
+    gsap.fromTo(
+      '[data-animate="program-snapshot"]',
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease,
+        scrollTrigger: {
+          trigger: '[data-animate="program-snapshot"]',
+          start: "top 80%",
+        },
+      },
+    );
+
+    // 3. Timeline reveals (static - no progress animation)
+    gsap.fromTo(
+      '[data-animate="program-timeline"]',
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease,
+        scrollTrigger: {
+          trigger: '[data-animate="program-timeline"]',
+          start: "top 80%",
+        },
+      },
+    );
+
+    // 5. Visual placeholder reveals
+    gsap.fromTo(
+      '[data-animate="program-visual"]',
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease,
+        scrollTrigger: {
+          trigger: '[data-animate="program-visual"]',
+          start: "top 85%",
+        },
+      },
+    );
+
+    // 6. Notice fades in gently
+    gsap.fromTo(
+      '[data-animate="program-notice"]',
+      { opacity: 0 },
+      {
+        opacity: 1,
+        duration: 1,
+        ease,
+        scrollTrigger: {
+          trigger: '[data-animate="program-notice"]',
+          start: "top 90%",
+        },
+      },
+    );
+  });
+</script>

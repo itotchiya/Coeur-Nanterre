@@ -1,0 +1,250 @@
+---
+/**
+ * Lifestyle Section
+ * Une expérience de vie à imaginer
+ * Immersive editorial gallery with spec anchors
+ */
+import InteractiveImageCard from "../ui/InteractiveImageCard.astro";
+import AnimatedOrbs from "../ui/AnimatedOrbs.astro";
+---
+
+<section
+  class="lifestyle"
+  data-section="lifestyle"
+  id="lifestyle"
+  aria-labelledby="lifestyle-title"
+>
+  <div class="lifestyle__container">
+    <!-- 1. INTRODUCTION -->
+    <header class="lifestyle__header" data-animate="lifestyle-header">
+      <h2 id="lifestyle-title" class="lifestyle__title type-section-title">
+        Un cadre de vie pensé pour le quotidien
+      </h2>
+      <p class="lifestyle__subtitle">
+        Des espaces de vie confortables, lumineux et fonctionnels adaptés aux
+        usages contemporains.
+      </p>
+    </header>
+
+    <!-- 3. IMMERSIVE IMAGE GALLERY — 2×2 Grid -->
+    <div class="lifestyle__gallery">
+      <!-- 2. LIFESTYLE MARQUEE (Infinite Loop) - Moved inside gallery -->
+      <div class="lifestyle__marquee" data-animate="lifestyle-marquee">
+        <AnimatedOrbs />
+
+        <div class="lifestyle__marquee-inner">
+          {
+            /* Render list twice for seamless loop */
+            [1, 3].map(() => (
+              <ul class="lifestyle__marquee-list">
+                <li>Lumière naturelle maîtrisée</li>
+                <li class="dot" />
+                <li>Espaces ouverts</li>
+                <li class="dot" />
+                <li>Confort durable</li>
+                <li class="dot" />
+                <li>Matériaux nobles</li>
+                <li class="dot" />
+                <li>Ambiances équilibrées</li>
+                <li class="dot" />
+              </ul>
+            ))
+          }
+        </div>
+      </div>
+      <!-- Row 1 -->
+      <div class="lifestyle__row" data-animate="lifestyle-row-1">
+        <InteractiveImageCard
+          title="Séjour Lumineux"
+          description="Un espace de vie ouvert et chaleureux, baigné de lumière naturelle."
+          placeholderText="Séjour / espace de vie – rendu à venir"
+          src="/Upload/Real-estate.jpg"
+          specs={[
+            { icon: "◎", text: "Baies vitrées" },
+            { icon: "◎", text: "Espace de vie" },
+            { icon: "◎", text: "Vue dégagée" },
+          ]}
+        />
+        <InteractiveImageCard
+          title="Chambre Apaisante"
+          description="Un cocon de sérénité pour des nuits réparatrices."
+          placeholderText="Chambre / espace nuit – rendu à venir"
+          src="/Upload/Marrakesh.jpg"
+          specs={[
+            { icon: "◎", text: "Ambiance calme" },
+            { icon: "◎", text: "Isolation renforcée" },
+            { icon: "◎", text: "Orientation idéale" },
+          ]}
+        />
+      </div>
+
+      <!-- Row 2 -->
+      <div class="lifestyle__row" data-animate="lifestyle-row-2">
+        <InteractiveImageCard
+          title="Cuisine Fonctionnelle"
+          description="Un espace culinaire moderne et pratique au quotidien."
+          placeholderText="Cuisine / espace repas – rendu à venir"
+          src="/Upload/flights-bg.png"
+          specs={[
+            { icon: "◎", text: "Agencement optimisé" },
+            { icon: "◎", text: "Équipements intégrés" },
+            { icon: "◎", text: "Lumière naturelle" },
+          ]}
+        />
+        <InteractiveImageCard
+          title="Finitions Soignées"
+          description="Des matériaux durables sélectionnés avec exigence."
+          placeholderText="Détail matière / ambiance – illustration à venir"
+          src="/Upload/Yachting.jpg"
+          specs={[
+            { icon: "◎", text: "Matériaux pérennes" },
+            { icon: "◎", text: "Style intemporel" },
+            { icon: "◎", text: "Détails soignés" },
+          ]}
+        />
+      </div>
+
+      <!-- Row 3 -->
+      <div class="lifestyle__row" data-animate="lifestyle-row-3">
+        <InteractiveImageCard
+          title="Salle de Bain"
+          description="Un espace de bien-être aux lignes épurées."
+          placeholderText="Salle de bain – rendu à venir"
+          src="/Upload/Real-estate.jpg"
+          specs={[
+            { icon: "◎", text: "Design moderne" },
+            { icon: "◎", text: "Matériaux nobles" },
+            { icon: "◎", text: "Confort thermique" },
+          ]}
+        />
+        <InteractiveImageCard
+          title="Espaces Communs"
+          description="Des lieux de partage et de conviviale."
+          placeholderText="Espaces communs – rendu à venir"
+          src="/Upload/Marrakesh.jpg"
+          specs={[
+            { icon: "◎", text: "Lieux de rencontre" },
+            { icon: "◎", text: "Sécurité renforcée" },
+            { icon: "◎", text: "Entretien facile" },
+          ]}
+        />
+      </div>
+    </div>
+
+    <!-- 4. CLOSING NOTE -->
+    <aside class="lifestyle__note" data-animate="lifestyle-note">
+      <p class="lifestyle__note-text">
+        Les prestations détaillées et les plans seront fournis dans la notice
+        descriptive.
+      </p>
+    </aside>
+  </div>
+</section>
+
+<style>
+  @import "../../styles/lifestyle.css";
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const section = document.querySelector(".lifestyle");
+    if (!section) return;
+
+    const ease = "power2.out";
+
+    // ========================================
+    // 2. HEADER REVEAL
+    // ========================================
+    gsap.fromTo(
+      '[data-animate="lifestyle-header"]',
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.2,
+        ease,
+        scrollTrigger: {
+          trigger: '[data-animate="lifestyle-header"]',
+          start: "top 80%",
+          once: true,
+        },
+      },
+    );
+
+    // ========================================
+    // 3. SCROLL-INTERACTIVE MARQUEE
+    // ========================================
+    gsap.to(".lifestyle__marquee-inner", {
+      xPercent: -50,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".lifestyle",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1.5, // Slightly loose for elegant secondary motion
+      },
+    });
+
+    // ========================================
+    // 4. ROW-BASED SCALE ANIMATION
+    // ========================================
+    const rows = document.querySelectorAll(".lifestyle__row");
+
+    rows.forEach((row) => {
+      // Row scaling animation
+      gsap.fromTo(
+        row,
+        { scale: 0.92, opacity: 1 },
+        {
+          scale: 1,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: row,
+            start: "top 92%",
+            end: "top 60%",
+            scrub: 1,
+          },
+        },
+      );
+
+      // Image Parallax Effect
+      const images = row.querySelectorAll(".interactive-card__img");
+      images.forEach((img) => {
+        gsap.to(img, {
+          y: "15%", // Move the image down as we scroll
+          ease: "none",
+          scrollTrigger: {
+            trigger: row,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      });
+    });
+
+    // ========================================
+    // 5. CLOSING NOTE
+    // ========================================
+    gsap.fromTo(
+      '[data-animate="lifestyle-note"]',
+      { opacity: 0 },
+      {
+        opacity: 1,
+        duration: 1,
+        ease,
+        scrollTrigger: {
+          trigger: '[data-animate="lifestyle-note"]',
+          start: "top 85%",
+          once: true,
+        },
+      },
+    );
+  });
+</script>

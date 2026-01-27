@@ -1,0 +1,96 @@
+---
+/**
+ * Project Essence Section
+ * L'essence de Cœur Nanterre
+ */
+import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
+---
+
+<section
+  class="project-essence"
+  data-section="projet"
+  id="projet"
+  aria-labelledby="project-title"
+>
+  <header class="project-essence__header">
+    <div class="project-essence__title-group">
+      <AnimatedVerticalLine theme="dark" />
+      <h2
+        id="project-title"
+        class="project-essence__title type-section-title"
+        data-animate="fade-up"
+      >
+        Un projet immobilier singulier
+      </h2>
+    </div>
+  </header>
+
+  <div class="project-essence__content" data-animate="fade-up">
+    <p class="project-essence__paragraph type-lead">
+      Cœur Nanterre est un programme immobilier mixte associant la
+      réhabilitation de l'existant à une écriture architecturale contemporaine.
+    </p>
+
+    <p class="project-essence__paragraph type-body">
+      Pensé comme une opération à taille humaine, le projet propose un nombre
+      limité de logements, favorisant une atmosphère résidentielle calme et
+      qualitative.
+    </p>
+
+    <p class="project-essence__paragraph type-body">
+      L'intervention architecturale cherche un dialogue équilibré entre
+      patrimoine, usages actuels et nouvelles formes d'habiter.
+    </p>
+  </div>
+</section>
+
+<style>
+  @import "../../styles/project-essence.css";
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Select elements
+    const section = document.querySelector(".project-essence");
+    const title = section?.querySelector(".project-essence__title");
+    const paragraphs = section?.querySelectorAll(".project-essence__paragraph");
+
+    if (section && title && paragraphs) {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top 75%", // Enter when top of section is at 75% of viewport height
+          toggleActions: "play none none none", // Play once
+        },
+      });
+
+      // Note: Line animation is handled by AnimatedVerticalLine component self-script
+
+      // 1. Reveal Title
+      tl.fromTo(
+        title,
+        { y: 16, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1.0, ease: "power2.out" },
+      );
+
+      // 2. Reveal Paragraphs with stagger
+      tl.fromTo(
+        paragraphs,
+        { y: 16, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.0,
+          stagger: 0.3,
+          ease: "power2.out",
+        },
+        "-=0.6", // Slight overlap with title
+      );
+    }
+  });
+</script>

@@ -1,0 +1,125 @@
+/* Architecture Section - Sticky Editorial Layout */
+
+.architecture {
+  position: relative;
+  background-color: var(--color-gray-100); /* Slight contrast from white */
+  padding: 8rem 2rem;
+  /* overflow: hidden; REMOVED to allow sticky to work */
+}
+
+.architecture__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* Sticky Text Column */
+.architecture__text-col {
+  position: sticky;
+  top: 8rem; /* Space from top */
+  padding-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem; /* Spacing between Title / Subtitle / Content */
+}
+
+.architecture__title {
+  /* Inherits .type-section-title */
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  color: var(--color-primary);
+  line-height: 1.1;
+  max-width: 15ch; /* Match Location constraint */
+}
+
+.architecture__subtitle-group {
+  display: flex;
+  height: auto; /* Let content dictate, or fixed? Location uses flex stretch */
+  align-items: stretch;
+  gap: 1.5rem;
+}
+
+.architecture__subtitle {
+  font-family: var(--font-family-base);
+  font-size: 1.125rem; /* Match Location address */
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+  color: var(--color-primary); /* Match Location address */
+  display: flex;
+  align-items: center;
+}
+
+.architecture__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Match Location narrative gap */
+  /* Indent to align with subtitle text, skipping the line */
+  margin-left: calc(2px + 1.5rem);
+}
+
+.architecture__paragraph {
+  font-family: var(--font-family-base);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--color-gray-700);
+  max-width: 45ch; /* Match Location */
+}
+
+/* Scrolling Image Column */
+.architecture__image-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 4rem; /* Offset for visual interest */
+}
+
+.architecture__image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/5; /* Portrait-ish for architecture */
+  overflow: hidden;
+  border-radius: 4px; /* Slight softening */
+}
+
+.architecture__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease-out;
+}
+
+.architecture__image-wrapper:hover .architecture__image {
+  transform: scale(1.05);
+}
+
+/* Caption if needed */
+.architecture__caption {
+  margin-top: 0.75rem;
+  font-family: var(--font-family-base);
+  font-size: 0.875rem;
+  color: var(--color-gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .architecture__container {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  .architecture__text-col {
+    position: relative;
+    top: 0;
+    padding-right: 0;
+  }
+  
+  .architecture__image-col {
+    padding-top: 0;
+  }
+}

@@ -1,0 +1,88 @@
+/* ========================================
+   PROJECT ESSENCE SECTION
+   Modern Luxury / Manifesto Style
+   ======================================== */
+
+.project-essence {
+  /* Dark Mode Styling */
+  background-color: var(--color-primary);
+  color: var(--color-white); /* Default text color */
+  padding: 6rem 1rem;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+  .project-essence {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 8rem 4rem;
+  }
+}
+
+/* Header / Title Column */
+.project-essence__header {
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 1024px) {
+  .project-essence__header {
+    flex: 0 0 35%; /* Left column */
+    margin-bottom: 0;
+    padding-right: 2rem;
+    position: sticky;
+    top: 8rem;
+    align-self: flex-start;
+  }
+}
+
+.project-essence__title {
+  /* Inherits .type-section-title */
+  position: relative;
+  margin: 0; /* Reset margin for flex container */
+  color: var(--color-white); /* Inverted for dark mode */
+}
+
+/* Vertical Line Group */
+.project-essence__title-group {
+  display: flex;
+  align-items: stretch; /* Line full height of title */
+  gap: 1.5rem;
+}
+/* Line handled by AnimatedVerticalLine component */
+
+/* Content / Text Column */
+.project-essence__content {
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 1024px) {
+  .project-essence__content {
+    flex: 0 0 55%; /* Right column */
+    max-width: 65ch; /* Optimal reading measure */
+    padding-top: 0.5rem; /* Optical alignment/Optical baseline correction */
+  }
+}
+
+.project-essence__paragraph {
+  /* Inherits .type-body or .type-lead */
+  margin-bottom: 2rem;
+  opacity: 0; /* Hidden initially for GSAP */
+  transform: translateY(16px);
+}
+
+.project-essence__paragraph.type-lead {
+  color: var(--color-white); /* Strong white for lead */
+}
+
+.project-essence__paragraph.type-body {
+  color: var(--color-gray-300); /* Softer gray for body */
+}
+
+.project-essence__paragraph:last-child {
+  margin-bottom: 0;
+}

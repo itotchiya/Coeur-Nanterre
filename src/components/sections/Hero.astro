@@ -1,0 +1,166 @@
+---
+/**
+ * Hero Section — Project Identity
+ * Cœur Nanterre
+ */
+import Button from "../ui/Button.astro";
+import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
+---
+
+<section class="hero" data-section="hero" aria-labelledby="hero-title">
+  <!-- Text Content Group -->
+  <div class="hero__text-column">
+    <header class="hero__header">
+      <h1 id="hero-title" class="hero__title">
+        <span class="reveal-text">Cœur</span><br />
+        <span class="reveal-text">Nanterre</span>
+      </h1>
+      <div class="hero__tagline-group">
+        <AnimatedVerticalLine />
+        <p class="hero__tagline">
+          <span class="reveal-text">Une adresse confidentielle</span><br />
+          <span class="reveal-text">entre héritage et modernité</span>
+        </p>
+      </div>
+    </header>
+
+    <div class="hero__content">
+      <h2 class="hero__subtitle reveal-opacity">
+        Un programme immobilier à taille humaine, au cœur de Nanterre, mêlant
+        réhabilitation et construction neuve.
+      </h2>
+
+      <p class="hero__accroche reveal-opacity">
+        Vivre la ville autrement, dans un équilibre subtil entre passé et
+        présent.
+      </p>
+    </div>
+
+    <div class="hero__actions reveal-opacity">
+      <Button href="#projet" variant="primary" size="lg">
+        Découvrir le programme
+      </Button>
+      <Button href="#contact" variant="secondary" size="lg">
+        Télécharger la plaquette (bientôt)
+      </Button>
+    </div>
+  </div>
+
+  <div class="hero__media">
+    <figure class="hero__image-container hero__image-primary">
+      <div class="hero__image-inner"></div>
+    </figure>
+    <figure class="hero__image-container hero__image-secondary">
+      <div class="hero__image-inner"></div>
+    </figure>
+  </div>
+</section>
+
+<style>
+  @import "../../styles/hero.css";
+  /* Inline override for specific GSAP ease of access logic if needed, 
+     otherwise kept in hero.css */
+
+  .reveal-text {
+    display: inline-block;
+    opacity: 0; /* JS will handle reveal */
+  }
+
+  .reveal-opacity {
+    opacity: 0;
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+    // 1. Initial State Set (handled in CSS mostly, but ensure)
+    gsap.set(".hero__image-container", { visibility: "visible" });
+
+    // 2. Image Reveal (Mask/Clip-path effect)
+    tl.fromTo(
+      ".hero__image-primary",
+      { clipPath: "inset(100% 0 0 0)", scale: 1.1 },
+      {
+        clipPath: "inset(0% 0 0 0)",
+        scale: 1,
+        duration: 1.4,
+        ease: "expo.out",
+      },
+    ).fromTo(
+      ".hero__image-secondary",
+      { clipPath: "inset(0 0 100% 0)", scale: 1.1 },
+      {
+        clipPath: "inset(0 0 0% 0)",
+        scale: 1,
+        duration: 1.2,
+        ease: "expo.out",
+      },
+      "-=1.0",
+    );
+
+    // 3. Text Staggered Reveal
+    tl.fromTo(
+      ".hero__title .reveal-text",
+      { y: 100, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, stagger: 0.15 },
+      "-=1.2",
+    );
+
+    // Tagline text + Line animation
+    // Infinite looping scroll line
+    gsap.fromTo(
+      ".hero__line-thumb",
+      { top: "-30%" },
+      {
+        top: "131%", // Extended to ensure full exit
+        duration: 2.0, // Slightly longer to appreciate the slow start
+        ease: "power2.in", // Start slow, accelerate (end fast)
+        repeat: -1,
+      },
+    );
+
+    tl.fromTo(
+      ".hero__tagline .reveal-text",
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, stagger: 0.1 },
+      "-=1.0",
+    );
+
+    tl.fromTo(
+      ".reveal-opacity",
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, stagger: 0.1 },
+      "-=0.6",
+    );
+
+    // 4. Parallax on Scroll
+    gsap.to(".hero__image-primary", {
+      yPercent: 20,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
+
+    gsap.to(".hero__image-secondary", {
+      yPercent: -10, // Reverse parralax for depth
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
+  });
+</script>

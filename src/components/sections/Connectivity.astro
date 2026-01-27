@@ -1,0 +1,164 @@
+---
+/**
+ * Connectivity Section
+ * Connectivité & Proximité Paris
+ */
+import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
+---
+
+<section
+  class="connectivity"
+  data-section="connectivite"
+  id="connectivite"
+  aria-labelledby="connectivity-title"
+>
+  <div class="connectivity__header">
+    <div class="connectivity__title-group">
+      <AnimatedVerticalLine height="6rem" />
+      <h2
+        id="connectivity-title"
+        class="connectivity__title type-section-title"
+      >
+        Une centralité urbaine<br />affirmée
+      </h2>
+      <p class="connectivity__intro">
+        Tout est là. Au pied de chez vous ou à quelques minutes.<br />
+        Une connexion fluide et immédiate avec l'essentiel.
+      </p>
+    </div>
+  </div>
+
+  <div class="connectivity__cards">
+    <!-- Card 1: Cœur de Ville -->
+    <div class="connectivity__card">
+      <div
+        class="connectivity__card-bg"
+        style="background-image: url('/Upload/Real-estate.jpg');"
+      >
+      </div>
+      <div class="connectivity__card-overlay"></div>
+      <div class="connectivity__card-content">
+        <h3 class="connectivity__card-title">Cœur de Ville</h3>
+        <p class="connectivity__card-text">
+          Une vie de quartier authentique, animée par ses habitants, ses
+          placettes et son ambiance village.
+        </p>
+      </div>
+    </div>
+
+    <!-- Card 2: Commerces -->
+    <div class="connectivity__card">
+      <div
+        class="connectivity__card-bg"
+        style="background-image: url('/Upload/Marrakesh.jpg');"
+      >
+      </div>
+      <div class="connectivity__card-overlay"></div>
+      <div class="connectivity__card-content">
+        <h3 class="connectivity__card-title">Commerces & Services</h3>
+        <p class="connectivity__card-text">
+          Boulangerie, pharmacie, épicerie fine. L'excellence du quotidien à
+          portée de main.
+        </p>
+      </div>
+    </div>
+
+    <!-- Card 3: Marché -->
+    <div class="connectivity__card">
+      <div
+        class="connectivity__card-bg"
+        style="background-image: url('/Upload/Yachting.jpg');"
+      >
+      </div>
+      <div class="connectivity__card-overlay"></div>
+      <div class="connectivity__card-content">
+        <h3 class="connectivity__card-title">Le Marché</h3>
+        <p class="connectivity__card-text">
+          Trois fois par semaine, le rendez-vous des saveurs. Fraîcheur et
+          saisonnalité au coin de la rue.
+        </p>
+      </div>
+    </div>
+
+    <!-- Card 4: Paris - RER A -->
+    <div class="connectivity__card connectivity__card--final">
+      <div
+        class="connectivity__card-bg"
+        style="background-image: url('/Upload/flights-bg.png');"
+      >
+      </div>
+      <div class="connectivity__card-overlay"></div>
+      <div class="connectivity__card-content">
+        <h3 class="connectivity__card-title">Paris - RER A</h3>
+        <p class="connectivity__card-text">
+          La Défense en 8 min, Châtelet en 20 min. Le monde est votre voisin.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @import "../../styles/connectivity.css";
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Parallax & Reveal Logic
+    const cards = document.querySelectorAll(".connectivity__card");
+
+    if (cards.length === 0) return;
+
+    // 1. Fade Out Header as cards scroll over?
+    // Not explicitly requested, but usually nice.
+    gsap.to(".connectivity__header", {
+      opacity: 0,
+      scale: 0.9,
+      scrollTrigger: {
+        trigger: ".connectivity__cards",
+        start: "top 80%" /* Start fading when cards approach */,
+        end: "top 20%",
+        scrub: true,
+      },
+    });
+
+    cards.forEach((card) => {
+      const bg = card.querySelector(".connectivity__card-bg");
+      const content = card.querySelector(".connectivity__card-content");
+
+      // Parallax Effect for Background
+      if (bg) {
+        gsap.to(bg, {
+          y: "20%" /* Move image slightly down as we scroll down to create depth */,
+          ease: "none",
+          scrollTrigger: {
+            trigger: card,
+            start: "top bottom", // Start when card enters bottom
+            end: "bottom top", // End when card leaves top
+            scrub: true,
+          },
+        });
+      }
+
+      // Content Reveal (Fade Up)
+      if (content) {
+        gsap.to(content, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 60%", // Trigger when card center-ish
+            toggleActions: "play none none reverse",
+          },
+        });
+      }
+    });
+  });
+</script>

@@ -1,0 +1,228 @@
+---
+/**
+ * Credit Simulator Section
+ * Simulateur de crédit (structure only - no calculation logic)
+ */
+---
+
+<section
+  class="credit-simulator"
+  data-section="simulateur"
+  id="simulateur"
+  aria-labelledby="simulator-title"
+>
+  <header class="credit-simulator__header">
+    <h2
+      id="simulator-title"
+      class="credit-simulator__title"
+      data-animate="fade-up"
+    >
+      Simulateur de crédit
+    </h2>
+  </header>
+
+  <form
+    class="credit-simulator__form"
+    data-form="credit-simulator"
+    aria-label="Simulateur de crédit immobilier"
+  >
+    <!-- STEP 1: Borrower Information -->
+    <fieldset
+      class="credit-simulator__step"
+      data-step="1"
+      data-step-status="active"
+    >
+      <legend class="credit-simulator__step-title">
+        Étape 1 — Informations de l'emprunteur
+      </legend>
+
+      <div
+        class="credit-simulator__options"
+        role="radiogroup"
+        aria-label="Situation de crédit actuelle"
+      >
+        <label class="credit-simulator__option" data-option="no-credit">
+          <input
+            type="radio"
+            name="credit-status"
+            value="no-credit"
+            class="credit-simulator__radio"
+            checked
+          />
+          <span class="credit-simulator__option-card">
+            Je n'ai pas de crédit
+          </span>
+        </label>
+
+        <label class="credit-simulator__option" data-option="has-credit">
+          <input
+            type="radio"
+            name="credit-status"
+            value="has-credit"
+            class="credit-simulator__radio"
+          />
+          <span class="credit-simulator__option-card">
+            J'ai déjà un crédit
+          </span>
+        </label>
+      </div>
+
+      <!-- Conditional fields for existing credit -->
+      <div
+        class="credit-simulator__conditional"
+        data-condition="has-credit"
+        hidden
+      >
+        <div class="credit-simulator__field">
+          <label for="remaining-amount" class="credit-simulator__label">
+            Capital restant dû
+          </label>
+          <input
+            type="number"
+            id="remaining-amount"
+            name="remaining-amount"
+            class="credit-simulator__input"
+            placeholder="Ex: 150000"
+            min="0"
+          />
+        </div>
+
+        <div class="credit-simulator__field">
+          <label for="monthly-payment" class="credit-simulator__label">
+            Mensualité actuelle (€)
+          </label>
+          <input
+            type="number"
+            id="monthly-payment"
+            name="monthly-payment"
+            class="credit-simulator__input"
+            placeholder="Ex: 800"
+            min="0"
+          />
+        </div>
+
+        <div class="credit-simulator__field">
+          <label for="remaining-duration" class="credit-simulator__label">
+            Durée restante (mois)
+          </label>
+          <input
+            type="number"
+            id="remaining-duration"
+            name="remaining-duration"
+            class="credit-simulator__input"
+            placeholder="Ex: 180"
+            min="0"
+          />
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- STEP 2: Credit Parameters -->
+    <fieldset
+      class="credit-simulator__step"
+      data-step="2"
+      data-step-status="pending"
+    >
+      <legend class="credit-simulator__step-title">
+        Étape 2 — Paramètres du crédit
+      </legend>
+
+      <div class="credit-simulator__field">
+        <label for="credit-amount" class="credit-simulator__label">
+          Montant du crédit souhaité (€)
+        </label>
+        <input
+          type="number"
+          id="credit-amount"
+          name="credit-amount"
+          class="credit-simulator__input"
+          placeholder="Ex: 250000"
+          min="0"
+          required
+        />
+      </div>
+
+      <div class="credit-simulator__field">
+        <label for="credit-duration" class="credit-simulator__label">
+          Durée du crédit (années)
+        </label>
+        <input
+          type="number"
+          id="credit-duration"
+          name="credit-duration"
+          class="credit-simulator__input"
+          placeholder="Ex: 20"
+          min="1"
+          max="30"
+          required
+        />
+      </div>
+
+      <div class="credit-simulator__field">
+        <label for="interest-rate" class="credit-simulator__label">
+          Taux d'intérêt (%)
+        </label>
+        <input
+          type="number"
+          id="interest-rate"
+          name="interest-rate"
+          class="credit-simulator__input"
+          placeholder="Ex: 3.5"
+          min="0"
+          step="0.01"
+          required
+        />
+      </div>
+    </fieldset>
+
+    <!-- STEP 3: Calculation & Result -->
+    <fieldset
+      class="credit-simulator__step"
+      data-step="3"
+      data-step-status="pending"
+    >
+      <legend class="credit-simulator__step-title">
+        Étape 3 — Calcul & Résultat
+      </legend>
+
+      <div class="credit-simulator__actions">
+        <button
+          type="submit"
+          class="credit-simulator__submit"
+          data-action="calculate"
+        >
+          Calculer mon crédit
+        </button>
+      </div>
+
+      <!-- Result container (hidden by default) -->
+      <div class="credit-simulator__result" data-result="container" hidden>
+        <dl class="credit-simulator__result-list">
+          <div class="credit-simulator__result-item">
+            <dt class="credit-simulator__result-label">Mensualité estimée</dt>
+            <dd class="credit-simulator__result-value" data-result="monthly">
+              —
+            </dd>
+          </div>
+
+          <div class="credit-simulator__result-item">
+            <dt class="credit-simulator__result-label">Coût total du crédit</dt>
+            <dd class="credit-simulator__result-value" data-result="total-cost">
+              —
+            </dd>
+          </div>
+
+          <div class="credit-simulator__result-item">
+            <dt class="credit-simulator__result-label">Durée récapitulative</dt>
+            <dd
+              class="credit-simulator__result-value"
+              data-result="duration-summary"
+            >
+              —
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </fieldset>
+  </form>
+</section>

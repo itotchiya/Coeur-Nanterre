@@ -1,0 +1,137 @@
+---
+/**
+ * Architecture Section
+ * Entre histoire et contemporain
+ */
+import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
+---
+
+<section
+  class="architecture"
+  data-section="architecture"
+  id="architecture"
+  aria-labelledby="architecture-title"
+>
+  <div class="architecture__container">
+    <!-- Left Column: Sticky Text -->
+    <div class="architecture__text-col">
+      <h2
+        id="architecture-title"
+        class="architecture__title type-section-title"
+        data-animate="fade-up"
+      >
+        Un dialogue entre<br />ancien et neuf
+      </h2>
+
+      <div class="architecture__subtitle-group">
+        <AnimatedVerticalLine height="100%" />
+        <span class="architecture__subtitle" data-animate="fade-up">
+          Une écriture architecturale<br />de transition
+        </span>
+      </div>
+
+      <div class="architecture__content" data-animate="fade-up">
+        <p class="architecture__paragraph">
+          Le projet s'inscrit dans une démarche respectueuse du tissu urbain
+          existant. Une écriture subtile qui ne cherche pas à s'imposer, mais à
+          s'intégrer.
+        </p>
+
+        <p class="architecture__paragraph">
+          La réhabilitation permet de préserver l'âme du lieu, ses volumes et
+          son cachet, tandis que les constructions neuves apportent une touche
+          contemporaine, sobre et durable.
+        </p>
+
+        <p class="architecture__paragraph">
+          Cœur Nanterre revendique une architecture de transition, à la croisée
+          de l'histoire locale et des modes de vie actuels.
+        </p>
+      </div>
+    </div>
+
+    <!-- Right Column: Scrolling Images -->
+    <div class="architecture__image-col">
+      <!-- Image 1 -->
+      <figure class="architecture__figure" data-animate="image-reveal">
+        <div class="architecture__image-wrapper">
+          <img
+            src="https://placehold.co/800x1000/e0e0e0/252067?text=Fa%C3%A7ade+Historique"
+            alt="Façade ancienne réhabilitée"
+            class="architecture__image"
+            loading="lazy"
+          />
+        </div>
+        <figcaption class="architecture__caption">
+          La Façade Historique
+        </figcaption>
+      </figure>
+
+      <!-- Image 2 -->
+      <figure class="architecture__figure" data-animate="image-reveal">
+        <div class="architecture__image-wrapper">
+          <img
+            src="https://placehold.co/800x1000/e5e5e5/252067?text=Extension+Contemporaine"
+            alt="Extension moderne"
+            class="architecture__image"
+            loading="lazy"
+          />
+        </div>
+        <figcaption class="architecture__caption">
+          Une Extension Moderne
+        </figcaption>
+      </figure>
+
+      <!-- Image 3 -->
+      <figure class="architecture__figure" data-animate="image-reveal">
+        <div class="architecture__image-wrapper">
+          <img
+            src="https://placehold.co/800x1000/eeeeee/252067?text=Interieurs+Lumineux"
+            alt="Intérieur lumineux"
+            class="architecture__image"
+            loading="lazy"
+          />
+        </div>
+        <figcaption class="architecture__caption">
+          Des Volumes Généreux
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<style>
+  @import "../../styles/architecture.css";
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Animate Text Column
+    /* (Already handled by global fade-up data-animate? Using custom here just in case) */
+
+    // Animate Images appearing
+    const images = document.querySelectorAll(".architecture__figure");
+
+    images.forEach((img) => {
+      gsap.fromTo(
+        img,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: img,
+            start: "top 85%",
+          },
+        },
+      );
+    });
+  });
+</script>
