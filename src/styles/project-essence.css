@@ -7,12 +7,12 @@
   /* Dark Mode Styling with Background Image */
   position: relative;
   color: var(--color-white); /* Default text color */
-  padding: 0 1rem 6rem; /* Remove top padding for seamless transition */
+  padding: 6rem 1.5rem; /* Generous padding for luxury feel, background stays seamless */
   min-height: auto; /* Allow content to dictate height on mobile */
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background-color: var(--color-primary); /* Solid background on mobile */
+  background-color: var(--color-primary-dark); /* Darker primary on mobile */
 }
 
 /* Parallax Background Element */
@@ -24,6 +24,20 @@
   background-position: center;
   z-index: 0;
   will-change: transform;
+}
+
+/* Gradient overlay - transparent left, primary-dark right */
+.project-essence__overlay {
+  display: none; /* Hidden on mobile since we use solid background */
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(28, 49, 64, 0) 0%,
+    var(--color-primary-dark) 50%,
+    var(--color-primary-dark) 100%
+  );
+  z-index: 1;
 }
 
 @media (min-width: 1024px) {

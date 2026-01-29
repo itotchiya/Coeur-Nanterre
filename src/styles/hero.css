@@ -6,8 +6,8 @@
 .hero {
   position: relative;
   width: 100%;
-  min-height: 100vh;
-  padding-top: 120px; /* Space for fixed header */
+  min-height: auto; /* Height dictated by content on mobile to ensure no gap at bottom */
+  padding-top: 128px; /* Space for fixed header */
   padding-bottom: 0; /* Remove gap between hero and next section */
   overflow: hidden;
   background-color: var(--color-background);
@@ -24,7 +24,7 @@
     justify-content: space-between;
     padding-left: 5vw;
     padding-right: 5vw;
-    padding-top: 180px; /* More space on desktop */
+    padding-top: 64px; /* More space on desktop */
     height: 100vh; /* Full viewport height on desktop */
   }
 }

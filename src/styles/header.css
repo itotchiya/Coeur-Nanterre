@@ -20,7 +20,7 @@
   justify-content: space-between;
   max-width: 1920px; /* Wider container */
   margin: 0 auto;
-  padding: 1.25rem 4rem; /* More vertical and horizontal space */
+  padding: 1rem 2rem; /* More vertical and horizontal space */
 }
 
 /* Branding / Logos / Left Group */
@@ -111,13 +111,13 @@
 .header__actions-wrapper {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .header__actions {
   display: none;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .header__cta-btn {

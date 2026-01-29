@@ -94,15 +94,16 @@ const Tag = isLink ? "a" : "button";
     font-size: 1rem;
   }
 
-  /* Primary variant */
+  /* Primary variant - Gold luxury */
   .btn--primary {
-    background-color: var(--color-primary);
-    color: var(--color-white);
+    background-color: #c9b38c;
+    color: var(--color-primary-dark);
+    font-weight: 600;
   }
 
   .btn--primary:hover {
-    background-color: var(--color-primary-dark);
-    /* No scaling */
+    background-color: #b9a37c;
+    /* Slightly darker gold on hover */
   }
 
   /* Secondary variant (Translucent White for dark theme) */
@@ -155,5 +156,13 @@ const Tag = isLink ? "a" : "button";
   .btn--icon :global(svg) {
     width: 1.25em;
     height: 1.25em;
+  }
+
+  /* Mobile full-width modifier */
+  @media (max-width: 768px) {
+    .btn--full-mobile {
+      width: 100%;
+      display: flex;
+    }
   }
 </style>

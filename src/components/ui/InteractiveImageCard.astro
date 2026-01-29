@@ -162,8 +162,8 @@ const { title, description, placeholderText, specs, src } = Astro.props;
     bottom: 0;
     background: linear-gradient(
       180deg,
-      rgba(37, 32, 103, 0.85) 0%,
-      rgba(37, 32, 103, 0.95) 100%
+      color-mix(in srgb, var(--color-primary) 85%, transparent) 0%,
+      color-mix(in srgb, var(--color-primary) 95%, transparent) 100%
     );
     display: flex;
     align-items: center; /* Centered All Elements */

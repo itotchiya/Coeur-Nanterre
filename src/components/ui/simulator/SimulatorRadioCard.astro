@@ -100,4 +100,23 @@ const {
     color: var(--color-primary);
     opacity: 0.6;
   }
+
+  /* Mobile: Compact property cards */
+  @media (max-width: 768px) {
+    .is-property {
+      flex-direction: row;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      height: auto;
+    }
+
+    .simulator-radio-card__label {
+      font-size: 0.9rem;
+    }
+
+    .simulator-radio-card__price {
+      font-size: 0.75rem;
+      margin-top: 0;
+    }
+  }
 </style>

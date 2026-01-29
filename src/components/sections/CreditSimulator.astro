@@ -113,9 +113,12 @@ import { Calculator, ArrowRight, ArrowLeft, RotateCcw } from "lucide-astro";
 
           <SimulatorField
             id="user-city"
-            placeholder="Votre ville (ex: Paris, Lyon...) *"
+            type="select"
+            placeholder="Sélectionnez votre ville *"
             required={true}
-          />
+          >
+            <!-- Cities will be populated dynamically by JavaScript -->
+          </SimulatorField>
         </div>
 
         <SimulatorField
@@ -211,7 +214,7 @@ import { Calculator, ArrowRight, ArrowLeft, RotateCcw } from "lucide-astro";
 
         <div class="credit-simulator__actions">
           <Button id="btn-back-2" variant="secondary" size="lg">
-            <ArrowLeft size={20} /> Retour
+            <ArrowLeft size={20} /><span class="btn__text">Retour</span>
           </Button>
           <Button id="btn-to-step-3" variant="white" size="lg">
             Continuer <ArrowRight size={20} />
@@ -293,7 +296,7 @@ import { Calculator, ArrowRight, ArrowLeft, RotateCcw } from "lucide-astro";
 
         <div class="credit-simulator__actions">
           <Button id="btn-back-3" variant="secondary" size="lg">
-            <ArrowLeft size={20} /> Retour
+            <ArrowLeft size={20} /><span class="btn__text">Retour</span>
           </Button>
           <Button id="btn-calculate" variant="white" size="lg">
             Calculer ma mensualité <Calculator size={20} />
@@ -357,6 +360,33 @@ import { Calculator, ArrowRight, ArrowLeft, RotateCcw } from "lucide-astro";
 
 <style>
   @import "../../styles/credit-simulator.css";
+
+  /* Mobile: Circle back button */
+  @media (max-width: 768px) {
+    .credit-simulator__actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .credit-simulator__actions :global(.btn--white) {
+      flex: 1;
+    }
+
+    .credit-simulator__actions :global(.btn--secondary) {
+      width: 56px !important;
+      height: 56px !important;
+      min-width: 56px !important;
+      max-width: 56px !important;
+      padding: 0 !important;
+      border-radius: 50% !important;
+      flex-shrink: 0;
+    }
+
+    .credit-simulator__actions :global(.btn--secondary .btn__text) {
+      display: none !important;
+    }
+  }
 </style>
 
 <script>
@@ -387,7 +417,7 @@ import { Calculator, ArrowRight, ArrowLeft, RotateCcw } from "lucide-astro";
     const userRegion = document.getElementById(
       "user-region",
     ) as HTMLSelectElement;
-    const userCity = document.getElementById("user-city") as HTMLInputElement;
+    const userCity = document.getElementById("user-city") as HTMLSelectElement;
     const userJob = document.getElementById("user-job") as HTMLSelectElement;
     const existingMonthlyGroup = document.getElementById(
       "existing-credit-input-group",
@@ -437,6 +467,182 @@ import { Calculator, ArrowRight, ArrowLeft, RotateCcw } from "lucide-astro";
       maison: 600000,
     };
 
+    // Cities by Region
+    const CITIES_BY_REGION: Record<string, string[]> = {
+      idf: [
+        "Paris",
+        "Boulogne-Billancourt",
+        "Saint-Denis",
+        "Argenteuil",
+        "Montreuil",
+        "Nanterre",
+        "Versailles",
+        "Créteil",
+        "Noisiel",
+        "Meaux",
+      ],
+      auvergne: [
+        "Lyon",
+        "Saint-Étienne",
+        "Grenoble",
+        "Villeurbanne",
+        "Clermont-Ferrand",
+        "Annecy",
+        "Chambéry",
+        "Valence",
+        "Vénissieux",
+        "Vienne",
+      ],
+      bourgogne: [
+        "Dijon",
+        "Besançon",
+        "Belfort",
+        "Chalon-sur-Saône",
+        "Nevers",
+        "Auxerre",
+        "Mâcon",
+        "Sens",
+        "Montbéliard",
+        "Dole",
+      ],
+      bretagne: [
+        "Rennes",
+        "Brest",
+        "Quimper",
+        "Lorient",
+        "Vannes",
+        "Saint-Malo",
+        "Saint-Brieuc",
+        "Lanester",
+        "Fougères",
+        "Lannion",
+      ],
+      centre: [
+        "Tours",
+        "Orléans",
+        "Bourges",
+        "Blois",
+        "Châteauroux",
+        "Chartres",
+        "Joué-lès-Tours",
+        "Dreux",
+        "Olivet",
+        "Vierzon",
+      ],
+      corse: [
+        "Ajaccio",
+        "Bastia",
+        "Porto-Vecchio",
+        "Corte",
+        "Calvi",
+        "Propriano",
+        "Ghisonaccia",
+        "Sartène",
+      ],
+      "grand-est": [
+        "Strasbourg",
+        "Reims",
+        "Metz",
+        "Mulhouse",
+        "Nancy",
+        "Troyes",
+        "Colmar",
+        "Charleville-Mézières",
+        "Épinal",
+        "Thionville",
+      ],
+      "hauts-de-france": [
+        "Lille",
+        "Amiens",
+        "Roubaix",
+        "Tourcoing",
+        "Dunkerque",
+        "Calais",
+        "Valenciennes",
+        "Boulogne-sur-Mer",
+        "Arras",
+        "Lens",
+      ],
+      normandie: [
+        "Rouen",
+        "Le Havre",
+        "Caen",
+        "Cherbourg-en-Cotentin",
+        "Évreux",
+        "Dieppe",
+        "Lisieux",
+        "Alençon",
+        "Fécamp",
+        "Bayeux",
+      ],
+      "nouvelle-aquitaine": [
+        "Bordeaux",
+        "Limoges",
+        "Poitiers",
+        "La Rochelle",
+        "Pau",
+        "Mérignac",
+        "Pessac",
+        "Niort",
+        "Bayonne",
+        "Angoulême",
+      ],
+      occitanie: [
+        "Toulouse",
+        "Montpellier",
+        "Nîmes",
+        "Perpignan",
+        "Béziers",
+        "Carcassonne",
+        "Albi",
+        "Tarbes",
+        "Castres",
+        "Narbonne",
+      ],
+      "pays-de-la-loire": [
+        "Nantes",
+        "Angers",
+        "Le Mans",
+        "Saint-Nazaire",
+        "La Roche-sur-Yon",
+        "Cholet",
+        "Laval",
+        "Saumur",
+        "Saint-Herblain",
+        "Rezé",
+      ],
+      provence: [
+        "Marseille",
+        "Nice",
+        "Toulon",
+        "Aix-en-Provence",
+        "Avignon",
+        "Antibes",
+        "Cannes",
+        "La Seyne-sur-Mer",
+        "Hyères",
+        "Arles",
+      ],
+    };
+
+    function populateCities(regionValue: string) {
+      if (!userCity) return;
+
+      // Clear existing options
+      userCity.innerHTML =
+        '<option value="" disabled selected>Sélectionnez votre ville *</option>';
+
+      const cities = CITIES_BY_REGION[regionValue];
+      if (cities) {
+        cities.forEach((city) => {
+          const option = document.createElement("option");
+          option.value = city.toLowerCase().replace(/\s+/g, "-");
+          option.textContent = city;
+          userCity.appendChild(option);
+        });
+      }
+    }
+
     interface State {
       amount: number;
       duration: number;
@@ -462,8 +668,14 @@ import { Calculator, ArrowRight, ArrowLeft, RotateCcw } from "lucide-astro";
           if (userFirstname) userFirstname.value = userData.firstname || "";
           if (userPhone) userPhone.value = userData.phone || "";
           if (userEmail) userEmail.value = userData.email || "";
-          if (userRegion) userRegion.value = userData.region || "";
-          if (userCity) userCity.value = userData.city || "";
+          if (userRegion) {
+            userRegion.value = userData.region || "";
+            // Populate cities based on saved region
+            if (userData.region) {
+              populateCities(userData.region);
+            }
+          }
+          if (userCity && userData.city) userCity.value = userData.city;
           if (userJob) userJob.value = userData.job || "";
 
           if (userData.salary) {
@@ -520,6 +732,12 @@ import { Calculator, ArrowRight, ArrowLeft, RotateCcw } from "lucide-astro";
 
     function init() {
       loadUserData();
+
+      // Region change -> populate cities
+      userRegion?.addEventListener("change", (e) => {
+        const region = (e.target as HTMLSelectElement).value;
+        populateCities(region);
+      });
 
       radioProperty.forEach((radio) => {
         radio.addEventListener("change", (e) => {

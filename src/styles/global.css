@@ -4,10 +4,10 @@
 
 :root {
   /* ===== BRAND COLORS ===== */
-  /* Primary - Deep Blue (darkened) */
-  --color-primary: #1a1648;
-  --color-primary-light: #252067;
-  --color-primary-dark: #100d30;
+  /* Primary - Deep Teal Blue */
+  --color-primary: #294657;
+  --color-primary-light: #3a5d72;
+  --color-primary-dark: #1c3140;
 
   /* ===== NEUTRALS ===== */
   --color-white: #ffffff;
