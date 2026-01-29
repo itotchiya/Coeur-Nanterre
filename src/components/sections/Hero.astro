@@ -5,19 +5,26 @@
  */
 import Button from "../ui/Button.astro";
 import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
+
+// Hero background images - can be replaced with local optimized images
+// To optimize: move images to src/assets and use getImage()
+const heroPrimaryBg =
+  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop";
+const heroSecondaryBg =
+  "https://images.unsplash.com/photo-1506146332389-18140dc7b2fb?q=80&w=1964&auto=format&fit=crop";
 ---
 
 <section class="hero" data-section="hero" aria-labelledby="hero-title">
   <!-- Text Content Group -->
   <div class="hero__text-column">
     <header class="hero__header">
-      <h1 id="hero-title" class="hero__title">
+      <h1 id="hero-title" class="hero__title type-h1">
         <span class="reveal-text">Cœur</span><br />
         <span class="reveal-text">Nanterre</span>
       </h1>
       <div class="hero__tagline-group">
         <AnimatedVerticalLine />
-        <p class="hero__tagline">
+        <p class="hero__tagline type-tagline">
           <span class="reveal-text">Une adresse confidentielle</span><br />
           <span class="reveal-text">entre héritage et modernité</span>
         </p>
@@ -25,32 +32,38 @@ import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
     </header>
 
     <div class="hero__content">
-      <h2 class="hero__subtitle reveal-opacity">
+      <h2 class="hero__subtitle type-lead reveal-opacity">
         Un programme immobilier à taille humaine, au cœur de Nanterre, mêlant
         réhabilitation et construction neuve.
       </h2>
 
-      <p class="hero__accroche reveal-opacity">
+      <p class="hero__accroche type-body reveal-opacity">
         Vivre la ville autrement, dans un équilibre subtil entre passé et
         présent.
       </p>
     </div>
 
     <div class="hero__actions reveal-opacity">
-      <Button href="#projet" variant="primary" size="lg">
+      <Button href="#projet" variant="secondary-light" size="lg">
         Découvrir le programme
       </Button>
-      <Button href="#contact" variant="secondary" size="lg">
-        Télécharger la plaquette (bientôt)
+      <Button href="#" variant="primary" size="lg" class="js-download-brochure">
+        Télécharger la plaquette
       </Button>
     </div>
   </div>
 
   <div class="hero__media">
-    <figure class="hero__image-container hero__image-primary">
+    <figure
+      class="hero__image-container hero__image-primary"
+      style={`--hero-bg-image: url('${heroPrimaryBg}');`}
+    >
       <div class="hero__image-inner"></div>
     </figure>
-    <figure class="hero__image-container hero__image-secondary">
+    <figure
+      class="hero__image-container hero__image-secondary"
+      style={`--hero-bg-image: url('${heroSecondaryBg}');`}
+    >
       <div class="hero__image-inner"></div>
     </figure>
   </div>

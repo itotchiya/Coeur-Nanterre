@@ -12,16 +12,6 @@ import { Calculator, Phone } from "lucide-astro";
   <div class="header__container">
     <!-- Logos -->
     <div class="header__branding">
-      <a href="/" class="header__logo-link" aria-label="Accueil Gambetta">
-        <img
-          src="/Assets/logo-gambetta.svg"
-          alt="Gambetta Immobilier"
-          class="header__logo header__logo--company"
-          width="120"
-          height="40"
-        />
-      </a>
-      <span class="header__separator" aria-hidden="true"></span>
       <a
         href="#"
         class="header__logo-link"
@@ -69,13 +59,12 @@ import { Calculator, Phone } from "lucide-astro";
 
     <!-- Actions -->
     <div class="header__actions">
-      <Button href="#simulateur" variant="secondary" size="sm" icon>
+      <Button href="#simulateur" variant="secondary-light" size="lg" icon>
         <Calculator size={18} />
-        Simulateur
+        Calculer mon financement
       </Button>
-      <Button href="tel:+33100000000" variant="primary" size="sm" icon>
-        <Phone size={18} />
-        01 00 00 00 00
+      <Button href="#" variant="primary" size="lg" class="js-download-brochure">
+        Télécharger la plaquette
       </Button>
     </div>
 

@@ -1,0 +1,79 @@
+---
+/**
+ * SimulatorProgress Component
+ * Progress indicator for the credit simulator
+ */
+---
+
+<div class="simulator-progress" id="progress-container">
+  <div class="simulator-progress__header">
+    <span id="progress-step-title" class="simulator-progress__title"
+      >Faisons connaissance</span
+    >
+    <span id="progress-step-counter" class="simulator-progress__counter"
+      >1/4</span
+    >
+  </div>
+  <div class="simulator-progress__track-bg">
+    <div class="simulator-progress__bar" id="progress-bar"></div>
+  </div>
+</div>
+
+<style>
+  .simulator-progress {
+    position: absolute;
+    top: 5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 800px;
+    padding: 0 2rem;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+
+  .simulator-progress.visible {
+    opacity: 1;
+  }
+
+  .simulator-progress__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 0.75rem;
+  }
+
+  .simulator-progress__title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    opacity: 0.8;
+  }
+
+  .simulator-progress__counter {
+    font-size: 0.9rem;
+    font-weight: 300;
+    font-family: var(--font-family-base);
+    opacity: 0.6;
+  }
+
+  .simulator-progress__track-bg {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    position: relative;
+  }
+
+  .simulator-progress__bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background: var(--color-white);
+    transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+</style>

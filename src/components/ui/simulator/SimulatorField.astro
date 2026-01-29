@@ -1,0 +1,172 @@
+---
+/**
+ * SimulatorField Component
+ * Unified input/select for the credit simulator
+ */
+interface Props {
+  id: string;
+  type?: "text" | "number" | "tel" | "email" | "select";
+  placeholder?: string;
+  value?: string | number;
+  label?: string;
+  class?: string;
+  readonly?: boolean;
+  required?: boolean;
+}
+
+const {
+  id,
+  type = "text",
+  placeholder,
+  value,
+  label,
+  class: className = "",
+  readonly = false,
+  required = false,
+} = Astro.props;
+
+const isSelect = type === "select";
+---
+
+<div class:list={["simulator-field", className]}>
+  {
+    label && (
+      <label for={id} class="simulator-field__label">
+        {label}
+      </label>
+    )
+  }
+  <div class="simulator-field__wrapper">
+    {
+      isSelect ? (
+        <div class="simulator-field__select-container">
+          <select
+            id={id}
+            class="simulator-field__control is-select"
+            required={required}
+          >
+            {placeholder && (
+              <option value="" disabled selected>
+                {placeholder}
+              </option>
+            )}
+            <slot />
+          </select>
+          <svg
+            class="simulator-field__chevron"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </div>
+      ) : (
+        <input
+          type={type}
+          id={id}
+          placeholder={placeholder}
+          value={value}
+          readonly={readonly}
+          required={required}
+          class="simulator-field__control is-input"
+        />
+      )
+    }
+  </div>
+</div>
+
+<style>
+  .simulator-field {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .simulator-field__label {
+    display: block;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    color: var(--color-white);
+  }
+
+  .simulator-field__wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  .simulator-field__select-container {
+    position: relative;
+    width: 100%;
+  }
+
+  .simulator-field__control {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 0.85rem 1.25rem;
+    font-family: var(--font-family-base);
+    font-size: 1rem;
+    color: var(--color-white);
+    outline: none;
+    transition: all 0.2s ease;
+  }
+
+  /* Input specific */
+  .simulator-field__control.is-input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  .simulator-field__control.is-input[readonly] {
+    cursor: default;
+    background: transparent;
+    border-color: transparent;
+    padding-left: 0;
+    font-weight: 700;
+  }
+
+  /* Select specific */
+  .simulator-field__control.is-select {
+    appearance: none;
+    cursor: pointer;
+    padding-right: 2.5rem;
+  }
+
+  .simulator-field__chevron {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.25rem;
+    height: 1.25rem;
+    opacity: 0.5;
+    pointer-events: none;
+    color: var(--color-white);
+  }
+
+  .simulator-field__control:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.05);
+  }
+
+  .simulator-field__control :global(option) {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  .simulator-field__control :global(optgroup) {
+    background-color: var(--color-primary);
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: normal;
+    font-style: normal;
+  }
+</style>

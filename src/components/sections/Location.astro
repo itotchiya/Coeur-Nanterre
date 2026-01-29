@@ -5,6 +5,7 @@
  */
 import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
 import MapPlaceholder from "../ui/MapPlaceholder.astro";
+import Button from "../ui/Button.astro";
 ---
 
 <section
@@ -14,11 +15,11 @@ import MapPlaceholder from "../ui/MapPlaceholder.astro";
   aria-labelledby="location-title"
 >
   <div class="location__track">
-    <div class="location__track">
-      <div class="location__text-panel">
+    <div class="location__text-panel">
+      <div class="location__content-wrapper">
         <h2
           id="location-title"
-          class="location__title type-section-title"
+          class="location__title type-h2"
           data-animate="fade-up"
         >
           Vivre Nanterre,<br />au plus près de l'essentiel
@@ -26,84 +27,93 @@ import MapPlaceholder from "../ui/MapPlaceholder.astro";
 
         <div class="location__subtitle-group">
           <AnimatedVerticalLine height="100%" />
-          <address class="location__address" data-animate="fade-up">
+          <address
+            class="location__address type-tagline"
+            data-animate="fade-up"
+          >
             68 rue du Couchant,<br />92000 Nanterre
           </address>
         </div>
 
         <div class="location__narrative" data-animate="fade-up">
-          <p class="location__paragraph">
+          <p class="location__paragraph type-body">
             Situé en cœur de ville, Cœur Nanterre bénéficie d'un environnement
             urbain vivant et authentique.
           </p>
 
-          <p class="location__paragraph">
+          <p class="location__paragraph type-body">
             Commerces de proximité, marché, services et équipements du quotidien
             composent un cadre de vie pratique et animé, où tout se fait à pied.
           </p>
         </div>
-      </div>
 
-      <div class="location__map" data-animate="reveal">
-        <MapPlaceholder class="location__map-container" />
+        <div style="margin-top: 2rem;" data-animate="fade-up">
+          <Button href="#" variant="primary" class="js-download-brochure">
+            Télécharger la plaquette
+          </Button>
+        </div>
       </div>
     </div>
+
+    <div class="location__map" data-animate="reveal">
+      <MapPlaceholder class="location__map-container" />
+    </div>
   </div>
-
-  <style>
-    @import "../../styles/location.css";
-
-    /* Layout specific to the track approach */
-    .location__track {
-      display: flex;
-      height: 100%;
-      width: max-content; /* Allow horizontal expansion */
-    }
-
-    .location__title-group {
-      display: flex;
-      gap: 2rem;
-      height: 100%;
-      padding-top: 20vh; /* Optical vertical alignment */
-    }
-
-    .location__title {
-      writing-mode: horizontal-tb;
-      transform: none;
-      max-width: 15ch;
-    }
-  </style>
-
-  <script>
-    import { gsap } from "gsap";
-    import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const section = document.querySelector(".location");
-      const track = section?.querySelector(".location__track");
-
-      if (section && track) {
-        // Horizontal Scroll Calculation
-        // We want to scroll until the end of the track reaches the right side of viewport
-        const getScrollAmount = () => {
-          let trackWidth = track.scrollWidth;
-          return -(trackWidth - window.innerWidth);
-        };
-
-        const tween = gsap.to(track, {
-          x: getScrollAmount,
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            pin: true,
-            scrub: 1,
-            invalidateOnRefresh: true,
-            end: () => "+=" + (track.scrollWidth - window.innerWidth), // Scroll duration based on width
-          },
-        });
-      }
-    });
-  </script>
 </section>
+
+<style>
+  @import "../../styles/location.css";
+
+  /* Layout specific to the track approach */
+  .location__track {
+    display: flex;
+    height: 100%;
+    width: max-content; /* Allow horizontal expansion */
+  }
+
+  .location__title-group {
+    display: flex;
+    gap: 2rem;
+    height: 100%;
+    padding-top: 20vh; /* Optical vertical alignment */
+  }
+
+  .location__title {
+    writing-mode: horizontal-tb;
+    transform: none;
+    max-width: 15ch;
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const section = document.querySelector(".location");
+    const track = section?.querySelector(".location__track");
+
+    if (section && track) {
+      // Horizontal Scroll Calculation
+      // We want to scroll until the end of the track reaches the right side of viewport
+      const getScrollAmount = () => {
+        let trackWidth = track.scrollWidth;
+        return -(trackWidth - window.innerWidth);
+      };
+
+      const tween = gsap.to(track, {
+        x: getScrollAmount,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          pin: true,
+          scrub: 1,
+          invalidateOnRefresh: true,
+          end: () => "+=" + (track.scrollWidth - window.innerWidth), // Scroll duration based on width
+        },
+      });
+    }
+  });
+</script>

@@ -4,6 +4,7 @@
  * Entre histoire et contemporain
  */
 import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
+import Button from "../ui/Button.astro";
 ---
 
 <section
@@ -17,7 +18,7 @@ import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
     <div class="architecture__text-col">
       <h2
         id="architecture-title"
-        class="architecture__title type-section-title"
+        class="architecture__title type-h2"
         data-animate="fade-up"
       >
         Un dialogue entre<br />ancien et neuf
@@ -25,28 +26,37 @@ import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
 
       <div class="architecture__subtitle-group">
         <AnimatedVerticalLine height="100%" />
-        <span class="architecture__subtitle" data-animate="fade-up">
+        <span
+          class="architecture__subtitle type-tagline"
+          data-animate="fade-up"
+        >
           Une écriture architecturale<br />de transition
         </span>
       </div>
 
       <div class="architecture__content" data-animate="fade-up">
-        <p class="architecture__paragraph">
+        <p class="architecture__paragraph type-body">
           Le projet s'inscrit dans une démarche respectueuse du tissu urbain
           existant. Une écriture subtile qui ne cherche pas à s'imposer, mais à
           s'intégrer.
         </p>
 
-        <p class="architecture__paragraph">
+        <p class="architecture__paragraph type-body">
           La réhabilitation permet de préserver l'âme du lieu, ses volumes et
           son cachet, tandis que les constructions neuves apportent une touche
           contemporaine, sobre et durable.
         </p>
 
-        <p class="architecture__paragraph">
+        <p class="architecture__paragraph type-body">
           Cœur Nanterre revendique une architecture de transition, à la croisée
           de l'histoire locale et des modes de vie actuels.
         </p>
+
+        <div style="margin-top: 2rem;">
+          <Button href="#" variant="primary" class="js-download-brochure">
+            Télécharger la plaquette
+          </Button>
+        </div>
       </div>
     </div>
 

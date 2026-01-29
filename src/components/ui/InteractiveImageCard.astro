@@ -9,13 +9,15 @@
  * - placeholderText: string — Placeholder text for image
  * - specs: Array<{ icon: string, text: string }> — List of specs
  */
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 
 interface Props {
   title: string;
   description: string;
   placeholderText: string;
   specs: { icon: string; text: string }[];
-  src?: string;
+  src?: ImageMetadata | string;
 }
 
 const { title, description, placeholderText, specs, src } = Astro.props;
@@ -26,7 +28,22 @@ const { title, description, placeholderText, specs, src } = Astro.props;
   <div class="interactive-card__image">
     {
       src ? (
-        <img src={src} alt={title} class="interactive-card__img" />
+        typeof src === "string" ? (
+          <img
+            src={src}
+            alt={title}
+            class="interactive-card__img"
+            loading="lazy"
+            decoding="async"
+          />
+        ) : (
+          <Image
+            src={src}
+            alt={title}
+            class="interactive-card__img"
+            loading="lazy"
+          />
+        )
       ) : (
         <div class="interactive-card__placeholder">
           <svg
@@ -154,10 +171,7 @@ const { title, description, placeholderText, specs, src } = Astro.props;
     text-align: center;
     padding: 2rem;
     opacity: 0;
-    transform: translateY(10px);
-    transition:
-      opacity 0.4s ease,
-      transform 0.4s ease;
+    transition: opacity 0.4s ease;
   }
 
   .interactive-card__content {
@@ -165,6 +179,8 @@ const { title, description, placeholderText, specs, src } = Astro.props;
     flex-direction: column;
     gap: 0.75rem;
     width: 100%;
+    transform: translateY(20px);
+    transition: transform 0.4s ease;
   }
 
   .interactive-card__title {
@@ -220,21 +236,29 @@ const { title, description, placeholderText, specs, src } = Astro.props;
     white-space: nowrap;
   }
 
-  /* Hover State */
-  .interactive-card:hover .interactive-card__overlay {
+  /* Hover & Active State */
+  .interactive-card:hover .interactive-card__overlay,
+  .interactive-card.is-active .interactive-card__overlay {
     opacity: 1;
+  }
+
+  .interactive-card:hover .interactive-card__content,
+  .interactive-card.is-active .interactive-card__content {
     transform: translateY(0);
   }
 
-  .interactive-card:hover .interactive-card__placeholder {
+  .interactive-card:hover .interactive-card__placeholder,
+  .interactive-card.is-active .interactive-card__placeholder {
     transform: scale(1.05);
   }
 
-  .interactive-card:hover .interactive-card__placeholder span {
+  .interactive-card:hover .interactive-card__placeholder span,
+  .interactive-card.is-active .interactive-card__placeholder span {
     opacity: 0;
   }
 
-  .interactive-card:hover .interactive-card__placeholder svg {
+  .interactive-card:hover .interactive-card__placeholder svg,
+  .interactive-card.is-active .interactive-card__placeholder svg {
     transform: scale(0.8);
     color: rgba(255, 255, 255, 0.3);
   }

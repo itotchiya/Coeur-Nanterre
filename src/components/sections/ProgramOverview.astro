@@ -5,6 +5,7 @@
  */
 import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
 import AnimatedOrbs from "../ui/AnimatedOrbs.astro";
+import Button from "../ui/Button.astro";
 ---
 
 <section
@@ -16,10 +17,10 @@ import AnimatedOrbs from "../ui/AnimatedOrbs.astro";
   <div class="program-overview__container">
     <!-- 1. HEADER -->
     <header class="program-overview__header" data-animate="program-header">
-      <h2 id="program-title" class="program-overview__title type-section-title">
+      <h2 id="program-title" class="program-overview__title type-h2">
         Le programme en quelques mots
       </h2>
-      <p class="program-overview__subtitle">
+      <p class="program-overview__subtitle type-body">
         Une opération à taille humaine, pensée pour s'intégrer harmonieusement
         dans le tissu urbain existant.
       </p>
@@ -32,29 +33,35 @@ import AnimatedOrbs from "../ui/AnimatedOrbs.astro";
       <div class="program-overview__strip">
         <!-- Top: Key Number with Glow -->
         <div class="program-overview__number-block">
-          <span class="program-overview__number">~10</span>
-          <span class="program-overview__number-label">Logements</span>
+          <span class="program-overview__number type-display">~10</span>
+          <span class="program-overview__number-label type-label"
+            >Logements</span
+          >
         </div>
 
         <!-- Bottom: Feature Tags -->
         <div class="program-overview__features">
           <div class="program-overview__feature">
             <span class="program-overview__feature-dot"></span>
-            <span class="program-overview__feature-text">Programme Mixte</span>
+            <span class="program-overview__feature-text type-body-sm"
+              >Programme Mixte</span
+            >
           </div>
           <div class="program-overview__feature">
             <span class="program-overview__feature-dot"></span>
-            <span class="program-overview__feature-text"
+            <span class="program-overview__feature-text type-body-sm"
               >Réhabilitation + Neuf</span
             >
           </div>
           <div class="program-overview__feature">
             <span class="program-overview__feature-dot"></span>
-            <span class="program-overview__feature-text">Taille Humaine</span>
+            <span class="program-overview__feature-text type-body-sm"
+              >Taille Humaine</span
+            >
           </div>
           <div class="program-overview__feature">
             <span class="program-overview__feature-dot"></span>
-            <span class="program-overview__feature-text"
+            <span class="program-overview__feature-text type-body-sm"
               >Architecture Cohérente</span
             >
           </div>
@@ -68,9 +75,13 @@ import AnimatedOrbs from "../ui/AnimatedOrbs.astro";
       <div class="program-overview__node program-overview__node--current">
         <div class="program-overview__node-dot"></div>
         <div class="program-overview__node-content">
-          <span class="program-overview__node-label">Étape actuelle</span>
-          <span class="program-overview__node-title">Étude & Conception</span>
-          <p class="program-overview__node-description">
+          <span class="program-overview__node-label type-label"
+            >Étape actuelle</span
+          >
+          <span class="program-overview__node-title type-h5"
+            >Étude & Conception</span
+          >
+          <p class="program-overview__node-description type-body">
             Définition du programme, études techniques et architecturales en
             cours.
           </p>
@@ -81,11 +92,13 @@ import AnimatedOrbs from "../ui/AnimatedOrbs.astro";
       <div class="program-overview__node">
         <div class="program-overview__node-dot"></div>
         <div class="program-overview__node-content">
-          <span class="program-overview__node-label">Prochainement</span>
-          <span class="program-overview__node-title"
+          <span class="program-overview__node-label type-label"
+            >Prochainement</span
+          >
+          <span class="program-overview__node-title type-h5"
             >Autorisations administratives</span
           >
-          <p class="program-overview__node-description">
+          <p class="program-overview__node-description type-body">
             Dépôt et instruction des permis de construire.
           </p>
         </div>
@@ -95,9 +108,11 @@ import AnimatedOrbs from "../ui/AnimatedOrbs.astro";
       <div class="program-overview__node program-overview__node--future">
         <div class="program-overview__node-dot"></div>
         <div class="program-overview__node-content">
-          <span class="program-overview__node-label">À venir</span>
-          <span class="program-overview__node-title">Commercialisation</span>
-          <p class="program-overview__node-description">
+          <span class="program-overview__node-label type-label">À venir</span>
+          <span class="program-overview__node-title type-h5"
+            >Commercialisation</span
+          >
+          <p class="program-overview__node-description type-body">
             Ouverture des réservations et accompagnement personnalisé.
           </p>
         </div>
@@ -107,9 +122,9 @@ import AnimatedOrbs from "../ui/AnimatedOrbs.astro";
       <div class="program-overview__node program-overview__node--future">
         <div class="program-overview__node-dot"></div>
         <div class="program-overview__node-content">
-          <span class="program-overview__node-label">À venir</span>
-          <span class="program-overview__node-title">Travaux</span>
-          <p class="program-overview__node-description">
+          <span class="program-overview__node-label type-label">À venir</span>
+          <span class="program-overview__node-title type-h5">Travaux</span>
+          <p class="program-overview__node-description type-body">
             Construction et suivi de chantier.
           </p>
         </div>
@@ -119,36 +134,43 @@ import AnimatedOrbs from "../ui/AnimatedOrbs.astro";
       <div class="program-overview__node program-overview__node--future">
         <div class="program-overview__node-dot"></div>
         <div class="program-overview__node-content">
-          <span class="program-overview__node-label">Horizon</span>
-          <span class="program-overview__node-title">Livraison</span>
-          <p class="program-overview__node-description">
+          <span class="program-overview__node-label type-label">Horizon</span>
+          <span class="program-overview__node-title type-h5">Livraison</span>
+          <p class="program-overview__node-description type-body">
             Remise des clés et installation des propriétaires.
           </p>
         </div>
       </div>
     </div>
 
-    <!-- 4. VISUAL PLACEHOLDER -->
-    <div class="program-overview__visual" data-animate="program-visual">
-      <div class="program-overview__visual-icon">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="1.5"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 4.5H21m-3.75 4.5H21"
-          ></path>
-        </svg>
+    <!-- 4. VISUAL PLACEHOLDER (Krpano Viewer) -->
+    <div
+      class="program-overview__visual"
+      data-animate="program-visual"
+      style="padding: 0; height: 500px; overflow: hidden;"
+    >
+      <div class="sketchfab-embed-wrapper" style="width:100%; height:100%;">
+        <iframe
+          title="My Hometown Zlín (night)"
+          frameborder="0"
+          allowfullscreen
+          allow="autoplay; fullscreen; xr-spatial-tracking"
+          xr-spatial-tracking
+          execution-while-out-of-viewport
+          execution-while-not-rendered
+          web-share
+          src="https://sketchfab.com/models/fc4ed47d278d4e46ac3367f600c291b4/embed?ui_controls=0&ui_infos=0&ui_watermark=0&ui_inspector=0&ui_stop=0&ui_ar=0&ui_help=0&ui_settings=0&ui_vr=0&autostart=1"
+          style="width:100%; height:100%;"></iframe>
       </div>
-      <p class="program-overview__visual-text">
-        Plans, schémas et visuels seront disponibles<br />
-        à l'avancement du projet.
-      </p>
+    </div>
+
+    <div
+      style="display: flex; justify-content: center; width: 100%;"
+      data-animate="program-visual"
+    >
+      <Button href="#" variant="primary" class="js-download-brochure">
+        Télécharger la plaquette
+      </Button>
     </div>
 
     <!-- 5. NOTICE / DISCLAIMER (Preserved) -->

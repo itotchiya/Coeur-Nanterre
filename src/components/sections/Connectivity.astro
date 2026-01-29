@@ -4,6 +4,35 @@
  * Connectivité & Proximité Paris
  */
 import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
+import { getImage } from "astro:assets";
+
+// Import images for optimization
+import realEstateImg from "../../assets/Real-estate.jpg";
+import marrakeshImg from "../../assets/Marrakesh.jpg";
+import yachtingImg from "../../assets/Yachting.jpg";
+import flightsBgImg from "../../assets/flights-bg.png";
+
+// Generate optimized WebP versions
+const coeurVilleBg = await getImage({
+  src: realEstateImg,
+  format: "webp",
+  quality: 80,
+});
+const commercesBg = await getImage({
+  src: marrakeshImg,
+  format: "webp",
+  quality: 80,
+});
+const marcheBg = await getImage({
+  src: yachtingImg,
+  format: "webp",
+  quality: 80,
+});
+const parisBg = await getImage({
+  src: flightsBgImg,
+  format: "webp",
+  quality: 80,
+});
 ---
 
 <section
@@ -15,13 +44,10 @@ import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
   <div class="connectivity__header">
     <div class="connectivity__title-group">
       <AnimatedVerticalLine height="6rem" />
-      <h2
-        id="connectivity-title"
-        class="connectivity__title type-section-title"
-      >
+      <h2 id="connectivity-title" class="connectivity__title type-h2">
         Une centralité urbaine<br />affirmée
       </h2>
-      <p class="connectivity__intro">
+      <p class="connectivity__intro type-body">
         Tout est là. Au pied de chez vous ou à quelques minutes.<br />
         Une connexion fluide et immédiate avec l'essentiel.
       </p>
@@ -33,13 +59,13 @@ import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
     <div class="connectivity__card">
       <div
         class="connectivity__card-bg"
-        style="background-image: url('/Upload/Real-estate.jpg');"
+        style={`background-image: url('${coeurVilleBg.src}');`}
       >
       </div>
       <div class="connectivity__card-overlay"></div>
       <div class="connectivity__card-content">
-        <h3 class="connectivity__card-title">Cœur de Ville</h3>
-        <p class="connectivity__card-text">
+        <h3 class="connectivity__card-title type-h3">Cœur de Ville</h3>
+        <p class="connectivity__card-text type-body-lg">
           Une vie de quartier authentique, animée par ses habitants, ses
           placettes et son ambiance village.
         </p>
@@ -50,13 +76,13 @@ import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
     <div class="connectivity__card">
       <div
         class="connectivity__card-bg"
-        style="background-image: url('/Upload/Marrakesh.jpg');"
+        style={`background-image: url('${commercesBg.src}');`}
       >
       </div>
       <div class="connectivity__card-overlay"></div>
       <div class="connectivity__card-content">
-        <h3 class="connectivity__card-title">Commerces & Services</h3>
-        <p class="connectivity__card-text">
+        <h3 class="connectivity__card-title type-h3">Commerces & Services</h3>
+        <p class="connectivity__card-text type-body-lg">
           Boulangerie, pharmacie, épicerie fine. L'excellence du quotidien à
           portée de main.
         </p>
@@ -67,13 +93,13 @@ import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
     <div class="connectivity__card">
       <div
         class="connectivity__card-bg"
-        style="background-image: url('/Upload/Yachting.jpg');"
+        style={`background-image: url('${marcheBg.src}');`}
       >
       </div>
       <div class="connectivity__card-overlay"></div>
       <div class="connectivity__card-content">
-        <h3 class="connectivity__card-title">Le Marché</h3>
-        <p class="connectivity__card-text">
+        <h3 class="connectivity__card-title type-h3">Le Marché</h3>
+        <p class="connectivity__card-text type-body-lg">
           Trois fois par semaine, le rendez-vous des saveurs. Fraîcheur et
           saisonnalité au coin de la rue.
         </p>
@@ -84,13 +110,13 @@ import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
     <div class="connectivity__card connectivity__card--final">
       <div
         class="connectivity__card-bg"
-        style="background-image: url('/Upload/flights-bg.png');"
+        style={`background-image: url('${parisBg.src}');`}
       >
       </div>
       <div class="connectivity__card-overlay"></div>
       <div class="connectivity__card-content">
-        <h3 class="connectivity__card-title">Paris - RER A</h3>
-        <p class="connectivity__card-text">
+        <h3 class="connectivity__card-title type-h3">Paris - RER A</h3>
+        <p class="connectivity__card-text type-body-lg">
           La Défense en 8 min, Châtelet en 20 min. Le monde est votre voisin.
         </p>
       </div>

@@ -1,0 +1,95 @@
+---
+/**
+ * SimulatorRange Component
+ * Styled range slider for the credit simulator
+ */
+interface Props {
+  id: string;
+  min: number;
+  max: number;
+  step?: number;
+  value: number;
+  class?: string;
+}
+
+const { id, min, max, step = 1, value, class: className = "" } = Astro.props;
+---
+
+<div class:list={["simulator-range", className]}>
+  <div class="simulator-range__track-container">
+    <div class="simulator-range__track" id={`${id}-track`}></div>
+    <input
+      type="range"
+      id={id}
+      min={min}
+      max={max}
+      step={step}
+      value={value}
+      class="simulator-range__input"
+    />
+  </div>
+</div>
+
+<style>
+  .simulator-range {
+    width: 100%;
+    padding: 1rem 0;
+  }
+
+  .simulator-range__track-container {
+    position: relative;
+    width: 100%;
+    height: 6px;
+    display: flex;
+    align-items: center;
+  }
+
+  .simulator-range__track {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .simulator-range__input {
+    position: absolute;
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    z-index: 2;
+    cursor: pointer;
+    margin: 0;
+  }
+
+  /* Thumb */
+  .simulator-range__input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background: var(--color-white);
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border: none;
+    transition: transform 0.2s ease;
+  }
+
+  .simulator-range__input:active::-webkit-slider-thumb {
+    transform: scale(1.2);
+  }
+
+  .simulator-range__input::-moz-range-thumb {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background: var(--color-white);
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border: none;
+  }
+</style>

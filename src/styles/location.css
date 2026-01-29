@@ -14,14 +14,28 @@
 
 /* 1. Text Panel (Merged Title + Content) */
 .location__text-panel {
-  flex: 0 0 85vw; /* Wide Intro Slide */
+  flex: 0 0 50vw; /* Desktop: Split screen */
   height: 100%;
-  padding: 0 6rem; /* Generous padding */
+  padding: 0 6rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 4rem; /* Spacing between major blocks */
+  align-items: flex-start;
   border-right: 1px solid rgba(0,0,0,0.05);
+}
+
+.location__content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .location__text-panel {
+    flex: 0 0 100vw;
+    padding: 0 2rem;
+  }
 }
 
 .location__title {
@@ -39,28 +53,18 @@
 }
 
 .location__address {
-  font-family: var(--font-family-base);
-  font-size: 1.125rem; /* Match Hero Tagline */
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  line-height: 1.4;
+  /* Inherits .type-tagline via HTML class */
   font-style: normal;
-  color: var(--color-primary);
   display: flex;
   align-items: center;
 }
 
 .location__narrative {
-  font-family: var(--font-family-base);
-  font-size: clamp(1rem, 1.125rem, 1.25rem);
-  line-height: 1.6;
+  /* Inherits .type-body via HTML class */
   max-width: 45ch;
-  color: var(--color-gray-700);
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  /* Align with the text of the subtitle above (skipping the line width) */
   margin-left: calc(2px + 1.5rem); 
 }
 

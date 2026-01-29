@@ -27,11 +27,8 @@
 }
 
 .architecture__title {
-  /* Inherits .type-section-title */
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
-  color: var(--color-primary);
-  line-height: 1.1;
-  max-width: 15ch; /* Match Location constraint */
+  /* Inherits .type-h2 via HTML class */
+  max-width: 15ch;
 }
 
 .architecture__subtitle-group {
@@ -42,13 +39,7 @@
 }
 
 .architecture__subtitle {
-  font-family: var(--font-family-base);
-  font-size: 1.125rem; /* Match Location address */
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  line-height: 1.4;
-  color: var(--color-primary); /* Match Location address */
+  /* Inherits .type-tagline via HTML class */
   display: flex;
   align-items: center;
 }
@@ -62,11 +53,8 @@
 }
 
 .architecture__paragraph {
-  font-family: var(--font-family-base);
-  font-size: 1.125rem;
-  line-height: 1.6;
-  color: var(--color-gray-700);
-  max-width: 45ch; /* Match Location */
+  /* Inherits .type-body via HTML class */
+  max-width: 45ch;
 }
 
 /* Scrolling Image Column */
@@ -98,12 +86,8 @@
 
 /* Caption if needed */
 .architecture__caption {
+  /* Inherits .type-caption via HTML class */
   margin-top: 0.75rem;
-  font-family: var(--font-family-base);
-  font-size: 0.875rem;
-  color: var(--color-gray-500);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 /* Responsive */

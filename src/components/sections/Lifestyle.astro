@@ -6,6 +6,7 @@
  */
 import InteractiveImageCard from "../ui/InteractiveImageCard.astro";
 import AnimatedOrbs from "../ui/AnimatedOrbs.astro";
+import Button from "../ui/Button.astro";
 ---
 
 <section
@@ -17,10 +18,10 @@ import AnimatedOrbs from "../ui/AnimatedOrbs.astro";
   <div class="lifestyle__container">
     <!-- 1. INTRODUCTION -->
     <header class="lifestyle__header" data-animate="lifestyle-header">
-      <h2 id="lifestyle-title" class="lifestyle__title type-section-title">
+      <h2 id="lifestyle-title" class="lifestyle__title type-h2">
         Un cadre de vie pensé pour le quotidien
       </h2>
-      <p class="lifestyle__subtitle">
+      <p class="lifestyle__subtitle type-body-lg">
         Des espaces de vie confortables, lumineux et fonctionnels adaptés aux
         usages contemporains.
       </p>
@@ -131,7 +132,17 @@ import AnimatedOrbs from "../ui/AnimatedOrbs.astro";
       </div>
     </div>
 
-    <!-- 4. CLOSING NOTE -->
+    <!-- 4. ACTION CTA -->
+    <div
+      style="display: flex; justify-content: center;"
+      data-animate="lifestyle-action"
+    >
+      <Button href="#" variant="primary" class="js-download-brochure">
+        Télécharger la plaquette
+      </Button>
+    </div>
+
+    <!-- 5. CLOSING NOTE -->
     <aside class="lifestyle__note" data-animate="lifestyle-note">
       <p class="lifestyle__note-text">
         Les prestations détaillées et les plans seront fournis dans la notice
@@ -191,33 +202,72 @@ import AnimatedOrbs from "../ui/AnimatedOrbs.astro";
     });
 
     // ========================================
-    // 4. ROW-BASED SCALE ANIMATION
+    // 4. RESPONSIVE SCALE ANIMATION
     // ========================================
     const rows = document.querySelectorAll(".lifestyle__row");
 
-    rows.forEach((row) => {
-      // Row scaling animation
-      gsap.fromTo(
-        row,
-        { scale: 0.92, opacity: 1 },
-        {
-          scale: 1,
-          opacity: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: row,
-            start: "top 92%",
-            end: "top 60%",
-            scrub: 1,
-          },
-        },
-      );
+    ScrollTrigger.matchMedia({
+      // Desktop: Animate entire row together
+      "(min-width: 900px)": function () {
+        rows.forEach((row) => {
+          gsap.fromTo(
+            row,
+            { scale: 0.92, opacity: 1 },
+            {
+              scale: 1,
+              opacity: 1,
+              ease: "none",
+              scrollTrigger: {
+                trigger: row,
+                start: "top 92%",
+                end: "top 60%",
+                scrub: 1,
+              },
+            },
+          );
+        });
+      },
 
-      // Image Parallax Effect
+      // Mobile: Animate each card individually
+      "(max-width: 899px)": function () {
+        rows.forEach((row) => {
+          const cards = row.querySelectorAll(".interactive-card");
+          cards.forEach((card) => {
+            // 1. Scale Animation (Visual entry)
+            gsap.fromTo(
+              card,
+              { scale: 0.92, opacity: 1 },
+              {
+                scale: 1,
+                opacity: 1,
+                ease: "none",
+                scrollTrigger: {
+                  trigger: card,
+                  start: "top 85%",
+                  end: "top 55%",
+                  scrub: 1,
+                },
+              },
+            );
+
+            // 2. Active Toggle (Interaction imitation)
+            ScrollTrigger.create({
+              trigger: card,
+              start: "top 20%", // Trigger around center (slightly lower to ensure it activates when dominant)
+              end: "bottom top",
+              toggleClass: "is-active",
+            });
+          });
+        });
+      },
+    });
+
+    // Parallax (Shared logic, safe to keep outside or duplicated if needed)
+    rows.forEach((row) => {
       const images = row.querySelectorAll(".interactive-card__img");
       images.forEach((img) => {
         gsap.to(img, {
-          y: "15%", // Move the image down as we scroll
+          y: "15%",
           ease: "none",
           scrollTrigger: {
             trigger: row,
@@ -241,6 +291,22 @@ import AnimatedOrbs from "../ui/AnimatedOrbs.astro";
         ease,
         scrollTrigger: {
           trigger: '[data-animate="lifestyle-note"]',
+          start: "top 85%",
+          once: true,
+        },
+      },
+    );
+
+    gsap.fromTo(
+      '[data-animate="lifestyle-action"]',
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease,
+        scrollTrigger: {
+          trigger: '[data-animate="lifestyle-action"]',
           start: "top 85%",
           once: true,
         },

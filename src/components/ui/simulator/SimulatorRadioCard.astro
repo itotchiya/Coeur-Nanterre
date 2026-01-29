@@ -1,0 +1,103 @@
+---
+/**
+ * SimulatorRadioCard Component
+ * Big card-style radio button for the simulator
+ */
+interface Props {
+  name: string;
+  value: string;
+  label: string;
+  price?: string;
+  checked?: boolean;
+  class?: string;
+  isProperty?: boolean;
+}
+
+const {
+  name,
+  value,
+  label,
+  price,
+  checked = false,
+  class: className = "",
+  isProperty = false,
+} = Astro.props;
+---
+
+<label class:list={["simulator-radio-card", className]}>
+  <input
+    type="radio"
+    name={name}
+    value={value}
+    checked={checked}
+    class="simulator-radio-card__input"
+  />
+  <span
+    class:list={["simulator-radio-card__ui", { "is-property": isProperty }]}
+  >
+    <span class="simulator-radio-card__label">{label}</span>
+    {price && <span class="simulator-radio-card__price">{price}</span>}
+  </span>
+</label>
+
+<style>
+  .simulator-radio-card {
+    flex: 1;
+    cursor: pointer;
+    position: relative;
+    display: block;
+  }
+
+  .simulator-radio-card__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .simulator-radio-card__ui {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    height: 54px; /* Default height matching standard inputs */
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+    color: var(--color-white);
+    text-align: center;
+  }
+
+  .is-property {
+    height: auto;
+    padding: 1.5rem 1rem;
+  }
+
+  .simulator-radio-card__label {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .simulator-radio-card__price {
+    font-size: 0.8rem;
+    opacity: 0.5;
+    margin-top: 4px;
+    font-weight: 400;
+  }
+
+  .simulator-radio-card__input:checked + .simulator-radio-card__ui {
+    background: var(--color-white);
+    color: var(--color-primary);
+    border-color: var(--color-white);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .simulator-radio-card__input:checked
+    + .simulator-radio-card__ui
+    .simulator-radio-card__price {
+    color: var(--color-primary);
+    opacity: 0.6;
+  }
+</style>

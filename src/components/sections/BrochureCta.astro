@@ -1,0 +1,716 @@
+---
+/**
+ * Brochure CTA Section
+ * Download commercial brochure with lead capture dialog
+ */
+import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
+import Button from "../ui/Button.astro";
+---
+
+<section
+  class="brochure-cta"
+  data-section="brochure"
+  id="brochure"
+  aria-labelledby="brochure-title"
+>
+  <div class="brochure-cta__container">
+    <!-- Left Column: Text & CTA -->
+    <div class="brochure-cta__text-col">
+      <h2
+        id="brochure-title"
+        class="brochure-cta__title type-h2"
+        data-animate="fade-up"
+      >
+        Découvrez le projet<br />en détail
+      </h2>
+
+      <div class="brochure-cta__subtitle-group">
+        <AnimatedVerticalLine height="100%" />
+        <span
+          class="brochure-cta__subtitle type-tagline"
+          data-animate="fade-up"
+        >
+          Plaquette commerciale
+        </span>
+      </div>
+
+      <div class="brochure-cta__content" data-animate="fade-up">
+        <p class="brochure-cta__paragraph type-body">
+          Téléchargez notre plaquette commerciale pour découvrir en détail les
+          plans, les prestations et les finitions du programme Cœur Nanterre.
+        </p>
+
+        <p class="brochure-cta__paragraph type-body">
+          Un document complet pour vous accompagner dans votre réflexion.
+        </p>
+
+        <div style="margin-top: 2rem;" data-animate="fade-up">
+          <Button href="#" variant="primary" class="js-download-brochure">
+            Télécharger la plaquette
+          </Button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Single Image -->
+    <div class="brochure-cta__image-col" data-animate="fade-up">
+      <figure class="brochure-cta__figure">
+        <div class="brochure-cta__image-wrapper">
+          <img
+            src="https://placehold.co/700x900/f0f0f0/252067?text=Plaquette+Commerciale"
+            alt="Plaquette commerciale Cœur Nanterre"
+            class="brochure-cta__image"
+            loading="lazy"
+          />
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- Lead Capture Dialog - Dark Theme -->
+<dialog class="brochure-dialog" id="brochure-dialog">
+  <div class="brochure-dialog__container">
+    <button
+      class="brochure-dialog__close"
+      id="btn-close-dialog"
+      aria-label="Fermer"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <div class="brochure-dialog__header">
+      <p class="brochure-dialog__label">Télécharger la plaquette</p>
+      <h3 class="brochure-dialog__title">Vos coordonnées</h3>
+    </div>
+
+    <form class="brochure-dialog__form" id="brochure-form">
+      <!-- Civility -->
+      <div class="brochure-dialog__field brochure-dialog__field--inline">
+        <label class="brochure-dialog__radio">
+          <input type="radio" name="civility" value="madame" />
+          <span>Mme</span>
+        </label>
+        <label class="brochure-dialog__radio">
+          <input type="radio" name="civility" value="monsieur" />
+          <span>Mr</span>
+        </label>
+      </div>
+
+      <!-- Name Row -->
+      <div class="brochure-dialog__row">
+        <input
+          type="text"
+          id="brochure-lastname"
+          name="lastName"
+          required
+          class="brochure-dialog__input"
+          placeholder="Nom *"
+        />
+        <input
+          type="text"
+          id="brochure-firstname"
+          name="firstName"
+          required
+          class="brochure-dialog__input"
+          placeholder="Prénom *"
+        />
+      </div>
+
+      <!-- Email -->
+      <input
+        type="email"
+        id="brochure-email"
+        name="email"
+        required
+        class="brochure-dialog__input"
+        placeholder="E-mail *"
+      />
+
+      <!-- Phone & Postal Row -->
+      <div class="brochure-dialog__row">
+        <input
+          type="tel"
+          id="brochure-phone"
+          name="phone"
+          class="brochure-dialog__input"
+          placeholder="Téléphone"
+        />
+        <input
+          type="text"
+          id="brochure-postal"
+          name="postalCode"
+          required
+          class="brochure-dialog__input"
+          placeholder="Code postal *"
+        />
+      </div>
+
+      <!-- Purpose -->
+      <div class="brochure-dialog__field brochure-dialog__field--inline">
+        <label class="brochure-dialog__radio">
+          <input type="radio" name="purpose" value="residence" />
+          <span>Résidence principale</span>
+        </label>
+        <label class="brochure-dialog__radio">
+          <input type="radio" name="purpose" value="investment" />
+          <span>Investissement</span>
+        </label>
+      </div>
+
+      <!-- Consent -->
+      <label class="brochure-dialog__checkbox">
+        <input type="checkbox" name="consent" required />
+        <span>J'accepte d'être recontacté</span>
+      </label>
+
+      <!-- Submit -->
+      <button type="submit" class="brochure-dialog__submit">
+        Télécharger la plaquette
+      </button>
+    </form>
+  </div>
+</dialog>
+
+<style>
+  /* ===========================================
+     BROCHURE CTA SECTION
+     =========================================== */
+  .brochure-cta {
+    position: relative;
+    background-color: var(--color-white);
+    padding: 8rem 2rem;
+  }
+
+  .brochure-cta__container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .brochure-cta__text-col {
+    position: sticky;
+    top: 8rem;
+    padding-right: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .brochure-cta__title {
+    max-width: 15ch;
+  }
+
+  .brochure-cta__subtitle-group {
+    display: flex;
+    align-items: stretch;
+    gap: 1.5rem;
+  }
+
+  .brochure-cta__subtitle {
+    display: flex;
+    align-items: center;
+  }
+
+  .brochure-cta__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-left: calc(2px + 1.5rem);
+  }
+
+  .brochure-cta__paragraph {
+    max-width: 45ch;
+  }
+
+  .brochure-cta__btn {
+    align-self: flex-start;
+    margin-top: 1rem;
+  }
+
+  .brochure-cta__image-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .brochure-cta__figure {
+    margin: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    max-width: 100%;
+  }
+
+  .brochure-cta__image-wrapper {
+    overflow: hidden;
+  }
+
+  .brochure-cta__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .brochure-cta__figure:hover .brochure-cta__image {
+    transform: scale(1.02);
+  }
+
+  /* ===========================================
+     DIALOG - DARK THEME (Simulator Style)
+     =========================================== */
+  .brochure-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    border-radius: 16px;
+    padding: 0;
+    width: 800px;
+    max-width: 95vw;
+    background: var(--color-primary);
+    box-shadow: 0 30px 100px rgba(0, 0, 0, 0.4);
+    overflow: visible;
+  }
+
+  .brochure-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+  }
+
+  .brochure-dialog__container {
+    padding: 2rem;
+    position: relative;
+  }
+
+  .brochure-dialog__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+      background 0.2s ease,
+      color 0.2s ease;
+    z-index: 10;
+  }
+
+  .brochure-dialog__close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--color-white);
+  }
+
+  .brochure-dialog__close svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .brochure-dialog__header {
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .brochure-dialog__label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0 0 0.5rem;
+  }
+
+  .brochure-dialog__title {
+    font-family: var(--font-family-heading);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-white);
+    margin: 0;
+  }
+
+  /* Form */
+  .brochure-dialog__form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .brochure-dialog__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .brochure-dialog__input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    font-family: var(--font-family-base);
+    font-size: 0.9375rem;
+    color: var(--color-white);
+    transition:
+      border-color 0.2s ease,
+      background 0.2s ease;
+  }
+
+  .brochure-dialog__input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .brochure-dialog__input:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Radio & Checkbox - Custom Styled */
+  .brochure-dialog__field--inline {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .brochure-dialog__radio,
+  .brochure-dialog__checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.2s ease;
+  }
+
+  .brochure-dialog__radio:hover,
+  .brochure-dialog__checkbox:hover {
+    color: var(--color-white);
+  }
+
+  /* Hide native inputs */
+  .brochure-dialog__radio input,
+  .brochure-dialog__checkbox input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  /* Custom radio circle */
+  .brochure-dialog__radio span::before {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+    transition: all 0.2s ease;
+  }
+
+  .brochure-dialog__radio input:checked + span::before {
+    border-color: var(--color-white);
+    background: var(--color-white);
+    box-shadow: inset 0 0 0 4px var(--color-primary);
+  }
+
+  .brochure-dialog__radio input:checked + span {
+    color: var(--color-white);
+  }
+
+  /* Custom checkbox square */
+  .brochure-dialog__checkbox span::before {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+    transition: all 0.2s ease;
+  }
+
+  .brochure-dialog__checkbox input:checked + span::before {
+    border-color: var(--color-white);
+    background: var(--color-white);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23252067' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .brochure-dialog__checkbox input:checked + span {
+    color: var(--color-white);
+  }
+
+  /* Submit */
+  .brochure-dialog__submit {
+    margin-top: 0.75rem;
+    padding: 0.875rem 1.5rem;
+    background: var(--color-white);
+    color: var(--color-primary);
+    border: none;
+    border-radius: 8px;
+    font-family: var(--font-family-base);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .brochure-dialog__submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .brochure-dialog__submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* Responsive - Section */
+  @media (max-width: 900px) {
+    .brochure-cta__container {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .brochure-cta__text-col {
+      position: static;
+      padding-right: 0;
+    }
+
+    .brochure-cta__image-col {
+      order: -1; /* Show image first on mobile */
+    }
+  }
+
+  @media (max-width: 600px) {
+    .brochure-cta {
+      padding: 4rem 1.5rem;
+    }
+
+    /* Fullscreen dialog on mobile */
+    .brochure-dialog {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 0;
+      top: 0;
+      left: 0;
+      transform: none;
+    }
+
+    .brochure-dialog__container {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+    }
+
+    .brochure-dialog__close {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+    }
+
+    .brochure-dialog__row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const dialog = document.getElementById(
+      "brochure-dialog",
+    ) as HTMLDialogElement;
+    const btnOpen = document.getElementById("btn-download-brochure");
+    const btnClose = document.getElementById("btn-close-dialog");
+    const form = document.getElementById("brochure-form") as HTMLFormElement;
+
+    const STORAGE_KEY = "coeur-nanterre-user";
+    const PDF_URL = "/Upload/Plaquette-demo.pdf";
+
+    // Load saved data
+    function loadSavedData() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        try {
+          const data = JSON.parse(saved);
+          const fields = [
+            "firstName",
+            "lastName",
+            "email",
+            "phone",
+            "postalCode",
+          ];
+
+          fields.forEach((field) => {
+            const input = document.getElementById(
+              `brochure-${field.toLowerCase()}`,
+            ) as HTMLInputElement;
+            if (input && data[field]) input.value = data[field];
+          });
+
+          if (data.civility) {
+            const radio = form.querySelector(
+              `input[name="civility"][value="${data.civility}"]`,
+            ) as HTMLInputElement;
+            if (radio) radio.checked = true;
+          }
+          if (data.purpose) {
+            const radio = form.querySelector(
+              `input[name="purpose"][value="${data.purpose}"]`,
+            ) as HTMLInputElement;
+            if (radio) radio.checked = true;
+          }
+        } catch (e) {
+          console.error("Error loading saved data:", e);
+        }
+      }
+    }
+
+    // Save data
+    function saveData() {
+      const formData = new FormData(form);
+      const data = {
+        firstName: formData.get("firstName"),
+        lastName: formData.get("lastName"),
+        email: formData.get("email"),
+        phone: formData.get("phone"),
+        postalCode: formData.get("postalCode"),
+        civility: formData.get("civility"),
+        purpose: formData.get("purpose"),
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+
+    // Download PDF
+    function downloadPDF() {
+      const link = document.createElement("a");
+      link.href = PDF_URL;
+      link.download = "Coeur-Nanterre-Plaquette.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // Open dialog
+    const btnsOpen = document.querySelectorAll(".js-download-brochure");
+    btnsOpen.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        loadSavedData();
+        dialog.showModal();
+        gsap.fromTo(
+          dialog,
+          { opacity: 0, scale: 0.95 },
+          { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" },
+        );
+      });
+    });
+
+    // Close dialog
+    function closeDialog() {
+      gsap.to(dialog, {
+        opacity: 0,
+        scale: 0.95,
+        duration: 0.2,
+        ease: "power2.in",
+        onComplete: () => dialog.close(),
+      });
+    }
+
+    btnClose?.addEventListener("click", closeDialog);
+
+    dialog?.addEventListener("click", (e) => {
+      if (e.target === dialog) closeDialog();
+    });
+
+    dialog?.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        closeDialog();
+      }
+    });
+
+    // Form submit
+    form?.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      saveData();
+
+      const submitBtn = form.querySelector(
+        ".brochure-dialog__submit",
+      ) as HTMLButtonElement;
+      if (submitBtn) {
+        submitBtn.textContent = "Téléchargement...";
+        submitBtn.disabled = true;
+      }
+
+      // Download PDF immediately
+      setTimeout(() => {
+        downloadPDF();
+        dialog.close();
+
+        // Reset button
+        if (submitBtn) {
+          submitBtn.textContent = "Télécharger la plaquette";
+          submitBtn.disabled = false;
+        }
+      }, 500);
+    });
+
+    // Animate images
+    const images = document.querySelectorAll(".brochure-cta__figure");
+    images.forEach((img) => {
+      gsap.fromTo(
+        img,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: { trigger: img, start: "top 85%" },
+        },
+      );
+    });
+  });
+</script>

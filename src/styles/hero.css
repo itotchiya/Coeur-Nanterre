@@ -59,25 +59,20 @@
 
 /* 1. Header (Title + Tagline) */
 .hero__header {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   padding: 0 1.5rem;
 }
 
 @media (min-width: 1024px) {
   .hero__header {
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     padding: 0;
   }
 }
 
 .hero__title {
-  font-size: clamp(3rem, 6vw, 6.5rem);
-  line-height: 0.9;
-  font-weight: 700; /* reduced from black for elegance */
-  letter-spacing: -0.03em;
-  color: var(--color-primary);
+  /* Inherits .type-h1 via HTML class */
   margin-bottom: 1.5rem;
-  text-transform: uppercase;
   overflow: hidden; /* For animation reveal */
 }
 
@@ -91,11 +86,7 @@
 /* Line handled by AnimatedVerticalLine component */
 
 .hero__tagline {
-  font-size: 1.125rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--color-gray-500);
+  /* Inherits .type-tagline via HTML class */
   padding: 0;
   margin: 0;
   border: none; /* Remove old border */
@@ -116,18 +107,13 @@
 }
 
 .hero__subtitle {
-  font-size: clamp(1.25rem, 2vw, 1.75rem);
-  line-height: 1.3;
-  font-weight: 400;
-  color: var(--color-gray-900);
+  /* Inherits .type-lead via HTML class */
   margin-bottom: 1.5rem;
   max-width: 35ch;
 }
 
 .hero__accroche {
-  font-size: 1rem;
-  color: var(--color-gray-500);
-  line-height: 1.6;
+  /* Inherits .type-body via HTML class */
   max-width: 40ch;
 }
 
@@ -233,14 +219,14 @@
 
 /* Add a pseudo-element to simulate image content */
 .hero__image-container:nth-child(1) {
-  background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop');
+  background-image: var(--hero-bg-image);
   background-size: cover;
   background-position: center;
   filter: grayscale(20%);
 }
 
 .hero__image-container:nth-child(2) {
-  background-image: url('https://images.unsplash.com/photo-1506146332389-18140dc7b2fb?q=80&w=1964&auto=format&fit=crop');
+  background-image: var(--hero-bg-image);
   background-size: cover;
   background-position: center;
 }

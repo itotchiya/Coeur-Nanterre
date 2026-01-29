@@ -17,7 +17,7 @@ import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
       <AnimatedVerticalLine theme="dark" />
       <h2
         id="project-title"
-        class="project-essence__title type-section-title"
+        class="project-essence__title type-h2"
         data-animate="fade-up"
       >
         Un projet immobilier singulier
@@ -41,6 +41,43 @@ import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
       L'intervention architecturale cherche un dialogue équilibré entre
       patrimoine, usages actuels et nouvelles formes d'habiter.
     </p>
+
+    <!-- Project Principles -->
+    <div class="project-principles">
+      <div class="project-principles__header">
+        <span class="project-principles__label type-overline">Principes</span>
+      </div>
+
+      <ul class="project-principles__list">
+        <li class="project-principles__item">
+          <span class="project-principles__keyword">Réhabilitation</span>
+          <span class="project-principles__description"
+            >Préserver l'existant et son identité</span
+          >
+        </li>
+
+        <li class="project-principles__item">
+          <span class="project-principles__keyword">Contemporain</span>
+          <span class="project-principles__description"
+            >Une écriture architecturale sobre et actuelle</span
+          >
+        </li>
+
+        <li class="project-principles__item">
+          <span class="project-principles__keyword">Échelle humaine</span>
+          <span class="project-principles__description"
+            >Un projet confidentiel et résidentiel</span
+          >
+        </li>
+
+        <li class="project-principles__item">
+          <span class="project-principles__keyword">Dialogue urbain</span>
+          <span class="project-principles__description"
+            >Entre patrimoine et nouveaux usages</span
+          >
+        </li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -91,6 +128,23 @@ import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
         },
         "-=0.6", // Slight overlap with title
       );
+
+      // 3. Reveal Project Principles with subtle stagger
+      const principles = section?.querySelectorAll(".project-principles__item");
+      if (principles && principles.length > 0) {
+        tl.fromTo(
+          principles,
+          { y: 10, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: "power2.out",
+          },
+          "-=0.4", // Slight overlap with paragraphs
+        );
+      }
     }
   });
 </script>

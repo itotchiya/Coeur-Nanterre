@@ -1,7 +1,8 @@
 ---
 /**
  * Legal Mentions Section
- * Mentions & État d'avancement
+ * Calm, editorial notice block — Closing clarification
+ * Reinforcing trust and professionalism
  */
 ---
 
@@ -9,21 +10,119 @@
   class="legal-mentions"
   data-section="mentions"
   id="mentions"
-  aria-labelledby="mentions-title"
+  aria-label="Mentions légales"
 >
-  <div class="legal-mentions__content" data-animate="fade-up">
-    <p class="legal-mentions__paragraph">
-      Programme en cours de développement.
-    </p>
+  <div class="legal-mentions__container">
+    <div class="legal-mentions__content" data-animate="fade-up">
+      <!-- Editorial Notice -->
+      <p class="legal-mentions__note type-body-sm">À propos de ce projet</p>
 
-    <p class="legal-mentions__paragraph">
-      Les visuels, textes et caractéristiques présentés sont fournis à titre
-      indicatif et non contractuel.
-    </p>
+      <div class="legal-mentions__text">
+        <p class="legal-mentions__paragraph type-body">
+          Ce programme est actuellement en cours de développement. Les visuels,
+          textes et caractéristiques présentés sur ce site sont fournis à titre
+          indicatif et n'ont pas de valeur contractuelle.
+        </p>
 
-    <p class="legal-mentions__paragraph">
-      Les informations définitives seront communiquées après validation
-      administrative et production de la notice descriptive.
-    </p>
+        <p class="legal-mentions__paragraph type-body">
+          Les informations définitives vous seront communiquées après validation
+          administrative et remise de la notice descriptive officielle.
+        </p>
+      </div>
+
+      <!-- Trust Badge -->
+      <p class="legal-mentions__signature type-body-sm">
+        Cœur Nanterre — Un projet développé avec transparence.
+      </p>
+    </div>
   </div>
 </section>
+
+<style>
+  .legal-mentions {
+    background-color: var(--color-gray-50);
+    padding: 5rem 2rem;
+    border-top: 1px solid var(--color-gray-200);
+  }
+
+  .legal-mentions__container {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .legal-mentions__content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+    opacity: 0; /* For GSAP animation */
+    transform: translateY(20px);
+  }
+
+  .legal-mentions__note {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-gray-400);
+    margin: 0;
+  }
+
+  .legal-mentions__text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .legal-mentions__paragraph {
+    margin: 0;
+    color: var(--color-gray-600);
+    line-height: 1.7;
+  }
+
+  .legal-mentions__signature {
+    margin: 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-gray-200);
+    color: var(--color-gray-400);
+    font-style: italic;
+  }
+
+  @media (max-width: 600px) {
+    .legal-mentions {
+      padding: 4rem 1.5rem;
+    }
+
+    .legal-mentions__content {
+      gap: 1.5rem;
+    }
+
+    .legal-mentions__paragraph {
+      font-size: 0.9375rem;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const content = document.querySelector(".legal-mentions__content");
+
+    if (content) {
+      // One-time fade-up animation
+      gsap.to(content, {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".legal-mentions",
+          start: "top 85%",
+          toggleActions: "play none none none", // Play once, never reverse
+        },
+      });
+    }
+  });
+</script>

@@ -34,17 +34,13 @@
 }
 
 .connectivity__title {
-  /* Inherits .type-section-title */
-  font-size: clamp(2.5rem, 5vw, 4rem); /* Larger for impact */
-  color: var(--color-primary);
+  /* Inherits .type-h2 via HTML class */
+  font-size: clamp(2.5rem, 5vw, 4rem); /* Larger variant for impact */
 }
 
 .connectivity__intro {
-  font-family: var(--font-family-base);
-  font-size: 1.125rem;
-  color: var(--color-gray-700);
+  /* Inherits .type-body via HTML class */
   max-width: 50ch;
-  line-height: 1.6;
 }
 
 /* Scrollable Container for Cards */
@@ -108,18 +104,12 @@
 }
 
 .connectivity__card-title {
-  font-family: var(--font-family-heading);
-  font-size: 3rem;
-  font-weight: 400;
+  /* Inherits .type-h3 via HTML class */
   margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
 }
 
 .connectivity__card-text {
-  font-family: var(--font-family-base);
-  font-size: 1.25rem;
-  line-height: 1.5;
-  font-weight: 300;
+  /* Inherits .type-body-lg via HTML class */
   color: rgba(255, 255, 255, 0.9);
 }
 

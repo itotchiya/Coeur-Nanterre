@@ -5,7 +5,8 @@
  */
 
 interface Props {
-  variant?: "primary" | "secondary" | "outline";
+  id?: string;
+  variant?: "primary" | "secondary" | "secondary-light" | "outline" | "white";
   size?: "sm" | "md" | "lg";
   href?: string;
   type?: "button" | "submit" | "reset";
@@ -14,6 +15,7 @@ interface Props {
 }
 
 const {
+  id,
   variant = "primary",
   size = "md",
   href,
@@ -30,6 +32,7 @@ const Tag = isLink ? "a" : "button";
   isLink ? (
     <a
       href={href}
+      id={Astro.props.id}
       class:list={[
         "btn",
         `btn--${variant}`,
@@ -44,6 +47,7 @@ const Tag = isLink ? "a" : "button";
   ) : (
     <button
       type={type}
+      id={Astro.props.id}
       class:list={[
         "btn",
         `btn--${variant}`,
@@ -101,15 +105,34 @@ const Tag = isLink ? "a" : "button";
     /* No scaling */
   }
 
-  /* Secondary variant */
+  /* Secondary variant (Translucent White for dark theme) */
   .btn--secondary {
-    background-color: color-mix(in srgb, var(--color-primary) 4%, transparent);
-    color: var(--color-primary);
+    background-color: color-mix(in srgb, var(--color-white) 10%, transparent);
+    color: var(--color-white);
   }
 
   .btn--secondary:hover {
-    background-color: color-mix(in srgb, var(--color-primary) 8%, transparent);
-    /* No scaling */
+    background-color: color-mix(in srgb, var(--color-white) 15%, transparent);
+  }
+
+  /* Secondary Light variant (Translucent Primary for light theme) */
+  .btn--secondary-light {
+    background-color: color-mix(in srgb, var(--color-primary) 10%, transparent);
+    color: var(--color-primary);
+  }
+
+  .btn--secondary-light:hover {
+    background-color: color-mix(in srgb, var(--color-primary) 15%, transparent);
+  }
+
+  /* White variant */
+  .btn--white {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+  }
+
+  .btn--white:hover {
+    background-color: var(--color-gray-100);
   }
 
   /* Outline variant */
@@ -126,7 +149,7 @@ const Tag = isLink ? "a" : "button";
 
   /* Icon button modifier */
   .btn--icon {
-    padding-right: 0.75rem;
+    /* No padding override - rely on size classes */
   }
 
   .btn--icon :global(svg) {
