@@ -4,8 +4,10 @@
  * Une adresse au cœur de la ville
  */
 import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
-import MapPlaceholder from "../ui/MapPlaceholder.astro";
 import Button from "../ui/Button.astro";
+
+// Floor plan image
+import floorPlan from "../../assets/GROUND_FLOOR_PLAN.jpg";
 ---
 
 <section
@@ -56,7 +58,12 @@ import Button from "../ui/Button.astro";
     </div>
 
     <div class="location__map" data-animate="reveal">
-      <MapPlaceholder class="location__map-container" />
+      <img
+        src={floorPlan.src}
+        alt="Plan du rez-de-chaussée"
+        class="location__map-image"
+        loading="lazy"
+      />
     </div>
   </div>
 </section>
@@ -94,6 +101,7 @@ import Button from "../ui/Button.astro";
   document.addEventListener("DOMContentLoaded", () => {
     const section = document.querySelector(".location");
     const track = section?.querySelector(".location__track");
+    const mapImage = section?.querySelector(".location__map-image");
 
     if (section && track) {
       // Horizontal Scroll Calculation
@@ -114,6 +122,20 @@ import Button from "../ui/Button.astro";
           end: () => "+=" + (track.scrollWidth - window.innerWidth), // Scroll duration based on width
         },
       });
+
+      // Horizontal parallax for floor plan image
+      if (mapImage) {
+        gsap.to(mapImage, {
+          xPercent: -10, // Moves slower than scroll, creating parallax
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: () => "+=" + (track.scrollWidth - window.innerWidth),
+            scrub: 1,
+          },
+        });
+      }
     }
   });
 </script>

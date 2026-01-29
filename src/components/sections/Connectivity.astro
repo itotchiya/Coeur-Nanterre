@@ -7,29 +7,29 @@ import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
 import { getImage } from "astro:assets";
 
 // Import images for optimization
-import realEstateImg from "../../assets/Real-estate.jpg";
-import marrakeshImg from "../../assets/Marrakesh.jpg";
-import yachtingImg from "../../assets/Yachting.jpg";
-import flightsBgImg from "../../assets/flights-bg.png";
+import nanterreCityImg from "../../assets/nanterre-city.jpg";
+import rueCommerceImg from "../../assets/rue-commerce-street.jpg";
+import leMarcheImg from "../../assets/lemarche.jpg";
+import rerTrainImg from "../../assets/rer-train.jpg";
 
 // Generate optimized WebP versions
 const coeurVilleBg = await getImage({
-  src: realEstateImg,
+  src: nanterreCityImg,
   format: "webp",
   quality: 80,
 });
 const commercesBg = await getImage({
-  src: marrakeshImg,
+  src: rueCommerceImg,
   format: "webp",
   quality: 80,
 });
 const marcheBg = await getImage({
-  src: yachtingImg,
+  src: leMarcheImg,
   format: "webp",
   quality: 80,
 });
 const parisBg = await getImage({
-  src: flightsBgImg,
+  src: rerTrainImg,
   format: "webp",
   quality: 80,
 });
@@ -43,13 +43,13 @@ const parisBg = await getImage({
 >
   <div class="connectivity__header">
     <div class="connectivity__title-group">
-      <AnimatedVerticalLine height="6rem" />
+      <AnimatedVerticalLine height="4rem" />
       <h2 id="connectivity-title" class="connectivity__title type-h2">
-        Une centralité urbaine<br />affirmée
+        Cœur Nanterre,<br />les 4 avantages qui comptent
       </h2>
       <p class="connectivity__intro type-body">
-        Tout est là. Au pied de chez vous ou à quelques minutes.<br />
-        Une connexion fluide et immédiate avec l'essentiel.
+        Un emplacement d'exception, des services au quotidien,<br />
+        une vie de quartier authentique et Paris à portée de main.
       </p>
     </div>
   </div>
@@ -137,21 +137,24 @@ const parisBg = await getImage({
   document.addEventListener("DOMContentLoaded", () => {
     // Parallax & Reveal Logic
     const cards = document.querySelectorAll(".connectivity__card");
+    const header = document.querySelector(".connectivity__header");
 
     if (cards.length === 0) return;
 
-    // 1. Fade Out Header as cards scroll over?
-    // Not explicitly requested, but usually nice.
-    gsap.to(".connectivity__header", {
-      opacity: 0,
-      scale: 0.9,
-      scrollTrigger: {
-        trigger: ".connectivity__cards",
-        start: "top 80%" /* Start fading when cards approach */,
-        end: "top 20%",
-        scrub: true,
-      },
-    });
+    // Fade out and scale down header as cards scroll over
+    if (header) {
+      gsap.to(header, {
+        opacity: 0,
+        scale: 0.9,
+        y: 50, // Move down slightly
+        scrollTrigger: {
+          trigger: ".connectivity__cards",
+          start: "top 90%",
+          end: "top 30%",
+          scrub: true,
+        },
+      });
+    }
 
     cards.forEach((card) => {
       const bg = card.querySelector(".connectivity__card-bg");

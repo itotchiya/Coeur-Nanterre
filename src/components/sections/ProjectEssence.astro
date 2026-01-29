@@ -4,6 +4,10 @@
  * L'essence de Cœur Nanterre
  */
 import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
+
+// Background image
+import arch21 from "../../assets/arch21.avif";
+const bgImage = arch21.src;
 ---
 
 <section
@@ -12,6 +16,14 @@ import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
   id="projet"
   aria-labelledby="project-title"
 >
+  <!-- Parallax Background -->
+  <div
+    class="project-essence__bg"
+    style={`background-image: url('${bgImage}');`}
+  >
+  </div>
+  <!-- Gradient Overlay -->
+  <div class="project-essence__overlay"></div>
   <header class="project-essence__header">
     <div class="project-essence__title-group">
       <AnimatedVerticalLine theme="dark" />
@@ -144,6 +156,21 @@ import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
           },
           "-=0.4", // Slight overlap with paragraphs
         );
+      }
+
+      // 4. Parallax effect for background image
+      const bgElement = section?.querySelector(".project-essence__bg");
+      if (bgElement) {
+        gsap.to(bgElement, {
+          yPercent: 20,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
       }
     }
   });

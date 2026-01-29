@@ -7,21 +7,19 @@
   background-color: var(--color-white);
 }
 
-/* Fixed/Sticky Header */
+/* Header - Sticky so cards slide over it */
 .connectivity__header {
   position: sticky;
   top: 0;
-  height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* Placed behind the scrolling cards */
   z-index: 1;
   text-align: center;
-  padding: 2rem;
-  /* Optional: Fade out effect could be handled by JS */
+  padding: 8rem 2rem;
+  background-color: var(--color-white);
 }
 
 /* The Title Group within the Sticky Header */

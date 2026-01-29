@@ -75,13 +75,9 @@
 
 .architecture__image {
   width: 100%;
-  height: 100%;
+  height: 120%; /* Extra height for parallax movement */
   object-fit: cover;
-  transition: transform 0.8s ease-out;
-}
-
-.architecture__image-wrapper:hover .architecture__image {
-  transform: scale(1.05);
+  will-change: transform;
 }
 
 /* Caption if needed */

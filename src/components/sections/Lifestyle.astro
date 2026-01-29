@@ -7,6 +7,16 @@
 import InteractiveImageCard from "../ui/InteractiveImageCard.astro";
 import AnimatedOrbs from "../ui/AnimatedOrbs.astro";
 import Button from "../ui/Button.astro";
+
+// Import Lifestyle Images
+import arch04 from "../../assets/arch04.avif";
+import arch15 from "../../assets/arch15.avif";
+import arch32 from "../../assets/arch32.avif";
+import arch24 from "../../assets/arch24.avif";
+import arch26 from "../../assets/arch26.avif";
+import arch06 from "../../assets/arch06.avif";
+import arch12 from "../../assets/arch12.avif";
+import arch01 from "../../assets/arch01.avif";
 ---
 
 <section
@@ -56,25 +66,25 @@ import Button from "../ui/Button.astro";
       <!-- Row 1 -->
       <div class="lifestyle__row" data-animate="lifestyle-row-1">
         <InteractiveImageCard
-          title="Séjour Lumineux"
-          description="Un espace de vie ouvert et chaleureux, baigné de lumière naturelle."
-          placeholderText="Séjour / espace de vie – rendu à venir"
-          src="/Upload/Real-estate.jpg"
+          title="Ouverture extérieur-intérieur"
+          description="Une transition fluide entre vos espaces de vie et l'horizon."
+          placeholderText="Transition – rendu à venir"
+          src={arch04.src}
           specs={[
+            { icon: "◎", text: "Lumière naturelle" },
+            { icon: "◎", text: "Terrasse large" },
             { icon: "◎", text: "Baies vitrées" },
-            { icon: "◎", text: "Espace de vie" },
-            { icon: "◎", text: "Vue dégagée" },
           ]}
         />
         <InteractiveImageCard
-          title="Chambre Apaisante"
-          description="Un cocon de sérénité pour des nuits réparatrices."
-          placeholderText="Chambre / espace nuit – rendu à venir"
-          src="/Upload/Marrakesh.jpg"
+          title="Double Séjour"
+          description="L'harmonie parfaite entre salon intérieur et terrasse, pour une sensation d'espace décuplée."
+          placeholderText="Séjour – rendu à venir"
+          src={arch15.src}
           specs={[
-            { icon: "◎", text: "Ambiance calme" },
-            { icon: "◎", text: "Isolation renforcée" },
-            { icon: "◎", text: "Orientation idéale" },
+            { icon: "◎", text: "Volumes généreux" },
+            { icon: "◎", text: "Double exposition" },
+            { icon: "◎", text: "Convivialité" },
           ]}
         />
       </div>
@@ -82,25 +92,25 @@ import Button from "../ui/Button.astro";
       <!-- Row 2 -->
       <div class="lifestyle__row" data-animate="lifestyle-row-2">
         <InteractiveImageCard
-          title="Cuisine Fonctionnelle"
-          description="Un espace culinaire moderne et pratique au quotidien."
-          placeholderText="Cuisine / espace repas – rendu à venir"
-          src="/Upload/flights-bg.png"
+          title="Espace Piscine"
+          description="Un havre de fraîcheur et de détente au cœur de la résidence."
+          placeholderText="Piscine – rendu à venir"
+          src={arch32.src}
           specs={[
-            { icon: "◎", text: "Agencement optimisé" },
-            { icon: "◎", text: "Équipements intégrés" },
-            { icon: "◎", text: "Lumière naturelle" },
+            { icon: "◎", text: "Espace détente" },
+            { icon: "◎", text: "Soleil toute la journée" },
+            { icon: "◎", text: "Cadre paisible" },
           ]}
         />
         <InteractiveImageCard
-          title="Finitions Soignées"
-          description="Des matériaux durables sélectionnés avec exigence."
-          placeholderText="Détail matière / ambiance – illustration à venir"
-          src="/Upload/Yachting.jpg"
+          title="Parking Privatif"
+          description="Un accès sécurisé et pratique pour votre confort au quotidien."
+          placeholderText="Garage – rendu à venir"
+          src={arch24.src}
           specs={[
-            { icon: "◎", text: "Matériaux pérennes" },
-            { icon: "◎", text: "Style intemporel" },
-            { icon: "◎", text: "Détails soignés" },
+            { icon: "◎", text: "Accès sécurisé" },
+            { icon: "◎", text: "Places larges" },
+            { icon: "◎", text: "Prise électrique" },
           ]}
         />
       </div>
@@ -108,25 +118,51 @@ import Button from "../ui/Button.astro";
       <!-- Row 3 -->
       <div class="lifestyle__row" data-animate="lifestyle-row-3">
         <InteractiveImageCard
-          title="Salle de Bain"
-          description="Un espace de bien-être aux lignes épurées."
-          placeholderText="Salle de bain – rendu à venir"
-          src="/Upload/Real-estate.jpg"
+          title="Cuisine Équipée"
+          description="Un design contemporain alliant ergonomie et convivialité."
+          placeholderText="Cuisine – rendu à venir"
+          src={arch26.src}
           specs={[
-            { icon: "◎", text: "Design moderne" },
-            { icon: "◎", text: "Matériaux nobles" },
-            { icon: "◎", text: "Confort thermique" },
+            { icon: "◎", text: "Matériaux haut de gamme" },
+            { icon: "◎", text: "Îlot central" },
+            { icon: "◎", text: "Plan de travail" },
           ]}
         />
         <InteractiveImageCard
-          title="Espaces Communs"
-          description="Des lieux de partage et de conviviale."
-          placeholderText="Espaces communs – rendu à venir"
-          src="/Upload/Marrakesh.jpg"
+          title="Salle de Bains"
+          description="Élégance et sérénité pour vos moments de bien-être."
+          placeholderText="Salle de bains – rendu à venir"
+          src={arch06.src}
           specs={[
-            { icon: "◎", text: "Lieux de rencontre" },
-            { icon: "◎", text: "Sécurité renforcée" },
-            { icon: "◎", text: "Entretien facile" },
+            { icon: "◎", text: "Douche italienne" },
+            { icon: "◎", text: "Meuble vasque" },
+            { icon: "◎", text: "Design épuré" },
+          ]}
+        />
+      </div>
+
+      <!-- Row 4 -->
+      <div class="lifestyle__row" data-animate="lifestyle-row-4">
+        <InteractiveImageCard
+          title="Chambre Parentale"
+          description="Un refuge intime et lumineux propice à la relaxation."
+          placeholderText="Chambre – rendu à venir"
+          src={arch12.src}
+          specs={[
+            { icon: "◎", text: "Parquet chêne" },
+            { icon: "◎", text: "Dressing intégré" },
+            { icon: "◎", text: "Calme absolu" },
+          ]}
+        />
+        <InteractiveImageCard
+          title="Espaces Verts"
+          description="Le plaisir d'une nature omniprésente au pied de chez vous."
+          placeholderText="Extérieur – rendu à venir"
+          src={arch01.src}
+          specs={[
+            { icon: "◎", text: "Jardins paysagers" },
+            { icon: "◎", text: "Biodiversité" },
+            { icon: "◎", text: "Détente" },
           ]}
         />
       </div>

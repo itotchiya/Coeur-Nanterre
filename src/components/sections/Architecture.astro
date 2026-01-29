@@ -5,6 +5,11 @@
  */
 import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
 import Button from "../ui/Button.astro";
+
+// Import architecture images (AVIF - using directly, already optimized)
+import historicResidential from "../../assets/historic-residential.avif";
+import arch22 from "../../assets/arch22.avif";
+import arch30 from "../../assets/arch30.avif";
 ---
 
 <section
@@ -66,7 +71,7 @@ import Button from "../ui/Button.astro";
       <figure class="architecture__figure" data-animate="image-reveal">
         <div class="architecture__image-wrapper">
           <img
-            src="https://placehold.co/800x1000/e0e0e0/252067?text=Fa%C3%A7ade+Historique"
+            src={historicResidential.src}
             alt="Façade ancienne réhabilitée"
             class="architecture__image"
             loading="lazy"
@@ -81,7 +86,7 @@ import Button from "../ui/Button.astro";
       <figure class="architecture__figure" data-animate="image-reveal">
         <div class="architecture__image-wrapper">
           <img
-            src="https://placehold.co/800x1000/e5e5e5/252067?text=Extension+Contemporaine"
+            src={arch22.src}
             alt="Extension moderne"
             class="architecture__image"
             loading="lazy"
@@ -96,7 +101,7 @@ import Button from "../ui/Button.astro";
       <figure class="architecture__figure" data-animate="image-reveal">
         <div class="architecture__image-wrapper">
           <img
-            src="https://placehold.co/800x1000/eeeeee/252067?text=Interieurs+Lumineux"
+            src={arch30.src}
             alt="Intérieur lumineux"
             class="architecture__image"
             loading="lazy"
@@ -121,15 +126,15 @@ import Button from "../ui/Button.astro";
   gsap.registerPlugin(ScrollTrigger);
 
   document.addEventListener("DOMContentLoaded", () => {
-    // Animate Text Column
-    /* (Already handled by global fade-up data-animate? Using custom here just in case) */
+    // Animate Images appearing with parallax
+    const figures = document.querySelectorAll(".architecture__figure");
 
-    // Animate Images appearing
-    const images = document.querySelectorAll(".architecture__figure");
+    figures.forEach((figure) => {
+      const img = figure.querySelector(".architecture__image");
 
-    images.forEach((img) => {
+      // Fade in the figure
       gsap.fromTo(
-        img,
+        figure,
         { opacity: 0, y: 50 },
         {
           opacity: 1,
@@ -137,11 +142,25 @@ import Button from "../ui/Button.astro";
           duration: 1,
           ease: "power3.out",
           scrollTrigger: {
-            trigger: img,
+            trigger: figure,
             start: "top 85%",
           },
         },
       );
+
+      // Parallax effect on the image
+      if (img) {
+        gsap.to(img, {
+          yPercent: -15,
+          ease: "none",
+          scrollTrigger: {
+            trigger: figure,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      }
     });
   });
 </script>

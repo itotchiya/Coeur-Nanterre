@@ -6,12 +6,13 @@
 import Button from "../ui/Button.astro";
 import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
 
-// Hero background images - can be replaced with local optimized images
-// To optimize: move images to src/assets and use getImage()
-const heroPrimaryBg =
-  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop";
-const heroSecondaryBg =
-  "https://images.unsplash.com/photo-1506146332389-18140dc7b2fb?q=80&w=1964&auto=format&fit=crop";
+// Hero background images - using AVIF directly (already optimized format)
+// Note: Sharp cannot process these AVIF files, so we import them directly
+import arch03 from "../../assets/arch03.avif";
+import arch18 from "../../assets/arch18.avif";
+
+const heroPrimaryBg = arch03.src;
+const heroSecondaryBg = arch18.src;
 ---
 
 <section class="hero" data-section="hero" aria-labelledby="hero-title">
@@ -56,13 +57,13 @@ const heroSecondaryBg =
   <div class="hero__media">
     <figure
       class="hero__image-container hero__image-primary"
-      style={`--hero-bg-image: url('${heroPrimaryBg}');`}
+      style={`background-image: url('${heroPrimaryBg}'); background-size: cover; background-position: center;`}
     >
       <div class="hero__image-inner"></div>
     </figure>
     <figure
       class="hero__image-container hero__image-secondary"
-      style={`--hero-bg-image: url('${heroSecondaryBg}');`}
+      style={`background-image: url('${heroSecondaryBg}'); background-size: cover; background-position: center;`}
     >
       <div class="hero__image-inner"></div>
     </figure>
