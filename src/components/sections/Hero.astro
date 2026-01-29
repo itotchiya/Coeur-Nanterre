@@ -45,8 +45,13 @@ const heroSecondaryBg = arch18.src;
     </div>
 
     <div class="hero__actions reveal-opacity">
-      <Button href="#projet" variant="secondary-light" size="lg">
-        Découvrir le programme
+      <Button
+        href="#"
+        variant="secondary-light"
+        size="lg"
+        class="js-contact-expert"
+      >
+        Contacter un expert
       </Button>
       <Button href="#" variant="primary" size="lg" class="js-download-brochure">
         Télécharger la plaquette
@@ -70,6 +75,128 @@ const heroSecondaryBg = arch18.src;
   </div>
 </section>
 
+<!-- Contact Expert Dialog -->
+<dialog class="contact-dialog" id="contact-dialog">
+  <div class="contact-dialog__container">
+    <!-- Close Button -->
+    <button
+      class="contact-dialog__close"
+      type="button"
+      aria-label="Fermer"
+      data-action="close-contact"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <!-- Header -->
+    <div class="contact-dialog__header">
+      <p class="contact-dialog__label">Cœur Nanterre</p>
+      <h3 class="contact-dialog__title">Contacter un expert</h3>
+    </div>
+
+    <!-- Contact Cards -->
+    <div class="contact-dialog__cards">
+      <!-- Phone Card -->
+      <a href="tel:+33100000000" class="contact-dialog__card">
+        <div class="contact-dialog__card-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+            ></path>
+          </svg>
+        </div>
+        <div class="contact-dialog__card-content">
+          <span class="contact-dialog__card-label">Téléphone</span>
+          <span class="contact-dialog__card-value">01 00 00 00 00</span>
+        </div>
+        <div class="contact-dialog__card-arrow">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </div>
+      </a>
+
+      <!-- Email Card -->
+      <a href="mailto:contact@coeur-nanterre.fr" class="contact-dialog__card">
+        <div class="contact-dialog__card-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+            ></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+        </div>
+        <div class="contact-dialog__card-content">
+          <span class="contact-dialog__card-label">Email</span>
+          <span class="contact-dialog__card-value"
+            >contact@coeur-nanterre.fr</span
+          >
+        </div>
+        <div class="contact-dialog__card-arrow">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </div>
+      </a>
+    </div>
+  </div>
+</dialog>
+
 <style>
   @import "../../styles/hero.css";
   /* Inline override for specific GSAP ease of access logic if needed, 
@@ -82,6 +209,165 @@ const heroSecondaryBg = arch18.src;
 
   .reveal-opacity {
     opacity: 0;
+  }
+
+  /* Contact Dialog Styles */
+  .contact-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    border-radius: 16px;
+    padding: 0;
+    width: 500px;
+    max-width: 95vw;
+    background: var(--color-primary-dark);
+    box-shadow: 0 30px 100px rgba(0, 0, 0, 0.4);
+    overflow: visible;
+  }
+
+  .contact-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+  }
+
+  .contact-dialog__container {
+    padding: 2rem;
+    position: relative;
+  }
+
+  .contact-dialog__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .contact-dialog__close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+  }
+
+  .contact-dialog__header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .contact-dialog__label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0 0 0.5rem;
+  }
+
+  .contact-dialog__title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: white;
+    margin: 0;
+  }
+
+  .contact-dialog__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-dialog__card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    text-decoration: none;
+    transition:
+      background 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .contact-dialog__card:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateX(4px);
+  }
+
+  .contact-dialog__card-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #c9b38c;
+    border-radius: 50%;
+    color: var(--color-primary-dark);
+    flex-shrink: 0;
+  }
+
+  .contact-dialog__card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .contact-dialog__card-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .contact-dialog__card-value {
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+  }
+
+  .contact-dialog__card-arrow {
+    color: rgba(255, 255, 255, 0.3);
+    transition:
+      color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .contact-dialog__card:hover .contact-dialog__card-arrow {
+    color: #c9b38c;
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 600px) {
+    .contact-dialog__container {
+      padding: 1.5rem;
+    }
+
+    .contact-dialog__title {
+      font-size: 1.5rem;
+    }
+
+    .contact-dialog__card {
+      padding: 1rem;
+    }
+
+    .contact-dialog__card-icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    .contact-dialog__card-value {
+      font-size: 0.875rem;
+    }
   }
 </style>
 
@@ -176,5 +462,35 @@ const heroSecondaryBg = arch18.src;
         scrub: true,
       },
     });
+
+    // 5. Contact Dialog Logic
+    const contactBtns = document.querySelectorAll(".js-contact-expert");
+    const contactDialog = document.getElementById(
+      "contact-dialog",
+    ) as HTMLDialogElement;
+    const closeContactBtn = document.querySelector(
+      '[data-action="close-contact"]',
+    );
+
+    if (contactBtns.length > 0 && contactDialog) {
+      contactBtns.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          contactDialog.showModal();
+        });
+      });
+
+      // Close button
+      closeContactBtn?.addEventListener("click", () => {
+        contactDialog.close();
+      });
+
+      // Click outside to close
+      contactDialog.addEventListener("click", (e) => {
+        if (e.target === contactDialog) {
+          contactDialog.close();
+        }
+      });
+    }
   });
 </script>
