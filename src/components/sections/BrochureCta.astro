@@ -562,6 +562,38 @@ import planArchitecture from "../../assets/plan-atchetecture.jpg";
       grid-template-columns: 1fr;
     }
   }
+
+  /* Validation Error States */
+  .brochure-dialog__input.is-invalid,
+  .brochure-dialog__checkbox input.is-invalid + span::before {
+    border-color: #e74c3c !important;
+    box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+  }
+
+  .brochure-dialog__field.is-invalid .brochure-dialog__radio span::before {
+    border-color: #e74c3c !important;
+  }
+
+  .brochure-dialog__error {
+    color: #e74c3c;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    display: none;
+  }
+
+  .brochure-dialog__error.is-visible {
+    display: block;
+  }
+
+  .brochure-dialog__checkbox.is-invalid span {
+    color: #e74c3c;
+  }
+
+  /* Disabled Submit Button */
+  .brochure-dialog__submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 </style>
 
 <script>
@@ -579,7 +611,7 @@ import planArchitecture from "../../assets/plan-atchetecture.jpg";
     const form = document.getElementById("brochure-form") as HTMLFormElement;
 
     const STORAGE_KEY = "coeur-nanterre-user";
-    const PDF_URL = "/Upload/Plaquette-demo.pdf";
+    const PDF_URL = "/Upload/Coeur-Nanterre-Plaquette-Commercial.pdf";
 
     // Load saved data
     function loadSavedData() {
@@ -651,6 +683,7 @@ import planArchitecture from "../../assets/plan-atchetecture.jpg";
       btn.addEventListener("click", (e) => {
         e.preventDefault();
         loadSavedData();
+        updateSubmitButtonState();
         dialog.showModal();
         gsap.fromTo(
           dialog,
@@ -684,15 +717,56 @@ import planArchitecture from "../../assets/plan-atchetecture.jpg";
       }
     });
 
+    // Form Validation Logic
+    const submitBtn = form?.querySelector(
+      ".brochure-dialog__submit",
+    ) as HTMLButtonElement;
+
+    function updateSubmitButtonState() {
+      if (!form || !submitBtn) return;
+
+      const isFormValid = form.checkValidity();
+      submitBtn.disabled = !isFormValid;
+    }
+
+    // Add visual feedback for validation
+    form
+      ?.querySelectorAll(
+        ".brochure-dialog__input, .brochure-dialog__checkbox input",
+      )
+      .forEach((input) => {
+        input.addEventListener("blur", () => {
+          const el = input as HTMLInputElement;
+          if (!el.checkValidity()) {
+            el.classList.add("is-invalid");
+          } else {
+            el.classList.remove("is-invalid");
+          }
+        });
+
+        input.addEventListener("input", () => {
+          const el = input as HTMLInputElement;
+          if (el.checkValidity()) {
+            el.classList.remove("is-invalid");
+          }
+          updateSubmitButtonState();
+        });
+      });
+
+    // Initialize button state
+    updateSubmitButtonState();
+
     // Form submit
     form?.addEventListener("submit", (e) => {
       e.preventDefault();
 
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
       saveData();
 
-      const submitBtn = form.querySelector(
-        ".brochure-dialog__submit",
-      ) as HTMLButtonElement;
       if (submitBtn) {
         submitBtn.textContent = "Téléchargement...";
         submitBtn.disabled = true;
@@ -706,7 +780,7 @@ import planArchitecture from "../../assets/plan-atchetecture.jpg";
         // Reset button
         if (submitBtn) {
           submitBtn.textContent = "Télécharger la plaquette";
-          submitBtn.disabled = false;
+          updateSubmitButtonState();
         }
       }, 500);
     });
