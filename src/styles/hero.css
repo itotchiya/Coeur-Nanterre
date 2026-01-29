@@ -8,7 +8,7 @@
   width: 100%;
   min-height: 100vh;
   padding-top: 120px; /* Space for fixed header */
-  padding-bottom: 4rem;
+  padding-bottom: 0; /* Remove gap between hero and next section */
   overflow: hidden;
   background-color: var(--color-background);
   color: var(--color-foreground);

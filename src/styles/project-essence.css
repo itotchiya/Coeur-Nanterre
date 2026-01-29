@@ -7,16 +7,17 @@
   /* Dark Mode Styling with Background Image */
   position: relative;
   color: var(--color-white); /* Default text color */
-  padding: 6rem 1rem;
-  min-height: 80vh;
+  padding: 0 1rem 6rem; /* Remove top padding for seamless transition */
+  min-height: auto; /* Allow content to dictate height on mobile */
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background-color: var(--color-primary); /* Fallback */
+  background-color: var(--color-primary); /* Solid background on mobile */
 }
 
 /* Parallax Background Element */
 .project-essence__bg {
+  display: none; /* Hide background image on mobile */
   position: absolute;
   inset: -20% 0; /* Extra height for parallax movement */
   background-size: cover;
@@ -25,20 +26,13 @@
   will-change: transform;
 }
 
-/* Gradient overlay - transparent left, primary right */
-.project-essence__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(17, 24, 39, 0) 0%,
-    var(--color-primary) 50%,
-    var(--color-primary) 100%
-  );
-  z-index: 1;
-}
-
 @media (min-width: 1024px) {
+  .project-essence__bg {
+    display: block;
+  }
+  .project-essence__overlay {
+    display: block;
+  }
   .project-essence {
     flex-direction: row;
     justify-content: space-between;
