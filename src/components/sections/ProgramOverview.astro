@@ -33,9 +33,9 @@ import Button from "../ui/Button.astro";
       <div class="program-overview__strip">
         <!-- Top: Key Number with Glow -->
         <div class="program-overview__number-block">
-          <span class="program-overview__number type-display">~10</span>
+          <span class="program-overview__number type-display">9</span>
           <span class="program-overview__number-label type-label"
-            >Logements</span
+            >Logements + 1 maison</span
           >
         </div>
 
@@ -69,7 +69,113 @@ import Button from "../ui/Button.astro";
       </div>
     </div>
 
-    <!-- 3. VERTICAL TIMELINE (Static) -->
+    <!-- 3. LOTS TABLE — Real data from architect plans (Jan 2026) -->
+    <div class="program-overview__lots" data-animate="program-lots">
+      <h3 class="program-overview__lots-title type-h4">Les logements</h3>
+      <div class="program-overview__lots-table-wrap">
+        <table class="program-overview__lots-table">
+          <thead>
+            <tr>
+              <th>Lot</th>
+              <th>Étage</th>
+              <th>Type</th>
+              <th>Surface hab.</th>
+              <th>Annexes</th>
+              <th>Prix TTC</th>
+              <th>Statut</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>A1</td>
+              <td>RDC</td>
+              <td><span class="lot-badge">T4</span></td>
+              <td>77,58 m²</td>
+              <td>Terrasse 38,86 m² + Jardin 7,10 m²</td>
+              <td class="lot-price">570 000 €</td>
+              <td><span class="lot-status lot-status--available">Disponible</span></td>
+            </tr>
+            <tr>
+              <td>A2</td>
+              <td>RDC</td>
+              <td><span class="lot-badge">T2</span></td>
+              <td>49,12 m²</td>
+              <td>Terrasse 19,27 m²</td>
+              <td class="lot-price">395 000 €</td>
+              <td><span class="lot-status lot-status--available">Disponible</span></td>
+            </tr>
+            <tr>
+              <td>A3</td>
+              <td>RDC / R+1</td>
+              <td><span class="lot-badge">T3 duplex</span></td>
+              <td>61,52 m²</td>
+              <td>Terrasse 10,70 m² + Jardin 3,12 m²</td>
+              <td class="lot-price">476 000 €</td>
+              <td><span class="lot-status lot-status--available">Disponible</span></td>
+            </tr>
+            <tr>
+              <td>A4</td>
+              <td>R+1</td>
+              <td><span class="lot-badge">T5</span></td>
+              <td>92,14 m²</td>
+              <td>Terrasse 8,86 m²</td>
+              <td class="lot-price">Sur demande</td>
+              <td><span class="lot-status lot-status--available">Disponible</span></td>
+            </tr>
+            <tr>
+              <td>A5</td>
+              <td>R+1</td>
+              <td><span class="lot-badge">T1</span></td>
+              <td>29,33 m²</td>
+              <td>—</td>
+              <td class="lot-price">Sur demande</td>
+              <td><span class="lot-status lot-status--available">Disponible</span></td>
+            </tr>
+            <tr>
+              <td>A6</td>
+              <td>R+2</td>
+              <td><span class="lot-badge">T4</span></td>
+              <td>93,11 m²</td>
+              <td>Terrasse 67,28 m²</td>
+              <td class="lot-price">Sur demande</td>
+              <td><span class="lot-status lot-status--available">Disponible</span></td>
+            </tr>
+            <tr>
+              <td>A7</td>
+              <td>R+3</td>
+              <td><span class="lot-badge">T3</span></td>
+              <td>53,92 m²</td>
+              <td>—</td>
+              <td class="lot-price">Sur demande</td>
+              <td><span class="lot-status lot-status--available">Disponible</span></td>
+            </tr>
+            <tr>
+              <td>A8</td>
+              <td>R+3</td>
+              <td><span class="lot-badge">T1b</span></td>
+              <td>32,59 m²</td>
+              <td>—</td>
+              <td class="lot-price">Sur demande</td>
+              <td><span class="lot-status lot-status--available">Disponible</span></td>
+            </tr>
+            <tr class="lots-table__maison">
+              <td>T15</td>
+              <td>Maison (R–1 à R+2)</td>
+              <td><span class="lot-badge lot-badge--maison">Maison</span></td>
+              <td>312,91 m²</td>
+              <td>Terrasses &amp; jardins</td>
+              <td class="lot-price">Sur demande</td>
+              <td><span class="lot-status lot-status--available">Disponible</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="program-overview__lots-note type-body-sm">
+        Prix TTC · TVA 5,5 % (accession sociale) · 8 places de parking en sous-sol disponibles séparément.
+      </p>
+    </div>
+
+    <!-- 4. VERTICAL TIMELINE (Static) -->
     <div class="program-overview__timeline" data-animate="program-timeline">
       <!-- Node 1: Étude & Conception (CURRENT) -->
       <div class="program-overview__node program-overview__node--current">
@@ -236,7 +342,23 @@ import Button from "../ui/Button.astro";
       },
     );
 
-    // 3. Timeline reveals (static - no progress animation)
+    // 3. Lots table reveals
+    gsap.fromTo(
+      '[data-animate="program-lots"]',
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease,
+        scrollTrigger: {
+          trigger: '[data-animate="program-lots"]',
+          start: "top 80%",
+        },
+      },
+    );
+
+    // 4. Timeline reveals (static - no progress animation)
     gsap.fromTo(
       '[data-animate="program-timeline"]',
       { opacity: 0, y: 30 },

@@ -176,7 +176,130 @@
 }
 
 /* ============================================
-   3. VERTICAL TIMELINE — Static
+   3. LOTS TABLE
+   ============================================ */
+.program-overview__lots {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.program-overview__lots-title {
+  margin: 0;
+}
+
+.program-overview__lots-table-wrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid var(--color-gray-200);
+}
+
+.program-overview__lots-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-family-base);
+  font-size: 0.9375rem;
+  white-space: nowrap;
+}
+
+.program-overview__lots-table thead tr {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.program-overview__lots-table th {
+  padding: 0.875rem 1.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: left;
+}
+
+.program-overview__lots-table tbody tr {
+  border-bottom: 1px solid var(--color-gray-200);
+  transition: background-color 0.15s ease;
+}
+
+.program-overview__lots-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.program-overview__lots-table tbody tr:hover {
+  background-color: var(--color-gray-50);
+}
+
+.program-overview__lots-table td {
+  padding: 0.875rem 1.25rem;
+  color: var(--color-gray-700);
+}
+
+.program-overview__lots-table td:first-child {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.lots-table__maison {
+  background-color: var(--color-gray-50);
+}
+
+.lots-table__maison td:first-child {
+  color: var(--color-gray-600) !important;
+}
+
+.lot-badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  background-color: var(--color-gray-100);
+  border-radius: 100px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.lot-badge--maison {
+  background-color: var(--color-gray-200);
+  color: var(--color-gray-600);
+}
+
+.lot-status {
+  display: inline-block;
+  padding: 0.2rem 0.75rem;
+  border-radius: 100px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.lot-status--available {
+  background-color: rgba(34, 197, 94, 0.12);
+  color: #15803d;
+}
+
+.lot-status--reserved {
+  background-color: rgba(234, 179, 8, 0.12);
+  color: #a16207;
+}
+
+.lot-status--sold {
+  background-color: rgba(239, 68, 68, 0.12);
+  color: #b91c1c;
+}
+
+.lot-price {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+.program-overview__lots-note {
+  margin: 0;
+  color: var(--color-gray-400);
+  font-style: italic;
+}
+
+/* ============================================
+   4. VERTICAL TIMELINE — Static
    ============================================ */
 .program-overview__timeline {
   position: relative;

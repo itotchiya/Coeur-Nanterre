@@ -229,9 +229,9 @@ import { Calculator, ArrowRight, ArrowLeft, RotateCcw } from "lucide-astro";
           <div class="credit-simulator__card-grid">
             <SimulatorRadioCard
               name="credit_property"
-              value="studio"
-              label="Studio"
-              price="180 000 €"
+              value="t1"
+              label="T1"
+              price="dès 29 m²"
               checked={true}
               isProperty
             />
@@ -239,28 +239,35 @@ import { Calculator, ArrowRight, ArrowLeft, RotateCcw } from "lucide-astro";
               name="credit_property"
               value="t2"
               label="T2"
-              price="250 000 €"
+              price="395 000 €"
               isProperty
             />
             <SimulatorRadioCard
               name="credit_property"
               value="t3"
               label="T3"
-              price="350 000 €"
+              price="476 000 €"
               isProperty
             />
             <SimulatorRadioCard
               name="credit_property"
               value="t4"
               label="T4"
-              price="450 000 €"
+              price="570 000 €"
+              isProperty
+            />
+            <SimulatorRadioCard
+              name="credit_property"
+              value="t5"
+              label="T5"
+              price="92 m²"
               isProperty
             />
             <SimulatorRadioCard
               name="credit_property"
               value="maison"
-              label="Maison"
-              price="600 000 €"
+              label="Maison T15"
+              price="312 m²"
               isProperty
             />
           </div>
@@ -270,7 +277,7 @@ import { Calculator, ArrowRight, ArrowLeft, RotateCcw } from "lucide-astro";
           <div class="credit-simulator__field-group">
             <label class="simulator-field__label">Montant du projet</label>
             <div class="credit-simulator__value-display is-amount">
-              <span id="input-amount">180 000</span>
+              <span id="input-amount">200 000</span>
               <span class="credit-simulator__currency">€</span>
             </div>
           </div>
@@ -343,8 +350,9 @@ import { Calculator, ArrowRight, ArrowLeft, RotateCcw } from "lucide-astro";
           </div>
 
           <p class="credit-simulator__disclaimer type-body-sm">
-            *Ces résultats sont donnés à titre indicatif et ne constituent pas
-            une offre de prêt. Taux hors assurance.
+            *Les montants affichés sont indicatifs. Les prix de vente définitifs
+            sont communiqués sur demande. Ces résultats ne constituent pas une
+            offre de prêt. Taux hors assurance.
           </p>
 
           <div class="credit-simulator__actions">
@@ -459,12 +467,16 @@ import { Calculator, ArrowRight, ArrowLeft, RotateCcw } from "lucide-astro";
 
     // --- State & Logic ---
     const LOCAL_STORAGE_KEY = "origin_user_info";
+    // Prix indicatifs (TVA 5,5% — accession sociale)
+    // A1 (T4, 77,58m²) = 570 000 € | A2 (T2, 49,12m²) = 395 000 € | A3 (T3, 61,52m²) = 476 000 €
+    // A4 (T5), A5 (T1), A6 (T4), A7 (T3), A8 (T1b), T15 (Maison) — prix sur demande
     const PRICE_GUIDES: Record<string, number> = {
-      studio: 180000,
-      t2: 250000,
-      t3: 350000,
-      t4: 450000,
-      maison: 600000,
+      t1: 200000,    // A5 — T1 — 29,33 m² (indicatif)
+      t2: 395000,    // A2 — T2 — 49,12 m² (grille officielle)
+      t3: 476000,    // A3 — T3 duplex — 61,52 m² (grille officielle)
+      t4: 570000,    // A1 — T4 — 77,58 m² (grille officielle)
+      t5: 600000,    // A4 — T5 — 92,14 m² (indicatif)
+      maison: 0,     // T15 — Maison — prix sur demande
     };
 
     // Cities by Region
@@ -652,11 +664,11 @@ import { Calculator, ArrowRight, ArrowLeft, RotateCcw } from "lucide-astro";
       [key: string]: any;
     }
     let state: State = {
-      amount: 180000,
+      amount: 200000,
       duration: 20,
       rate: 3.8,
       existingMonthly: 0,
-      propertyType: "studio",
+      propertyType: "t1",
     };
 
     function loadUserData() {
