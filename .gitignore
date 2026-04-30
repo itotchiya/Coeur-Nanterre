@@ -24,3 +24,9 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# playwright test logs
+.playwright-mcp/
+
+# office lock files
+.~lock.*#

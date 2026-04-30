@@ -1,8 +1,0 @@
-[  146383ms] [ERROR] Failed to load resource: the server responded with a status of 502 () @ https://nanterre.hdcontenu.com/api/lead:0
-[  146385ms] [ERROR] Lead submission error: Error: Erreur d'envoi email
-    at HTMLFormElement.<anonymous> (https://nanterre.hdcontenu.com/_astro/BrochureCta.astro_astro_type_script_index_0_lang.BnkVoeTn.js:1:3473) @ https://nanterre.hdcontenu.com/_astro/BrochureCta.astro_astro_type_script_index_0_lang.BnkVoeTn.js:0
-[ 1232465ms] [ERROR] Framing 'https://www.google.com/' violates the following report-only Content Security Policy directive: "frame-ancestors 'self'". The violation has been logged, but no further action has been taken.
- @ :0
-[ 2540538ms] [ERROR] Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES @ https://nanterre.hdcontenu.com/?version-check=1777462963593:0
-[ 2540538ms] [WARNING] Build version check failed TypeError: Failed to fetch
-    at c (https://nanterre.hdcontenu.com/_astro/Layout.astro_astro_type_script_index_0_lang.CD6S4X17.js:1:17738) @ https://nanterre.hdcontenu.com/_astro/Layout.astro_astro_type_script_index_0_lang.CD6S4X17.js:0
