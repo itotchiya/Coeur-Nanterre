@@ -66,10 +66,10 @@
 /* Parallax Background Wrapper */
 .connectivity__card-bg {
   position: absolute;
-  top: -15%; /* Start higher so we have room to move down without showing a gap */
+  top: -20%; /* Start higher so we have room to move down without showing a gap */
   left: 0;
   width: 100%;
-  height: 130%; /* Taller for parallax movement */
+  height: 140%; /* Taller for parallax movement */
   z-index: 0;
   /* Default Gradient/Placeholder */
   background-color: var(--color-black); /* Fallback to black instead of grey */

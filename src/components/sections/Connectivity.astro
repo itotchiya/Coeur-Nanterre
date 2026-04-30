@@ -156,16 +156,20 @@ const parisBg = await getImage({
 
       // Parallax Effect for Background
       if (bg) {
-        gsap.to(bg, {
-          y: "20%" /* Move image slightly down as we scroll down to create depth */,
-          ease: "none",
-          scrollTrigger: {
-            trigger: card,
-            start: "top bottom", // Start when card enters bottom
-            end: "bottom top", // End when card leaves top
-            scrub: true,
-          },
-        });
+        gsap.fromTo(
+          bg,
+          { y: "-10%" },
+          {
+            y: "10%" /* Symmetric parallax movement to keep image fully covering the card */,
+            ease: "none",
+            scrollTrigger: {
+              trigger: card,
+              start: "top bottom", // Start when card enters bottom
+              end: "bottom top", // End when card leaves top
+              scrub: true,
+            },
+          }
+        );
       }
 
       // Content Reveal (Fade Up)
