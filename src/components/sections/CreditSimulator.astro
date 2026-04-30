@@ -1038,6 +1038,31 @@ import { PTZ_SUPPORT_TEXT } from "../../lib/site-config";
       return userData;
     }
 
+    const SIMULATOR_SENT_KEY = "simulator_sent_emails";
+    const SIMULATOR_COOLDOWN_MS = 60 * 60 * 1000; // 1 hour cooldown
+
+    function getSentEmails(): Record<string, number> {
+      try {
+        const raw = localStorage.getItem(SIMULATOR_SENT_KEY);
+        return raw ? JSON.parse(raw) : {};
+      } catch {
+        return {};
+      }
+    }
+
+    function isRecentlySent(email: string): boolean {
+      const sent = getSentEmails();
+      const lastSent = sent[email.toLowerCase().trim()];
+      if (!lastSent) return false;
+      return Date.now() - lastSent < SIMULATOR_COOLDOWN_MS;
+    }
+
+    function markEmailAsSent(email: string) {
+      const sent = getSentEmails();
+      sent[email.toLowerCase().trim()] = Date.now();
+      localStorage.setItem(SIMULATOR_SENT_KEY, JSON.stringify(sent));
+    }
+
     async function handleCalculation(e: Event) {
       e.preventDefault();
 
@@ -1072,72 +1097,79 @@ import { PTZ_SUPPORT_TEXT } from "../../lib/site-config";
         step3Content.style.display = "none";
       }
 
-      try {
-        // Execute reCAPTCHA v3
-        const RECAPTCHA_SITE_KEY = "6LehYM4sAAAAAObgQALjV_hmnmQTHfiAZAuRJhyV";
-        let captchaToken = "";
-        if (window.grecaptcha) {
-          await new Promise<void>((resolve) => window.grecaptcha!.ready(resolve));
-          captchaToken = await window.grecaptcha!.execute(RECAPTCHA_SITE_KEY, { action: "credit_simulator" });
-        } else {
-          throw new Error("reCAPTCHA non chargé");
-        }
+      // Check if this email was already sent recently — skip API call if so
+      const emailAlreadySent = isRecentlySent(fullData.email);
 
-        const salaryRadio = document.querySelector(
-          'input[name="user_salary"]:checked',
-        ) as HTMLInputElement;
-        const propertyRadio = document.querySelector(
-          'input[name="credit_property"]:checked',
-        ) as HTMLInputElement;
-        const existingRadio = document.querySelector(
-          'input[name="existing_credit"]:checked',
-        ) as HTMLInputElement;
-
-        const payload = {
-          firstName: fullData.firstname,
-          lastName: fullData.lastname,
-          email: fullData.email,
-          phone: fullData.phone,
-          region: fullData.region,
-          city: fullData.city,
-          job: fullData.job,
-          salary: salaryRadio?.value || "",
-          existingCredit: existingRadio?.value || "no",
-          existingMonthly: fullData.existingMonthly || 0,
-          propertyType: propertyRadio?.value || state.propertyType,
-          amount: state.amount,
-          duration: state.duration,
-          rate: state.rate,
-          monthlyPayment: Math.round(monthlyPayment),
-          recaptchaToken: captchaToken,
-        };
-
-        const res = await fetch("/api/simulate", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        });
-
-        if (!res.ok) {
-          const err = await res.json().catch(() => ({}));
-          throw new Error((err as { error?: string }).error ?? "Erreur serveur");
-        }
-      } catch (err) {
-        console.error("Simulation submission error:", err);
-        if (step3Loading) step3Loading.style.display = "none";
-        if (step3Content) {
-          step3Content.style.display = "flex";
-          let errorEl = document.getElementById("simulator-error-msg");
-          if (!errorEl) {
-            errorEl = document.createElement("p");
-            errorEl.id = "simulator-error-msg";
-            errorEl.className = "credit-simulator__error type-body-sm";
-            errorEl.style.cssText = "color:#ff6b6b;margin-bottom:1rem;text-align:center;";
-            step3Content.insertBefore(errorEl, step3Content.firstChild);
+      if (!emailAlreadySent) {
+        try {
+          // Execute reCAPTCHA v3
+          const RECAPTCHA_SITE_KEY = "6LehYM4sAAAAAObgQALjV_hmnmQTHfiAZAuRJhyV";
+          let captchaToken = "";
+          if (window.grecaptcha) {
+            await new Promise<void>((resolve) => window.grecaptcha!.ready(resolve));
+            captchaToken = await window.grecaptcha!.execute(RECAPTCHA_SITE_KEY, { action: "credit_simulator" });
+          } else {
+            throw new Error("reCAPTCHA non chargé");
           }
-          errorEl.textContent = err instanceof Error ? err.message : "Erreur d'envoi. Veuillez réessayer.";
+
+          const salaryRadio = document.querySelector(
+            'input[name="user_salary"]:checked',
+          ) as HTMLInputElement;
+          const propertyRadio = document.querySelector(
+            'input[name="credit_property"]:checked',
+          ) as HTMLInputElement;
+          const existingRadio = document.querySelector(
+            'input[name="existing_credit"]:checked',
+          ) as HTMLInputElement;
+
+          const payload = {
+            firstName: fullData.firstname,
+            lastName: fullData.lastname,
+            email: fullData.email,
+            phone: fullData.phone,
+            region: fullData.region,
+            city: fullData.city,
+            job: fullData.job,
+            salary: salaryRadio?.value || "",
+            existingCredit: existingRadio?.value || "no",
+            existingMonthly: fullData.existingMonthly || 0,
+            propertyType: propertyRadio?.value || state.propertyType,
+            amount: state.amount,
+            duration: state.duration,
+            rate: state.rate,
+            monthlyPayment: Math.round(monthlyPayment),
+            recaptchaToken: captchaToken,
+          };
+
+          const res = await fetch("/api/simulate", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+
+          if (!res.ok) {
+            const err = await res.json().catch(() => ({}));
+            throw new Error((err as { error?: string }).error ?? "Erreur serveur");
+          }
+
+          markEmailAsSent(fullData.email);
+        } catch (err) {
+          console.error("Simulation submission error:", err);
+          if (step3Loading) step3Loading.style.display = "none";
+          if (step3Content) {
+            step3Content.style.display = "flex";
+            let errorEl = document.getElementById("simulator-error-msg");
+            if (!errorEl) {
+              errorEl = document.createElement("p");
+              errorEl.id = "simulator-error-msg";
+              errorEl.className = "credit-simulator__error type-body-sm";
+              errorEl.style.cssText = "color:#ff6b6b;margin-bottom:1rem;text-align:center;";
+              step3Content.insertBefore(errorEl, step3Content.firstChild);
+            }
+            errorEl.textContent = err instanceof Error ? err.message : "Erreur d'envoi. Veuillez réessayer.";
+          }
+          return;
         }
-        return;
       }
 
       // Success: hide loading, show content with animation
