@@ -4,6 +4,7 @@
  * Finitions & équipements — extrait de la plaquette
  */
 import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
+import { CircleCheck } from "lucide-astro";
 
 const prestations = [
   "Volet roulant électrique",
@@ -46,22 +47,12 @@ const prestations = [
       {
         prestations.map((item) => (
           <div class="prestations__item">
-            <svg
+            <CircleCheck
+              size={28}
+              stroke-width={2}
               class="prestations__icon"
-              xmlns="http://www.w3.org/2000/svg"
-              width="28"
-              height="28"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
               aria-hidden="true"
-            >
-              <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
-              <polyline points="9 12 12 15 17 10" />
-            </svg>
+            />
             <span class="prestations__text">{item}</span>
           </div>
         ))
