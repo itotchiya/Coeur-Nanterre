@@ -345,6 +345,10 @@ const aerialImg = await getImage({ src: aerialRaw, format: "webp", quality: 90 }
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
+    background: var(--color-gray-50);
+    border-radius: 8px;
+    padding: 2.5rem;
+    border: 1px solid var(--color-gray-200);
   }
 
   .program-overview__engagements-header {
@@ -506,6 +510,9 @@ const aerialImg = await getImage({ src: aerialRaw, format: "webp", quality: 90 }
   }
 
   @media (max-width: 768px) {
+    .program-overview__engagements {
+      padding: 1.5rem;
+    }
     .program-overview__ptz-new {
       grid-template-columns: 1fr;
       text-align: center;
