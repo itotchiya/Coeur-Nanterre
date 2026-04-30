@@ -1,0 +1,711 @@
+---
+/**
+ * Program Overview Section
+ */
+import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
+import AnimatedOrbs from "../ui/AnimatedOrbs.astro";
+import Button from "../ui/Button.astro";
+import { getImage } from "astro:assets";
+import mapRaw from "../../assets/map-28.jpg";
+const mapImg = await getImage({ src: mapRaw, format: "webp", quality: 90 });
+import aerialRaw from "../../assets/render-vue-aerienne.jpg";
+const aerialImg = await getImage({ src: aerialRaw, format: "webp", quality: 90 });
+
+---
+
+<section
+  class="program-overview"
+  data-section="programme"
+  id="programme"
+  aria-labelledby="program-title"
+>
+  <div class="program-overview__container">
+    <header class="program-overview__header" data-animate="program-header">
+      <h2 id="program-title" class="program-overview__title type-h2">
+        Le programme en quelques mots
+      </h2>
+      <p class="program-overview__subtitle type-body">
+        Dans un style Mansart, emblème de l'architecture classique, Cœur Nanterre s'inscrit
+        avec une réelle volonté contemporaine — bâtiment XIXe réhabilité et extension RE2020.
+        De 29 à 92 m², du Studio au T5.
+      </p>
+    </header>
+
+    <!-- Lots table -->
+    <div class="program-overview__lots" data-animate="program-lots">
+      <h3 class="program-overview__lots-title type-h4">Les logements</h3>
+      <div class="program-overview__lots-table-wrap">
+        <table class="program-overview__lots-table">
+          <thead>
+            <tr>
+              <th>Lot</th>
+              <th>Etage</th>
+              <th>Type</th>
+              <th>Surface hab.</th>
+              <th>Annexes</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>A1</td>
+              <td>RDC</td>
+              <td><span class="lot-badge">T4</span></td>
+              <td>76,00 m²</td>
+              <td>Jardin 48 m²</td>
+              <td><span class="lot-status lot-status--available js-open-lead" data-lot="A1">Télécharger le plan</span></td>
+            </tr>
+            <tr>
+              <td>A2</td>
+              <td>RDC</td>
+              <td><span class="lot-badge">T2</span></td>
+              <td>51,50 m²</td>
+              <td>Jardin 46 m²</td>
+              <td><span class="lot-status lot-status--available js-open-lead" data-lot="A2">Télécharger le plan</span></td>
+            </tr>
+            <tr>
+              <td>A3</td>
+              <td>RDC / R+1</td>
+              <td><span class="lot-badge">T3 duplex</span></td>
+              <td>60,00 m²</td>
+              <td>Jardin 56 m²</td>
+              <td><span class="lot-status lot-status--available js-open-lead" data-lot="A3">Télécharger le plan</span></td>
+            </tr>
+            <tr>
+              <td>A4</td>
+              <td>R+1</td>
+              <td><span class="lot-badge">T4</span></td>
+              <td>77,50 m²</td>
+              <td>—</td>
+              <td><span class="lot-status lot-status--available js-open-lead" data-lot="A4">Télécharger le plan</span></td>
+            </tr>
+            <tr>
+              <td>A5</td>
+              <td>R+1</td>
+              <td><span class="lot-badge">T2</span></td>
+              <td>46,50 m²</td>
+              <td>Balcon 10 m²</td>
+              <td><span class="lot-status lot-status--available js-open-lead" data-lot="A5">Télécharger le plan</span></td>
+            </tr>
+            <tr>
+              <td>A6</td>
+              <td>R+2</td>
+              <td><span class="lot-badge">T3</span></td>
+              <td>54,00 m²</td>
+              <td>Balcon 26 m²</td>
+              <td><span class="lot-status lot-status--available js-open-lead" data-lot="A6">Télécharger le plan</span></td>
+            </tr>
+            <tr>
+              <td>A7</td>
+              <td>R+2</td>
+              <td><span class="lot-badge">T1 bis</span></td>
+              <td>39,00 m²</td>
+              <td>Balcon 56 m²</td>
+              <td><span class="lot-status lot-status--available js-open-lead" data-lot="A7">Télécharger le plan</span></td>
+            </tr>
+            <tr>
+              <td>A8</td>
+              <td>R+3</td>
+              <td><span class="lot-badge">T3</span></td>
+              <td>51,50 m²</td>
+              <td>—</td>
+              <td><span class="lot-status lot-status--available js-open-lead" data-lot="A8">Télécharger le plan</span></td>
+            </tr>
+            <tr>
+              <td>A9</td>
+              <td>R+3</td>
+              <td><span class="lot-badge">T1 bis</span></td>
+              <td>36,50 m²</td>
+              <td>—</td>
+              <td><span class="lot-status lot-status--available js-open-lead" data-lot="A9">Télécharger le plan</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Engagements & Qualité -->
+    <div class="program-overview__engagements" data-animate="program-engagements">
+      <header class="program-overview__engagements-header">
+        <h3 class="program-overview__engagements-title type-h4">Engagements &amp; Qualité</h3>
+        <p class="program-overview__engagements-subtitle type-body">La garantie d'une construction pérenne</p>
+      </header>
+
+      <div class="program-overview__aerial">
+        <img
+          src={aerialImg.src}
+          alt="Vue aérienne — Cœur Nanterre"
+          class="program-overview__aerial-img"
+          loading="lazy"
+        />
+        <img
+          src="/Assets/logo-habiter-investir-lg.svg"
+          alt="Certification RE2020"
+          class="program-overview__re2020-badge"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="program-overview__guarantees-grid-new">
+        <div class="program-overview__guarantee-card-new">
+          <div class="program-overview__guarantee-icon-wrap">
+            <img src="/Assets/icons/Garantie-Decennale.svg" alt="" width="96" height="96" aria-hidden="true" />
+          </div>
+          <span class="program-overview__guarantee-label type-body-sm">Garantie Décennale</span>
+          <span class="program-overview__guarantee-value">10 Ans</span>
+        </div>
+
+        <div class="program-overview__guarantee-card-new">
+          <div class="program-overview__guarantee-icon-wrap">
+            <img src="/Assets/icons/Garantie-Achevement.svg" alt="" width="96" height="96" aria-hidden="true" />
+          </div>
+          <span class="program-overview__guarantee-label type-body-sm">Garantie de Parfait Achèvement</span>
+          <span class="program-overview__guarantee-value">GPA</span>
+        </div>
+
+        <div class="program-overview__guarantee-card-new">
+          <div class="program-overview__guarantee-icon-wrap">
+            <img src="/Assets/icons/Garantie-Biennale.svg" alt="" width="96" height="96" aria-hidden="true" />
+          </div>
+          <span class="program-overview__guarantee-label type-body-sm">Garantie Biennale</span>
+          <span class="program-overview__guarantee-value">2 Ans</span>
+        </div>
+
+        <div class="program-overview__guarantee-card-new">
+          <div class="program-overview__guarantee-icon-wrap">
+            <img src="/Assets/icons/RE2020.svg" alt="" width="96" height="96" aria-hidden="true" />
+          </div>
+          <span class="program-overview__guarantee-label type-body-sm">RE2020 Conformité Certification</span>
+          <span class="program-overview__guarantee-value">RE2020</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Proximité & Carte (hidden until map is ready) -->
+    <div class="prox" data-animate="program-guarantees" style="display:none">
+      <h3 class="prox__title type-h4">À proximité immédiate</h3>
+
+      <div class="prox__body">
+        <!-- Left: POI list -->
+        <div class="prox__poi-list">
+
+          <!-- Sports & Santé -->
+          <div class="prox__row">
+            <div class="prox__icon-wrap">
+              <img src="/Assets/icons/icon-21.svg" alt="" class="prox__icon" aria-hidden="true" />
+            </div>
+            <div class="prox__card">
+              <span class="prox__cat">Sports &amp; Santé</span>
+              <ul class="prox__items">
+                <li>Complexe Sportif du Parc <span class="prox__dist">(600 m / 7 min)</span></li>
+                <li>Pôle Santé &amp; Pharmacie <span class="prox__dist">(300 m / 4 min)</span></li>
+                <li>Centre Médical <span class="prox__dist">(450 m / 6 min)</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Commerces -->
+          <div class="prox__row">
+            <div class="prox__icon-wrap">
+              <img src="/Assets/icons/icon-22.svg" alt="" class="prox__icon" aria-hidden="true" />
+            </div>
+            <div class="prox__card">
+              <span class="prox__cat">Commerces</span>
+              <ul class="prox__items">
+                <li>Boulangerie &amp; Pâtisserie <span class="prox__dist">(200 m / 3 min)</span></li>
+                <li>Supermarché <span class="prox__dist">(400 m / 5 min)</span></li>
+                <li>Marché Local <span class="prox__dist">(450 m / 6 min)</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Parcs -->
+          <div class="prox__row">
+            <div class="prox__icon-wrap">
+              <img src="/Assets/icons/icon-23.svg" alt="" class="prox__icon" aria-hidden="true" />
+            </div>
+            <div class="prox__card">
+              <span class="prox__cat">Parcs</span>
+              <ul class="prox__items">
+                <li>Parc du Centre-Ville <span class="prox__dist">(400 m / 5 min)</span></li>
+                <li>Square du Marché <span class="prox__dist">(250 m / 4 min)</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Écoles & Crèches -->
+          <div class="prox__row">
+            <div class="prox__icon-wrap">
+              <img src="/Assets/icons/icon-24.svg" alt="" class="prox__icon" aria-hidden="true" />
+            </div>
+            <div class="prox__card">
+              <span class="prox__cat">Écoles &amp; Crèches</span>
+              <ul class="prox__items">
+                <li>Crèche Municipale <span class="prox__dist">(150 m / 2 min)</span></li>
+                <li>École maternelle <span class="prox__dist">(260 m / 4 min)</span></li>
+                <li>École primaire <span class="prox__dist">(400 m / 5 min)</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Mairie -->
+          <div class="prox__row">
+            <div class="prox__icon-wrap">
+              <img src="/Assets/icons/icon-25.svg" alt="" class="prox__icon" aria-hidden="true" />
+            </div>
+            <div class="prox__card">
+              <span class="prox__cat">Mairie</span>
+            </div>
+          </div>
+
+          <!-- RER A -->
+          <div class="prox__row">
+            <div class="prox__icon-wrap">
+              <img src="/Assets/icons/icon-26.svg" alt="" class="prox__icon" aria-hidden="true" />
+            </div>
+            <div class="prox__card">
+              <span class="prox__cat">RER A</span>
+              <ul class="prox__items">
+                <li><span class="prox__dist">(30 m / 2 min)</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Hôtel -->
+          <div class="prox__row">
+            <div class="prox__icon-wrap">
+              <img src="/Assets/icons/icon-27.svg" alt="" class="prox__icon" aria-hidden="true" />
+            </div>
+            <div class="prox__card">
+              <span class="prox__cat">Hôtel</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Map -->
+        <div class="prox__map-wrap">
+          <img
+            src={mapImg.src}
+            alt="Carte de proximité — 68 Boulevard du Couchant, Nanterre"
+            class="prox__map-img"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Download CTA -->
+    <div
+      style="display: flex; justify-content: center; width: 100%;"
+      data-animate="program-visual"
+    >
+      <Button
+        href="#"
+        variant="primary"
+        class="js-download-brochure btn--full-mobile"
+      >
+        Télécharger la plaquette
+      </Button>
+    </div>
+
+    <!-- PTZ -->
+    <section
+      class="program-overview__ptz-new"
+      data-animate="program-ptz-new"
+      aria-label="Information PTZ"
+    >
+      <AnimatedOrbs />
+
+      <div class="program-overview__ptz-new-content">
+        <h3 class="program-overview__ptz-new-title type-h4">POUR HABITER, PRÊT À 0%<sup>(2)</sup></h3>
+        <p class="program-overview__ptz-new-subtitle type-body">Réalisez Aujourd'hui Votre 1er Achat Immobilier</p>
+        <p class="program-overview__ptz-new-text type-body">Grâce au Prêt à Taux Zéro, augmentez votre capacité d'achat en bénéficiant d'un emprunt à taux 0%.</p>
+        <p class="program-overview__ptz-new-text type-body">Le PRÊT À 0% (PTZ) améliore votre pouvoir d'achat.</p>
+      </div>
+      <img
+        class="program-overview__ptz-new-logo"
+        src="/Assets/logo-ptz.png"
+        alt="Logo Prêt à Taux Zéro"
+        loading="lazy"
+      />
+    </section>
+
+  </div>
+</section>
+
+<style>
+  @import "../../styles/program-overview.css";
+
+  /* Engagements & Qualité */
+  .program-overview__engagements {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .program-overview__engagements-header {
+    text-align: left;
+  }
+
+  .program-overview__engagements-title {
+    margin: 0 0 0.5rem;
+    color: var(--color-primary);
+  }
+
+  .program-overview__engagements-subtitle {
+    color: var(--color-gray-600);
+    margin: 0;
+  }
+
+  /* Aerial image with RE2020 badge */
+  .program-overview__aerial {
+    position: relative;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    max-height: 520px;
+  }
+
+  .program-overview__aerial-img {
+    width: 100%;
+    height: 115%;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+  }
+
+  .program-overview__re2020-badge {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: clamp(80px, 10vw, 130px);
+    height: auto;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
+    border-radius: 8px;
+  }
+
+  /* Guarantee cards grid */
+  .program-overview__guarantees-grid-new {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .program-overview__guarantee-card-new {
+    background: #fff;
+    border-radius: 8px;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+    border: 1px solid var(--color-gray-200);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .program-overview__guarantee-card-new:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  }
+
+  .program-overview__guarantee-icon-wrap {
+    width: 96px;
+    height: 96px;
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .program-overview__guarantee-label {
+    font-size: 0.875rem;
+    color: var(--color-gray-600);
+    line-height: 1.4;
+  }
+
+  .program-overview__guarantee-value {
+    font-family: var(--font-family-heading);
+    font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1;
+  }
+
+  /* PTZ block */
+  .program-overview__ptz-new {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: center;
+    margin: 3rem auto 0;
+    width: 100%;
+    max-width: 1200px;
+    padding: 2.5rem;
+    border: 1px solid rgba(41, 70, 87, 0.12);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .program-overview__ptz-new-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .program-overview__ptz-new-title {
+    margin: 0;
+    color: var(--color-primary);
+  }
+
+  .program-overview__ptz-new-title sup {
+    font-size: 0.5em;
+    vertical-align: super;
+  }
+
+  .program-overview__ptz-new-subtitle {
+    font-weight: 600;
+    color: var(--color-primary);
+    margin: 0;
+  }
+
+  .program-overview__ptz-new-text {
+    color: var(--color-gray-700);
+    margin: 0;
+  }
+
+  .program-overview__ptz-new-logo {
+    width: auto;
+    height: clamp(100px, 12vw, 150px);
+    object-fit: contain;
+    align-self: center;
+    position: relative;
+    z-index: 1;
+    border-radius: 8px;
+    animation: ptz-pulse 2.5s ease-in-out infinite;
+  }
+
+  @keyframes ptz-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  @media (max-width: 900px) {
+    .program-overview__guarantees-grid-new {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .program-overview__ptz-new {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    .program-overview__ptz-new-logo {
+      justify-self: center;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .program-overview__guarantees-grid-new {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Proximité section */
+  .prox {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .prox__title {
+    margin: 0 0 1.75rem;
+    color: var(--color-primary-dark);
+  }
+
+  .prox__body {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: stretch;
+  }
+
+  @media (min-width: 860px) {
+    .prox__body {
+      grid-template-columns: 420px 1fr;
+      gap: 0.5rem;
+      align-items: stretch;
+    }
+  }
+
+  /* POI list */
+  .prox__poi-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .prox__row {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .prox__icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    min-width: 64px;
+    background: #f5f0e4;
+    border-radius: 12px 0 0 12px;
+  }
+
+  .prox__icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+  }
+
+  .prox__card {
+    flex: 1;
+    background: #fff;
+    border: 1px solid #e8e2d6;
+    border-left: none;
+    border-radius: 0 12px 12px 0;
+    padding: 0.75rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .prox__cat {
+    font-family: var(--font-family-base);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #8a8070;
+  }
+
+  .prox__items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .prox__items li {
+    font-family: var(--font-family-base);
+    font-size: 0.9rem;
+    color: var(--color-primary-dark, #282e69);
+    line-height: 1.45;
+  }
+
+  .prox__dist {
+    color: #8a8070;
+    font-size: 0.85em;
+  }
+
+  /* Map */
+  .prox__map-wrap {
+    position: sticky;
+    top: 6rem;
+    height: 100%;
+    min-height: 400px;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .prox__map-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left center;
+    display: block;
+    border-radius: 8px;
+  }
+
+  /* Download button on table rows */
+  .lot-status--available {
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const section = document.querySelector(".program-overview");
+    if (!section) return;
+
+    const ease = "power2.out";
+
+    const animTargets = [
+      '[data-animate="program-header"]',
+      '[data-animate="program-lots"]',
+      '[data-animate="program-engagements"]',
+      '[data-animate="program-ptz-new"]',
+      '[data-animate="program-visual"]',
+    ];
+
+    animTargets.forEach((selector) => {
+      const el = document.querySelector(selector);
+      if (!el) return;
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease,
+          scrollTrigger: {
+            trigger: el,
+            start: "top 82%",
+          },
+        },
+      );
+    });
+
+    // Parallax on aerial image
+    const aerialImg = document.querySelector(".program-overview__aerial-img");
+    if (aerialImg) {
+      gsap.to(aerialImg, {
+        yPercent: -6,
+        ease: "none",
+        scrollTrigger: {
+          trigger: aerialImg.closest(".program-overview__aerial"),
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    }
+
+    // Wire "Télécharger le plan" buttons in table
+    document.querySelectorAll(".js-open-lead").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const lot = (btn as HTMLElement).dataset.lot ?? "";
+        document.dispatchEvent(
+          new CustomEvent("coeur-nanterre:open-brochure", { detail: { lot } })
+        );
+      });
+    });
+  });
+</script>

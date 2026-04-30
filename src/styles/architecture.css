@@ -1,0 +1,227 @@
+/* Architecture Section - Sticky Editorial Layout */
+
+.architecture {
+  position: relative;
+  background-color: var(--color-gray-100); /* Slight contrast from white */
+  padding: 8rem 2rem;
+  /* overflow: hidden; REMOVED to allow sticky to work */
+}
+
+.architecture__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* Sticky Text Column */
+.architecture__text-col {
+  position: sticky;
+  top: 8rem; /* Space from top */
+  padding-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem; /* Spacing between Title / Subtitle / Content */
+}
+
+.architecture__title {
+  /* Inherits .type-h2 via HTML class */
+  max-width: 15ch;
+}
+
+.architecture__subtitle-group {
+  display: flex;
+  height: auto; /* Let content dictate, or fixed? Location uses flex stretch */
+  align-items: stretch;
+  gap: 1.5rem;
+}
+
+.architecture__subtitle {
+  /* Inherits .type-tagline via HTML class */
+  display: flex;
+  align-items: center;
+}
+
+.architecture__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Match Location narrative gap */
+  /* Indent to align with subtitle text, skipping the line */
+  margin-left: calc(2px + 1.5rem);
+}
+
+.architecture__paragraph {
+  /* Inherits .type-body via HTML class */
+  max-width: 45ch;
+}
+
+/* Scrolling Image Column */
+.architecture__image-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 4rem; /* Offset for visual interest */
+}
+
+.architecture__image-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--color-gray-100);
+}
+
+.architecture__image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: unset;
+  will-change: transform;
+  mix-blend-mode: multiply;
+}
+
+/* Caption hidden */
+.architecture__caption {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .architecture__container {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  .architecture__text-col {
+    position: relative;
+    top: 0;
+    padding-right: 0;
+  }
+
+  .architecture__image-col {
+    padding-top: 0;
+  }
+}
+
+/* ========================================
+   MATERIALS PALETTE
+   ======================================== */
+.architecture__palette {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-gray-200);
+  margin-top: 0.5rem;
+}
+
+.architecture__palette-label {
+  /* Inherits .type-overline via HTML class */
+  color: var(--color-gray-500);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.architecture__swatches {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+}
+
+.architecture__swatch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  text-align: center;
+}
+
+.architecture__swatch-color {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.architecture__swatch-name {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--color-gray-700);
+  line-height: 1.2;
+}
+
+.architecture__swatch-desc {
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  font-weight: 400;
+  color: var(--color-gray-400);
+  line-height: 1.3;
+}
+
+@media (max-width: 900px) {
+  .architecture__swatches {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ========================================
+   TECHNICAL SPECS ROW
+   ======================================== */
+.architecture__specs-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border: 1px solid var(--color-gray-200);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.architecture__spec-item {
+  flex: 1 1 25%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1rem 1.25rem;
+  position: relative;
+}
+
+.architecture__spec-item + .architecture__spec-item {
+  border-left: 1px solid var(--color-gray-200);
+}
+
+.architecture__spec-value {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2vw, 1.625rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.architecture__spec-label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--color-gray-500);
+  line-height: 1.3;
+}
+
+@media (max-width: 600px) {
+  .architecture__spec-item {
+    flex: 1 1 50%;
+  }
+
+  .architecture__spec-item:nth-child(odd) {
+    border-left: none;
+  }
+
+  .architecture__spec-item:nth-child(3),
+  .architecture__spec-item:nth-child(4) {
+    border-top: 1px solid var(--color-gray-200);
+  }
+}

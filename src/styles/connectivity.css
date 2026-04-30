@@ -1,0 +1,138 @@
+/* Connectivity - Full Screen Parallax */
+
+.connectivity {
+  position: relative;
+  width: 100%;
+  /* Ensure enough height if needed, but flex column of 100vh cards handles it */
+  background-color: var(--color-white);
+}
+
+/* Header - Sticky so cards slide over it */
+.connectivity__header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  text-align: center;
+  padding: 8rem 2rem;
+  background-color: var(--color-white);
+}
+
+/* The Title Group within the Sticky Header */
+.connectivity__title-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  max-width: 800px;
+}
+
+.connectivity__title {
+  /* Inherits .type-h2 via HTML class */
+  font-size: clamp(2.5rem, 5vw, 4rem); /* Larger variant for impact */
+}
+
+.connectivity__intro {
+  /* Inherits .type-body via HTML class */
+  max-width: 50ch;
+}
+
+/* Scrollable Container for Cards */
+.connectivity__cards {
+  position: relative;
+  z-index: 10;
+  margin-top: 0; /* Cards start immediately after the 100vh header space */
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Individual Card (100vh) */
+.connectivity__card {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  perspective: 1000px; /* For 3D feel context */
+}
+
+/* Parallax Background Wrapper */
+.connectivity__card-bg {
+  position: absolute;
+  top: -15%; /* Start higher so we have room to move down without showing a gap */
+  left: 0;
+  width: 100%;
+  height: 130%; /* Taller for parallax movement */
+  z-index: 0;
+  /* Default Gradient/Placeholder */
+  background-color: var(--color-black); /* Fallback to black instead of grey */
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+}
+
+/* Dark Overlay for text readability */
+.connectivity__card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Tuning needed based on images */
+  z-index: 1;
+}
+
+/* Card Content */
+.connectivity__card-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--color-white);
+  padding: 2rem;
+  max-width: 600px;
+  opacity: 0; /* JS reveal */
+  transform: translateY(30px);
+}
+
+.connectivity__card-title {
+  /* Inherits .type-h3 via HTML class */
+  margin-bottom: 1.5rem;
+}
+
+.connectivity__card-text {
+  /* Inherits .type-body-lg via HTML class */
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ========================================
+   CARD TAGS — pill row for transport lines
+   ======================================== */
+.connectivity__card-tags {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+}
+
+.connectivity__card-tags li {
+  font-family: var(--font-family-base);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 100px;
+  padding: 0.25rem 0.7rem;
+  white-space: nowrap;
+  background-color: rgba(255, 255, 255, 0.08);
+}

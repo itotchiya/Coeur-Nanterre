@@ -1,0 +1,1183 @@
+﻿---
+/**
+ * Credit Simulator Section
+ * Optimized, component-based horizontal sliding interface
+ */
+import Button from "../ui/Button.astro";
+import SimulatorStep from "../ui/simulator/SimulatorStep.astro";
+import SimulatorField from "../ui/simulator/SimulatorField.astro";
+import SimulatorRange from "../ui/simulator/SimulatorRange.astro";
+import SimulatorRadioCard from "../ui/simulator/SimulatorRadioCard.astro";
+import SimulatorProgress from "../ui/simulator/SimulatorProgress.astro";
+import { Calculator, ArrowRight, ArrowLeft, RotateCcw } from "lucide-astro";
+import { PTZ_SUPPORT_TEXT } from "../../lib/site-config";
+---
+
+<section
+  class="credit-simulator"
+  data-section="simulateur"
+  id="simulateur"
+  aria-labelledby="simulator-title"
+>
+  <!-- Loading Overlay -->
+  <div class="credit-simulator__loading" id="simulator-loading">
+    <div class="credit-simulator__spinner"></div>
+    <div class="credit-simulator__loading-text type-body">
+      Calcul de votre estimation en cours...
+    </div>
+  </div>
+
+  <div class="credit-simulator__container">
+    <SimulatorProgress />
+
+    <!-- Sliding Track -->
+    <div class="credit-simulator__track" id="simulator-track">
+      <!-- STEP 0: Welcome -->
+      <SimulatorStep id="step-0" isStep0={true}>
+        <div class="credit-simulator__welcome">
+          <p class="credit-simulator__label type-body-sm">
+            Simulateur de Crédit
+          </p>
+          <img
+            class="credit-simulator__ptz-logo"
+            src="/Assets/logo-ptz.png"
+            alt="Logo Pret a Taux Zero"
+            loading="lazy"
+          />
+          <h2 class="credit-simulator__title type-h2">
+            Estimez votre capacité<br />d'emprunt
+          </h2>
+          <p class="credit-simulator__description type-body">
+            Découvrez en quelques clics les mensualités de votre futur projet
+            immobilier. Une simulation simple, rapide et sans engagement.
+          </p>
+          <p class="credit-simulator__ptz-copy type-body-sm">
+            0% - Pret a Taux Zero. {PTZ_SUPPORT_TEXT}
+          </p>
+          <button
+            class="credit-simulator__magnetic-btn"
+            id="btn-start-simulation"
+          >
+            Commencer
+          </button>
+        </div>
+      </SimulatorStep>
+
+      <!-- STEP 1: Identity -->
+      <SimulatorStep
+        id="step-1"
+        question="Avant de commencer, faisons connaissance"
+      >
+        <div class="credit-simulator__form-grid">
+          <SimulatorField
+            id="user-lastname"
+            placeholder="Nom *"
+            required={true}
+          />
+          <SimulatorField
+            id="user-firstname"
+            placeholder="Prénom *"
+            required={true}
+          />
+          <SimulatorField id="user-phone" type="tel" placeholder="Téléphone" />
+          <SimulatorField
+            id="user-email"
+            type="email"
+            placeholder="Email *"
+            required={true}
+          />
+        </div>
+
+        <div class="credit-simulator__actions">
+          <Button id="btn-to-step-2" variant="white" size="lg">
+            Continuer <ArrowRight size={20} />
+          </Button>
+        </div>
+      </SimulatorStep>
+
+      <!-- STEP 2: Profile -->
+      <SimulatorStep id="step-2" question="Votre situation actuelle">
+        <div class="credit-simulator__form-grid">
+          <SimulatorField
+            id="user-region"
+            type="select"
+            placeholder="Sélectionnez votre région *"
+            required={true}
+          >
+            <optgroup label="France Métropolitaine">
+              <option value="idf">Île-de-France</option>
+              <option value="auvergne">Auvergne-Rhône-Alpes</option>
+              <option value="bourgogne">Bourgogne-Franche-Comté</option>
+              <option value="bretagne">Bretagne</option>
+              <option value="centre">Centre-Val de Loire</option>
+              <option value="corse">Corse</option>
+              <option value="grand-est">Grand Est</option>
+              <option value="hauts-de-france">Hauts-de-France</option>
+              <option value="normandie">Normandie</option>
+              <option value="nouvelle-aquitaine">Nouvelle-Aquitaine</option>
+              <option value="occitanie">Occitanie</option>
+              <option value="pays-de-la-loire">Pays de la Loire</option>
+              <option value="provence">Provence-Alpes-Côte d'Azur</option>
+            </optgroup>
+          </SimulatorField>
+
+          <SimulatorField
+            id="user-city"
+            type="select"
+            placeholder="Sélectionnez votre ville *"
+            required={true}
+          >
+            <!-- Cities will be populated dynamically by JavaScript -->
+          </SimulatorField>
+        </div>
+
+        <SimulatorField
+          id="user-job"
+          type="select"
+          placeholder="Votre situation professionnelle *"
+          class="is-full-width"
+          required={true}
+        >
+          <optgroup label="Salarié">
+            <option value="cdi">CDI</option>
+            <option value="cdd">CDD</option>
+            <option value="interim">Intérimaire</option>
+          </optgroup>
+          <optgroup label="Indépendant / Libéral">
+            <option value="liberal">Profession libérale</option>
+            <option value="artisan">Artisan / Commerçant</option>
+            <option value="freelance">Freelance / Auto-entrepreneur</option>
+            <option value="chef-entreprise">Chef d'entreprise</option>
+          </optgroup>
+          <optgroup label="Fonction Publique">
+            <option value="fonctionnaire">Fonctionnaire</option>
+            <option value="contractuel">Contractuel</option>
+          </optgroup>
+          <optgroup label="Autre">
+            <option value="retraite">Retraité</option>
+            <option value="etudiant">Étudiant</option>
+            <option value="sans-emploi">Sans emploi</option>
+            <option value="intermittent">Intermittent du spectacle</option>
+          </optgroup>
+        </SimulatorField>
+
+        <div class="credit-simulator__field-group">
+          <label class="simulator-field__label"
+            >Revenus nets mensuels (foyer)</label
+          >
+          <div class="credit-simulator__card-grid is-salary">
+            <SimulatorRadioCard
+              name="user_salary"
+              value="low"
+              label="< 2 000 €"
+            />
+            <SimulatorRadioCard
+              name="user_salary"
+              value="med"
+              label="2 000 - 4 000 €"
+              checked={true}
+            />
+            <SimulatorRadioCard
+              name="user_salary"
+              value="high"
+              label="4 000 - 6 000 €"
+            />
+            <SimulatorRadioCard
+              name="user_salary"
+              value="vhigh"
+              label="+ 6 000 €"
+            />
+          </div>
+        </div>
+
+        <div class="credit-simulator__field-group">
+          <label class="simulator-field__label"
+            >Avez-vous un crédit en cours ?</label
+          >
+          <div class="credit-simulator__conditional-row">
+            <div class="credit-simulator__card-grid is-compact">
+              <SimulatorRadioCard
+                name="existing_credit"
+                value="no"
+                label="Non"
+                checked={true}
+              />
+              <SimulatorRadioCard
+                name="existing_credit"
+                value="yes"
+                label="Oui"
+              />
+            </div>
+
+            <div
+              id="existing-credit-input-group"
+              class="credit-simulator__hidden-field"
+            >
+              <SimulatorField
+                id="existing-monthly"
+                type="number"
+                placeholder="Montant mensuel (€) *"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="credit-simulator__actions">
+          <Button id="btn-back-2" variant="secondary" size="lg">
+            <ArrowLeft size={20} /><span class="btn__text">Retour</span>
+          </Button>
+          <Button id="btn-to-step-3" variant="white" size="lg">
+            Continuer <ArrowRight size={20} />
+          </Button>
+        </div>
+      </SimulatorStep>
+
+      <!-- STEP 3: Project -->
+      <SimulatorStep id="step-3" question="Votre futur projet">
+        <div class="credit-simulator__field-group">
+          <label class="simulator-field__label">Choisissez votre lot</label>
+          <div class="credit-simulator__card-grid">
+            <SimulatorRadioCard
+              name="credit_property"
+              value="a1"
+              label="Lot A1"
+              price="T4 · 76 m² · Jardin 48 m²"
+              checked={true}
+              isProperty
+            />
+            <SimulatorRadioCard
+              name="credit_property"
+              value="a2"
+              label="Lot A2"
+              price="T2 · 51,5 m² · Jardin 46 m²"
+              isProperty
+            />
+            <SimulatorRadioCard
+              name="credit_property"
+              value="a3"
+              label="Lot A3"
+              price="T3 duplex · 60 m² · Jardin 56 m²"
+              isProperty
+            />
+            <SimulatorRadioCard
+              name="credit_property"
+              value="a4"
+              label="Lot A4"
+              price="T4 · 77,5 m²"
+              isProperty
+            />
+            <SimulatorRadioCard
+              name="credit_property"
+              value="a5"
+              label="Lot A5"
+              price="T2 · 46,5 m² · Balcon 10 m²"
+              isProperty
+            />
+            <SimulatorRadioCard
+              name="credit_property"
+              value="a6"
+              label="Lot A6"
+              price="T3 · 54 m² · Balcon 26 m²"
+              isProperty
+            />
+            <SimulatorRadioCard
+              name="credit_property"
+              value="a7"
+              label="Lot A7"
+              price="T1 bis · 39 m² · Balcon 56 m²"
+              isProperty
+            />
+            <SimulatorRadioCard
+              name="credit_property"
+              value="a8"
+              label="Lot A8"
+              price="T3 · 51,5 m²"
+              isProperty
+            />
+            <SimulatorRadioCard
+              name="credit_property"
+              value="a9"
+              label="Lot A9"
+              price="T1 bis · 36,5 m²"
+              isProperty
+            />
+          </div>
+          <div class="credit-simulator__tva-badge">
+            <img
+              class="credit-simulator__badge-logo"
+              src="/Assets/logo-ptz.png"
+              alt="Logo Pret a Taux Zero"
+              loading="lazy"
+            />
+            <span>Ce programme est sujet aux possibilites du <strong>PTZ</strong> sous reserve de validation.</span>
+          </div>
+        </div>
+
+        <div class="credit-simulator__form-grid is-project">
+          <div class="credit-simulator__field-group">
+            <label class="simulator-field__label">Montant du projet</label>
+            <div class="credit-simulator__value-display is-amount">
+              <span id="input-amount">249 000</span>
+              <span class="credit-simulator__currency">€</span>
+            </div>
+          </div>
+
+          <div class="credit-simulator__field-group">
+            <label class="simulator-field__label">Durée</label>
+            <div class="credit-simulator__value-display is-duration">
+              <span id="input-duration">20</span>
+              <span class="credit-simulator__unit">ans</span>
+            </div>
+            <SimulatorRange id="range-duration" min={1} max={25} value={20} />
+          </div>
+        </div>
+
+        <SimulatorField
+          id="input-rate"
+          type="number"
+          label="Taux d'intérêt (%)"
+          value="3.40"
+          step={0.01}
+          class="is-full-width"
+        />
+
+        <div class="credit-simulator__actions">
+          <Button id="btn-back-3" variant="secondary" size="lg">
+            <ArrowLeft size={20} /><span class="btn__text">Retour</span>
+          </Button>
+          <Button id="btn-calculate" variant="white" size="lg">
+            Calculer ma mensualité <Calculator size={20} />
+          </Button>
+        </div>
+      </SimulatorStep>
+
+      <!-- STEP 4: Results -->
+      <SimulatorStep id="step-4" question="Votre résultat personnalisé">
+        <!-- Internal Loading State -->
+        <div id="step-3-loading" class="credit-simulator__results-loading">
+          <div class="credit-simulator__spinner"></div>
+          <p class="type-lead">Calcul de votre financement en cours...</p>
+        </div>
+
+        <!-- Result Content -->
+        <div id="step-3-content" class="credit-simulator__results-content">
+          <div
+            class="credit-simulator__result-card"
+            role="region"
+            aria-labelledby="results-title"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            <dl class="credit-simulator__result-list">
+              <div class="credit-simulator__result-row">
+                <dt class="type-body">Mensualité estimée</dt>
+                <dd class="credit-simulator__result-value">
+                  <span id="result-monthly">1 250</span> €
+                </dd>
+              </div>
+            </dl>
+            <div class="credit-simulator__result-details type-body-sm">
+              Taux estimé: <strong id="result-rate-display">3.40</strong>% sur <strong
+                id="result-duration-display">20</strong
+              > ans
+            </div>
+          </div>
+
+          <!-- Accession sociale info card -->
+          <div class="credit-simulator__accession-card">
+            <div class="credit-simulator__accession-row is-ptz">
+              <img
+                class="credit-simulator__accession-logo"
+                src="/Assets/logo-ptz.png"
+                alt="Logo Pret a Taux Zero"
+                loading="lazy"
+              />
+              <div>
+                <strong>Prêt à Taux Zéro</strong>
+                <span>Ce programme est sujet aux possibilités du PTZ sur réserve de validation de votre dossier.</span>
+              </div>
+            </div>
+            <div class="credit-simulator__accession-row">
+              <span class="credit-simulator__accession-icon">Conseil</span>
+              <div>
+                <strong>Apport personnel conseillé</strong>
+                <span>Une petite recommandation peut être faite au cas par cas selon votre dossier et votre montage de financement.</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="credit-simulator__disclaimer type-body-sm">
+            *Simulation indicative. Ces résultats ne constituent pas une offre de prêt. Taux hors assurance. Validation finale selon votre situation et l'éligibilité PTZ.
+          </p>
+
+          <div class="credit-simulator__actions">
+            <Button id="btn-restart" variant="white" size="lg">
+              <RotateCcw size={20} /> Nouvelle simulation
+            </Button>
+          </div>
+        </div>
+      </SimulatorStep>
+    </div>
+  </div>
+</section>
+
+<style>
+  @import "../../styles/credit-simulator.css";
+
+  .credit-simulator__ptz-logo {
+    width: 82px;
+    height: 82px;
+    margin-bottom: 0.5rem;
+    object-fit: contain;
+  }
+
+  .credit-simulator__ptz-copy {
+    margin-top: 0.6rem;
+    max-width: 32rem;
+    color: rgba(255, 255, 255, 0.78);
+  }
+
+  .credit-simulator__badge-logo {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .credit-simulator__accession-logo {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  /* Mobile: Circle back button */
+  @media (max-width: 768px) {
+    .credit-simulator__actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .credit-simulator__actions :global(.btn--white) {
+      flex: 1;
+    }
+
+    .credit-simulator__actions :global(.btn--secondary) {
+      width: 56px !important;
+      height: 56px !important;
+      min-width: 56px !important;
+      max-width: 56px !important;
+      padding: 0 !important;
+      border-radius: 50% !important;
+      flex-shrink: 0;
+    }
+
+    .credit-simulator__actions :global(.btn--secondary .btn__text) {
+      display: none !important;
+    }
+
+    .credit-simulator__badge-logo {
+      width: 36px;
+      height: 36px;
+    }
+
+    .credit-simulator__accession-logo {
+      width: 42px;
+      height: 42px;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+
+  declare global {
+    interface Window {
+      grecaptcha?: {
+        ready: (cb: () => void) => void;
+        execute: (siteKey: string, opts: { action: string }) => Promise<string>;
+      };
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const track = document.getElementById("simulator-track");
+    const loadingOverlay = document.getElementById("simulator-loading");
+
+    if (!track || !loadingOverlay) return;
+
+    // --- Elements ---
+    const magneticBtn = document.getElementById("btn-start-simulation");
+    const progressBar = document.getElementById("progress-bar");
+    const progressContainer = document.getElementById("progress-container");
+    const progressTitle = document.getElementById("progress-step-title");
+    const progressCounter = document.getElementById("progress-step-counter");
+
+    // Form Fields
+    const userLastname = document.getElementById(
+      "user-lastname",
+    ) as HTMLInputElement;
+    const userFirstname = document.getElementById(
+      "user-firstname",
+    ) as HTMLInputElement;
+    const userPhone = document.getElementById("user-phone") as HTMLInputElement;
+    const userEmail = document.getElementById("user-email") as HTMLInputElement;
+    const userRegion = document.getElementById(
+      "user-region",
+    ) as HTMLSelectElement;
+    const userCity = document.getElementById("user-city") as HTMLSelectElement;
+    const userJob = document.getElementById("user-job") as HTMLSelectElement;
+    const existingMonthlyGroup = document.getElementById(
+      "existing-credit-input-group",
+    );
+    const existingMonthlyInput = document.getElementById(
+      "existing-monthly",
+    ) as HTMLInputElement;
+
+    // Project Config
+    const radioProperty = document.querySelectorAll(
+      'input[name="credit_property"]',
+    );
+    const inputAmount = document.getElementById("input-amount") as HTMLElement;
+    const inputDuration = document.getElementById(
+      "input-duration",
+    ) as HTMLElement;
+    const rangeDuration = document.getElementById(
+      "range-duration",
+    ) as HTMLInputElement;
+    const inputRate = document.getElementById("input-rate") as HTMLInputElement;
+
+    // Actions
+    const btnToStep2 = document.getElementById("btn-to-step-2");
+    const btnToStep3 = document.getElementById("btn-to-step-3");
+    const btnBack2 = document.getElementById("btn-back-2");
+    const btnBack3 = document.getElementById("btn-back-3");
+    const btnCalculate = document.getElementById("btn-calculate");
+    const btnRestart = document.getElementById("btn-restart");
+
+    // Results
+    const step3Loading = document.getElementById("step-3-loading");
+    const step3Content = document.getElementById("step-3-content");
+    const resultMonthly = document.getElementById("result-monthly");
+    const resultRateDisplay = document.getElementById("result-rate-display");
+    const resultDurationDisplay = document.getElementById(
+      "result-duration-display",
+    );
+
+    // --- State & Logic ---
+    const LOCAL_STORAGE_KEY = "origin_user_info";
+    // Prix TTC issus de la grille d'accession officielle (TVA 5,5%)
+    // Source : Grille accession Nanterre.xlsx
+    const PRICE_GUIDES: Record<string, number> = {
+      a1: 570000, // A1 - T4 - 76 m² + jardin 48 m²
+      a2: 395000, // A2 - T2 - 51,5 m² + jardin 46 m²
+      a3: 476000, // A3 - T3 duplex - 60 m² + jardin 56 m²
+      a4: 479000, // A4 - T4 - 77,5 m²
+      a5: 348000, // A5 - T2 - 46,5 m² + balcon 10 m²
+      a6: 410000, // A6 - T3 - 54 m² + balcon 26 m²
+      a7: 329000, // A7 - T1 bis - 39 m² + balcon 56 m²
+      a8: 336000, // A8 - T3 - 51,5 m²
+      a9: 249000, // A9 - T1 bis - 36,5 m²
+    };
+
+    // Cities by Region
+    const CITIES_BY_REGION: Record<string, string[]> = {
+      idf: [
+        "Paris",
+        "Boulogne-Billancourt",
+        "Saint-Denis",
+        "Argenteuil",
+        "Montreuil",
+        "Nanterre",
+        "Versailles",
+        "Créteil",
+        "Noisiel",
+        "Meaux",
+      ],
+      auvergne: [
+        "Lyon",
+        "Saint-Étienne",
+        "Grenoble",
+        "Villeurbanne",
+        "Clermont-Ferrand",
+        "Annecy",
+        "Chambéry",
+        "Valence",
+        "Vénissieux",
+        "Vienne",
+      ],
+      bourgogne: [
+        "Dijon",
+        "Besançon",
+        "Belfort",
+        "Chalon-sur-Saône",
+        "Nevers",
+        "Auxerre",
+        "Mâcon",
+        "Sens",
+        "Montbéliard",
+        "Dole",
+      ],
+      bretagne: [
+        "Rennes",
+        "Brest",
+        "Quimper",
+        "Lorient",
+        "Vannes",
+        "Saint-Malo",
+        "Saint-Brieuc",
+        "Lanester",
+        "Fougères",
+        "Lannion",
+      ],
+      centre: [
+        "Tours",
+        "Orléans",
+        "Bourges",
+        "Blois",
+        "Châteauroux",
+        "Chartres",
+        "Joué-lès-Tours",
+        "Dreux",
+        "Olivet",
+        "Vierzon",
+      ],
+      corse: [
+        "Ajaccio",
+        "Bastia",
+        "Porto-Vecchio",
+        "Corte",
+        "Calvi",
+        "Propriano",
+        "Ghisonaccia",
+        "Sartène",
+      ],
+      "grand-est": [
+        "Strasbourg",
+        "Reims",
+        "Metz",
+        "Mulhouse",
+        "Nancy",
+        "Troyes",
+        "Colmar",
+        "Charleville-Mézières",
+        "Épinal",
+        "Thionville",
+      ],
+      "hauts-de-france": [
+        "Lille",
+        "Amiens",
+        "Roubaix",
+        "Tourcoing",
+        "Dunkerque",
+        "Calais",
+        "Valenciennes",
+        "Boulogne-sur-Mer",
+        "Arras",
+        "Lens",
+      ],
+      normandie: [
+        "Rouen",
+        "Le Havre",
+        "Caen",
+        "Cherbourg-en-Cotentin",
+        "Évreux",
+        "Dieppe",
+        "Lisieux",
+        "Alençon",
+        "Fécamp",
+        "Bayeux",
+      ],
+      "nouvelle-aquitaine": [
+        "Bordeaux",
+        "Limoges",
+        "Poitiers",
+        "La Rochelle",
+        "Pau",
+        "Mérignac",
+        "Pessac",
+        "Niort",
+        "Bayonne",
+        "Angoulême",
+      ],
+      occitanie: [
+        "Toulouse",
+        "Montpellier",
+        "Nîmes",
+        "Perpignan",
+        "Béziers",
+        "Carcassonne",
+        "Albi",
+        "Tarbes",
+        "Castres",
+        "Narbonne",
+      ],
+      "pays-de-la-loire": [
+        "Nantes",
+        "Angers",
+        "Le Mans",
+        "Saint-Nazaire",
+        "La Roche-sur-Yon",
+        "Cholet",
+        "Laval",
+        "Saumur",
+        "Saint-Herblain",
+        "Rezé",
+      ],
+      provence: [
+        "Marseille",
+        "Nice",
+        "Toulon",
+        "Aix-en-Provence",
+        "Avignon",
+        "Antibes",
+        "Cannes",
+        "La Seyne-sur-Mer",
+        "Hyères",
+        "Arles",
+      ],
+    };
+
+    function populateCities(regionValue: string) {
+      if (!userCity) return;
+
+      // Clear existing options
+      userCity.innerHTML =
+        '<option value="" disabled selected>Sélectionnez votre ville *</option>';
+
+      const cities = CITIES_BY_REGION[regionValue];
+      if (cities) {
+        cities.forEach((city) => {
+          const option = document.createElement("option");
+          option.value = city.toLowerCase().replace(/\s+/g, "-");
+          option.textContent = city;
+          userCity.appendChild(option);
+        });
+      }
+    }
+
+    interface State {
+      amount: number;
+      duration: number;
+      rate: number;
+      existingMonthly: number;
+      propertyType: string;
+      [key: string]: any;
+    }
+    let state: State = {
+      amount: 570000,
+      duration: 20,
+      rate: 3.4,
+      existingMonthly: 0,
+      propertyType: "a1",
+    };
+
+    function loadUserData() {
+      const savedUser = localStorage.getItem(LOCAL_STORAGE_KEY);
+      if (savedUser) {
+        try {
+          const userData = JSON.parse(savedUser);
+          if (userLastname) userLastname.value = userData.lastname || "";
+          if (userFirstname) userFirstname.value = userData.firstname || "";
+          if (userPhone) userPhone.value = userData.phone || "";
+          if (userEmail) userEmail.value = userData.email || "";
+          if (userRegion) {
+            userRegion.value = userData.region || "";
+            // Populate cities based on saved region
+            if (userData.region) {
+              populateCities(userData.region);
+            }
+          }
+          if (userCity && userData.city) userCity.value = userData.city;
+          if (userJob) userJob.value = userData.job || "";
+
+          if (userData.salary) {
+            const salaryRadio = document.querySelector(
+              `input[name="user_salary"][value="${userData.salary}"]`,
+            ) as HTMLInputElement;
+            if (salaryRadio) salaryRadio.checked = true;
+          }
+
+          if (userData.propertyType) {
+            state.propertyType = userData.propertyType;
+            const propRadio = document.querySelector(
+              `input[name="credit_property"][value="${userData.propertyType}"]`,
+            ) as HTMLInputElement;
+            if (propRadio) propRadio.checked = true;
+          }
+          if (userData.amount) {
+            state.amount = userData.amount;
+            if (inputAmount)
+              inputAmount.textContent = formatMoney(userData.amount);
+          }
+          if (userData.duration) {
+            state.duration = userData.duration;
+            if (inputDuration)
+              inputDuration.textContent = userData.duration.toString();
+            if (rangeDuration) {
+              rangeDuration.value = userData.duration.toString();
+              updateRangeBackground(rangeDuration);
+            }
+          }
+          if (userData.rate) {
+            state.rate = userData.rate;
+            if (inputRate) inputRate.value = userData.rate.toString();
+          }
+          if (userData.existingMonthly) {
+            state.existingMonthly = userData.existingMonthly;
+            if (existingMonthlyInput)
+              existingMonthlyInput.value = userData.existingMonthly.toString();
+            if (userData.existingMonthly > 0) {
+              const radioYes = document.querySelector(
+                'input[name="existing_credit"][value="yes"]',
+              ) as HTMLInputElement;
+              if (radioYes) radioYes.checked = true;
+              if (existingMonthlyGroup)
+                existingMonthlyGroup.classList.add("visible");
+              if (existingMonthlyInput) existingMonthlyInput.required = true;
+            }
+          }
+        } catch (e) {
+          console.error("Error parsing user data", e);
+        }
+      }
+    }
+
+    function init() {
+      loadUserData();
+
+      // Region change -> populate cities
+      userRegion?.addEventListener("change", (e) => {
+        const region = (e.target as HTMLSelectElement).value;
+        populateCities(region);
+      });
+
+      radioProperty.forEach((radio) => {
+        radio.addEventListener("change", (e) => {
+          const type = (e.target as HTMLInputElement).value;
+          state.propertyType = type;
+          const targetPrice = PRICE_GUIDES[type];
+          if (targetPrice && inputAmount) {
+            state.amount = targetPrice;
+            inputAmount.textContent = formatMoney(targetPrice);
+          }
+        });
+      });
+
+      document
+        .querySelectorAll('input[name="existing_credit"]')
+        .forEach((radio) => {
+          radio.addEventListener("change", (e) => {
+            const isYes = (e.target as HTMLInputElement).value === "yes";
+            if (existingMonthlyGroup) {
+              if (isYes) {
+                existingMonthlyGroup.classList.add("visible");
+                if (existingMonthlyInput) existingMonthlyInput.required = true;
+              } else {
+                existingMonthlyGroup.classList.remove("visible");
+                state.existingMonthly = 0;
+                if (existingMonthlyInput) {
+                  existingMonthlyInput.value = "";
+                  existingMonthlyInput.required = false;
+                }
+              }
+            }
+          });
+        });
+
+      // Removed manual input for amount as it is now a calculated display
+
+      // Duration range sync
+      if (rangeDuration && inputDuration) {
+        rangeDuration.addEventListener("input", () => {
+          state.duration = parseInt(rangeDuration.value);
+          inputDuration.textContent = rangeDuration.value;
+          updateRangeBackground(rangeDuration);
+        });
+
+        // Initial track fix
+        updateRangeBackground(rangeDuration);
+      }
+
+      inputRate?.addEventListener("input", (e) => {
+        state.rate = parseFloat((e.target as HTMLInputElement).value.replace(',', '.')) || 0;
+      });
+
+      existingMonthlyInput?.addEventListener("input", (e) => {
+        state.existingMonthly =
+          parseFloat((e.target as HTMLInputElement).value) || 0;
+      });
+
+      magneticBtn?.addEventListener("click", () => {
+        loadUserData();
+        goToStep(1);
+      });
+
+      btnToStep2?.addEventListener("click", () => {
+        const step1Inputs = [userLastname, userFirstname, userEmail];
+        const isValid = step1Inputs.every((input) => {
+          if (input && !input.checkValidity()) {
+            input.reportValidity();
+            return false;
+          }
+          return true;
+        });
+
+        if (isValid) goToStep(2);
+      });
+
+      btnToStep3?.addEventListener("click", () => {
+        const step2Inputs = [
+          userRegion,
+          userCity,
+          userJob,
+          existingMonthlyInput,
+        ];
+        const isValid = step2Inputs.every((input) => {
+          if (input && !input.checkValidity()) {
+            input.reportValidity();
+            return false;
+          }
+          return true;
+        });
+
+        if (isValid) {
+          saveUserData();
+          goToStep(3);
+        }
+      });
+      btnBack2?.addEventListener("click", () => goToStep(1));
+      btnBack3?.addEventListener("click", () => goToStep(2));
+      btnCalculate?.addEventListener("click", handleCalculation);
+      btnRestart?.addEventListener("click", handleRestart);
+
+      // Magnetic Effect
+      if (magneticBtn) {
+        magneticBtn.addEventListener("mouseenter", () =>
+          gsap.to(magneticBtn, { scale: 1.05, duration: 0.3 }),
+        );
+        magneticBtn.addEventListener("mousemove", (e) => {
+          const rect = magneticBtn.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          gsap.to(magneticBtn, {
+            x: x * 0.5,
+            y: y * 0.5,
+            duration: 0.4,
+            ease: "power2.out",
+          });
+        });
+        magneticBtn.addEventListener("mouseleave", () => {
+          gsap.to(magneticBtn, {
+            x: 0,
+            y: 0,
+            scale: 1,
+            duration: 0.7,
+            ease: "elastic.out(1, 0.3)",
+          });
+        });
+      }
+
+      if (loadingOverlay) loadingOverlay.style.display = "none";
+    }
+
+    function goToStep(index: number) {
+      const percent = index * -20;
+      gsap.to(track, {
+        x: `${percent}%`,
+        duration: 0.8,
+        ease: "power3.inOut",
+      });
+
+      if (progressContainer) {
+        if (index === 0) progressContainer.classList.remove("visible");
+        else {
+          progressContainer.classList.add("visible");
+          const width = (index / 4) * 100;
+          if (progressBar) progressBar.style.width = `${width}%`;
+          if (progressCounter) progressCounter.textContent = `${index}/4`;
+          if (progressTitle) {
+            const titles = ["", "IDENTITÉ", "PROFIL", "PROJET", "RÉSULTAT"];
+            progressTitle.textContent = titles[index];
+          }
+        }
+      }
+    }
+
+    function saveUserData() {
+      const salaryRadio = document.querySelector(
+        'input[name="user_salary"]:checked',
+      ) as HTMLInputElement;
+      const propertyRadio = document.querySelector(
+        'input[name="credit_property"]:checked',
+      ) as HTMLInputElement;
+      const existingRadio = document.querySelector(
+        'input[name="existing_credit"]:checked',
+      ) as HTMLInputElement;
+
+      const userData = {
+        lastname: userLastname?.value || "",
+        firstname: userFirstname?.value || "",
+        phone: userPhone?.value || "",
+        email: userEmail?.value || "",
+        region: userRegion?.value || "",
+        city: userCity?.value || "",
+        job: userJob?.value || "",
+        salary: salaryRadio?.value || "",
+        propertyType: propertyRadio?.value || state.propertyType,
+        amount: state.amount,
+        duration: state.duration,
+        rate: state.rate,
+        existingMonthly:
+          existingRadio?.value === "yes" ? state.existingMonthly : 0,
+        updatedAt: new Date().toISOString(),
+      };
+
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(userData));
+      return userData;
+    }
+
+    async function handleCalculation(e: Event) {
+      e.preventDefault();
+
+      if (inputRate && !inputRate.checkValidity()) {
+        inputRate.reportValidity();
+        return;
+      }
+
+      // Calculate monthly payment
+      const monthlyRate = state.rate / 100 / 12;
+      const totalMonths = state.duration * 12;
+      let monthlyPayment =
+        monthlyRate > 0
+          ? (state.amount * monthlyRate) /
+            (1 - Math.pow(1 + monthlyRate, -totalMonths))
+          : state.amount / totalMonths;
+
+      // Update result display values
+      if (resultMonthly)
+        resultMonthly.textContent = formatMoney(Math.round(monthlyPayment));
+      if (resultRateDisplay)
+        resultRateDisplay.textContent = state.rate.toFixed(2);
+      if (resultDurationDisplay)
+        resultDurationDisplay.textContent = state.duration.toString();
+
+      const fullData = saveUserData();
+
+      // Show step 4 loading
+      goToStep(4);
+      if (step3Loading && step3Content) {
+        step3Loading.style.display = "flex";
+        step3Content.style.display = "none";
+      }
+
+      try {
+        // Execute reCAPTCHA v3
+        const RECAPTCHA_SITE_KEY = "6LehYM4sAAAAAObgQALjV_hmnmQTHfiAZAuRJhyV";
+        let captchaToken = "";
+        if (window.grecaptcha) {
+          await new Promise<void>((resolve) => window.grecaptcha!.ready(resolve));
+          captchaToken = await window.grecaptcha!.execute(RECAPTCHA_SITE_KEY, { action: "credit_simulator" });
+        } else {
+          throw new Error("reCAPTCHA non chargé");
+        }
+
+        const salaryRadio = document.querySelector(
+          'input[name="user_salary"]:checked',
+        ) as HTMLInputElement;
+        const propertyRadio = document.querySelector(
+          'input[name="credit_property"]:checked',
+        ) as HTMLInputElement;
+        const existingRadio = document.querySelector(
+          'input[name="existing_credit"]:checked',
+        ) as HTMLInputElement;
+
+        const payload = {
+          firstName: fullData.firstname,
+          lastName: fullData.lastname,
+          email: fullData.email,
+          phone: fullData.phone,
+          region: fullData.region,
+          city: fullData.city,
+          job: fullData.job,
+          salary: salaryRadio?.value || "",
+          existingCredit: existingRadio?.value || "no",
+          existingMonthly: fullData.existingMonthly || 0,
+          propertyType: propertyRadio?.value || state.propertyType,
+          amount: state.amount,
+          duration: state.duration,
+          rate: state.rate,
+          monthlyPayment: Math.round(monthlyPayment),
+          recaptchaToken: captchaToken,
+        };
+
+        const res = await fetch("/api/simulate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error((err as { error?: string }).error ?? "Erreur serveur");
+        }
+      } catch (err) {
+        console.error("Simulation submission error:", err);
+        if (step3Loading) step3Loading.style.display = "none";
+        if (step3Content) {
+          step3Content.style.display = "flex";
+          let errorEl = document.getElementById("simulator-error-msg");
+          if (!errorEl) {
+            errorEl = document.createElement("p");
+            errorEl.id = "simulator-error-msg";
+            errorEl.className = "credit-simulator__error type-body-sm";
+            errorEl.style.cssText = "color:#ff6b6b;margin-bottom:1rem;text-align:center;";
+            step3Content.insertBefore(errorEl, step3Content.firstChild);
+          }
+          errorEl.textContent = err instanceof Error ? err.message : "Erreur d'envoi. Veuillez réessayer.";
+        }
+        return;
+      }
+
+      // Success: hide loading, show content with animation
+      if (step3Loading) step3Loading.style.display = "none";
+      if (step3Content) {
+        step3Content.style.display = "flex";
+        gsap.from(step3Content.children, {
+          y: 20,
+          opacity: 0,
+          duration: 0.5,
+          stagger: 0.1,
+        });
+      }
+    }
+
+    function handleRestart() {
+      goToStep(3);
+    }
+
+    function formatMoney(val: number) {
+      return new Intl.NumberFormat("fr-FR").format(val).replace(/\u202f/g, " ");
+    }
+
+    function parseMoney(str: string) {
+      return parseInt(str.replace(/\s/g, ""), 10) || 0;
+    }
+
+    function updateRangeBackground(input: HTMLInputElement) {
+      const min = parseFloat(input.min) || 0;
+      const max = parseFloat(input.max) || 100;
+      const val = parseFloat(input.value) || 0;
+      const percent = ((val - min) / (max - min)) * 100;
+      const track = input.parentElement?.querySelector(
+        ".simulator-range__track",
+      ) as HTMLElement;
+      if (track) {
+        track.style.background = `linear-gradient(to right, var(--color-white) ${percent}%, rgba(255, 255, 255, 0.1) ${percent}%)`;
+      }
+    }
+
+    init();
+  });
+</script>

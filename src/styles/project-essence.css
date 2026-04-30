@@ -1,0 +1,190 @@
+/* ========================================
+   PROJECT ESSENCE SECTION
+   Modern Luxury / Manifesto Style
+   ======================================== */
+
+.project-essence {
+  /* Dark Mode Styling with Background Image */
+  position: relative;
+  color: var(--color-white); /* Default text color */
+  padding: 6rem 1.5rem; /* Generous padding for luxury feel, background stays seamless */
+  min-height: auto; /* Allow content to dictate height on mobile */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--color-primary-dark); /* Darker primary on mobile */
+}
+
+/* Parallax Background Element */
+.project-essence__bg {
+  display: none; /* Hide background image on mobile */
+  position: absolute;
+  inset: -20% 0; /* Extra height for parallax movement */
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  will-change: transform;
+}
+
+/* Gradient overlay - transparent left, primary-dark right */
+.project-essence__overlay {
+  display: none; /* Hidden on mobile since we use solid background */
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(28, 49, 64, 0) 0%,
+    var(--color-primary-dark) 50%,
+    var(--color-primary-dark) 100%
+  );
+  z-index: 1;
+}
+
+@media (min-width: 1024px) {
+  .project-essence__bg {
+    display: block;
+  }
+  .project-essence__overlay {
+    display: block;
+  }
+  .project-essence {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 8rem 4rem;
+  }
+}
+
+/* Header / Title Column */
+.project-essence__header {
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 1024px) {
+  .project-essence__header {
+    flex: 0 0 35%; /* Left column */
+    margin-bottom: 0;
+    padding-right: 2rem;
+    position: sticky;
+    top: 8rem;
+    align-self: flex-start;
+  }
+}
+
+.project-essence__title {
+  /* Inherits .type-section-title */
+  position: relative;
+  margin: 0; /* Reset margin for flex container */
+  color: var(--color-white); /* Inverted for dark mode */
+}
+
+/* Vertical Line Group */
+.project-essence__title-group {
+  display: flex;
+  align-items: stretch; /* Line full height of title */
+  gap: 1.5rem;
+}
+/* Line handled by AnimatedVerticalLine component */
+
+/* Content / Text Column */
+.project-essence__content {
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 1024px) {
+  .project-essence__content {
+    flex: 0 0 55%; /* Right column */
+    max-width: 65ch; /* Optimal reading measure */
+    padding-top: 0.5rem; /* Optical alignment/Optical baseline correction */
+  }
+}
+
+.project-essence__paragraph {
+  /* Inherits .type-body or .type-lead */
+  margin-bottom: 2rem;
+  opacity: 0; /* Hidden initially for GSAP */
+  transform: translateY(16px);
+}
+
+.project-essence__paragraph.type-lead {
+  color: var(--color-white); /* Strong white for lead */
+}
+
+.project-essence__paragraph.type-body {
+  color: var(--color-gray-300); /* Softer gray for body */
+}
+
+.project-essence__paragraph:last-child {
+  margin-bottom: 0;
+}
+
+/* ========================================
+   PROJECT PRINCIPLES
+   Architectural / Museum Label Aesthetic
+   ======================================== */
+
+.project-principles {
+  margin-top: 3rem;
+  padding-top: 0; /* Removed divider spacing */
+  border-top: none; /* Removed divider */
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .project-principles {
+    margin-top: 4rem;
+    padding-top: 0;
+    grid-column: 1 / -1;
+  }
+}
+
+/* List Container */
+.project-principles__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* Individual Principle Item */
+.project-principles__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  position: relative;
+  padding-left: 0;
+  padding-bottom: 1.15rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.12);
+  opacity: 0; /* Initial hidden state for GSAP */
+  transform: translateY(10px);
+  cursor: default;
+}
+
+.project-principles__item:last-child {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.12); /* Keep border on last item */
+  padding-bottom: 1.15rem;
+}
+
+/* Keyword - Primary typography emphasis */
+.project-principles__keyword {
+  font-family: var(--font-display);
+  font-size: 1.25rem; /* Increased from 0.95rem */
+  font-weight: 600; /* Slightly bolder */
+  color: var(--color-white);
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+/* Description - Secondary, softer text */
+.project-principles__description {
+  font-family: var(--font-body);
+  font-size: 0.9375rem; /* Increased from 0.8rem */
+  font-weight: 400;
+  color: var(--color-gray-400);
+  line-height: 1.5;
+}

@@ -1,0 +1,187 @@
+---
+/**
+ * Connectivity Section
+ * Connectivité & Proximité Paris
+ */
+import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
+import { getImage } from "astro:assets";
+
+// Import images for optimization
+import nanterreCityImg from "../../assets/greeny-nanterre.avif";
+import rueCommerceImg from "../../assets/rue-commerce-street.jpg";
+import leMarcheImg from "../../assets/lemarche.webp";
+import rerTrainImg from "../../assets/nanterre-prefecture.avif";
+
+// Generate optimized WebP versions
+const coeurVilleBg = await getImage({
+  src: nanterreCityImg,
+  format: "webp",
+  quality: 80,
+});
+const commercesBg = await getImage({
+  src: rueCommerceImg,
+  format: "webp",
+  quality: 80,
+});
+const marcheBg = await getImage({
+  src: leMarcheImg,
+  format: "webp",
+  quality: 80,
+});
+const parisBg = await getImage({
+  src: rerTrainImg,
+  format: "webp",
+  quality: 80,
+});
+---
+
+<section
+  class="connectivity"
+  data-section="connectivite"
+  id="connectivite"
+  aria-labelledby="connectivity-title"
+>
+  <div class="connectivity__header">
+    <div class="connectivity__title-group">
+      <AnimatedVerticalLine height="4rem" />
+      <h2 id="connectivity-title" class="connectivity__title type-h2">
+        Quatre bonnes raisons<br />d'être bien situé
+      </h2>
+      <p class="connectivity__intro type-body">
+        Le centre-ville de Nanterre, le marché du quartier,<br />
+        les commerces du quotidien — et le RER A en face du boulevard de la France.
+      </p>
+    </div>
+  </div>
+
+  <div class="connectivity__cards">
+    <!-- Card 1: Cœur de Ville -->
+    <div class="connectivity__card">
+      <div
+        class="connectivity__card-bg"
+        style={`background-image: url('${coeurVilleBg.src}');`}
+      >
+      </div>
+      <div class="connectivity__card-overlay"></div>
+      <div class="connectivity__card-content">
+        <h3 class="connectivity__card-title type-h3">Cœur de Ville</h3>
+        <p class="connectivity__card-text type-body-lg">
+          Le projet est dans le centre historique de Nanterre, classé Zone UA — un quartier vivant avec de vraies rues, de vrais habitants.
+        </p>
+      </div>
+    </div>
+
+    <!-- Card 2: Commerces -->
+    <div class="connectivity__card">
+      <div
+        class="connectivity__card-bg"
+        style={`background-image: url('${commercesBg.src}');`}
+      >
+      </div>
+      <div class="connectivity__card-overlay"></div>
+      <div class="connectivity__card-content">
+        <h3 class="connectivity__card-title type-h3">Commerces & Services</h3>
+        <p class="connectivity__card-text type-body-lg">
+          Boulangerie, pharmacie, épicerie, médecin. Tout est là, à deux minutes
+          à pied. Pas besoin de voiture pour le quotidien.
+        </p>
+      </div>
+    </div>
+
+    <!-- Card 3: Marché -->
+    <div class="connectivity__card">
+      <div
+        class="connectivity__card-bg"
+        style={`background-image: url('${marcheBg.src}');`}
+      >
+      </div>
+      <div class="connectivity__card-overlay"></div>
+      <div class="connectivity__card-content">
+        <h3 class="connectivity__card-title type-h3">Le Marché</h3>
+        <p class="connectivity__card-text type-body-lg">
+          Lundi, mercredi, samedi — le marché est là depuis des années. Fruits,
+          légumes, fromages. Un vrai marché de quartier, pas un marché bio
+          tendance.
+        </p>
+      </div>
+    </div>
+
+    <!-- Card 4: Paris - RER A -->
+    <div class="connectivity__card connectivity__card--final">
+      <div
+        class="connectivity__card-bg"
+        style={`background-image: url('${parisBg.src}');`}
+      >
+      </div>
+      <div class="connectivity__card-overlay"></div>
+      <div class="connectivity__card-content">
+        <h3 class="connectivity__card-title type-h3">Gare Nanterre-Ville · RER A</h3>
+        <p class="connectivity__card-text type-body-lg">
+          En face du boulevard de la France. La Défense en 8 min, Châtelet en 20 min.
+        </p>
+        <ul class="connectivity__card-tags">
+          <li>RER A</li>
+          <li>Bus 367</li>
+          <li>Bus 141</li>
+          <li>Bus 157</li>
+          <li>Bus 159</li>
+          <li>Bus 160</li>
+          <li>Noctilien</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @import "../../styles/connectivity.css";
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Parallax & Reveal Logic
+    const cards = document.querySelectorAll(".connectivity__card");
+    const header = document.querySelector(".connectivity__header");
+
+    if (cards.length === 0) return;
+
+    cards.forEach((card) => {
+      const bg = card.querySelector(".connectivity__card-bg");
+      const content = card.querySelector(".connectivity__card-content");
+
+      // Parallax Effect for Background
+      if (bg) {
+        gsap.to(bg, {
+          y: "20%" /* Move image slightly down as we scroll down to create depth */,
+          ease: "none",
+          scrollTrigger: {
+            trigger: card,
+            start: "top bottom", // Start when card enters bottom
+            end: "bottom top", // End when card leaves top
+            scrub: true,
+          },
+        });
+      }
+
+      // Content Reveal (Fade Up)
+      if (content) {
+        gsap.to(content, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 60%", // Trigger when card center-ish
+            toggleActions: "play none none reverse",
+          },
+        });
+      }
+    });
+  });
+</script>

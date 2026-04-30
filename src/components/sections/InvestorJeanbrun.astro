@@ -1,0 +1,373 @@
+---
+/**
+ * Investor — Relance Logement / Loi Jeanbrun Section
+ * Light theme, consistent with other white sections
+ */
+import Button from "../ui/Button.astro";
+import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
+---
+
+<section
+  class="investor-jeanbrun"
+  data-section="investisseur"
+  id="investisseur"
+  aria-labelledby="jeanbrun-title"
+>
+  <div class="investor-jeanbrun__container">
+    <!-- Left: Text content -->
+    <div class="investor-jeanbrun__text" data-animate="jeanbrun-text">
+      <p class="investor-jeanbrun__tag type-label">Pour les investisseurs</p>
+
+      <h2 id="jeanbrun-title" class="investor-jeanbrun__title type-h2">
+        Vous êtes investisseur ?<br />
+        Profitez des avantages<br />
+        de la <span class="investor-jeanbrun__highlight">loi Jeanbrun</span>
+      </h2>
+
+      <div class="investor-jeanbrun__subtitle-group">
+        <AnimatedVerticalLine height="100%" />
+        <p class="investor-jeanbrun__subtitle type-tagline">
+          Dispositif Relance Logement
+        </p>
+      </div>
+
+      <div class="investor-jeanbrun__body">
+        <p class="type-body">
+          Le dispositif <strong>Relance Logement</strong>, aussi appelé loi
+          Jeanbrun, offre aux particuliers un cadre fiscal avantageux pour
+          investir dans un logement locatif neuf ou rénové.
+        </p>
+        <p class="type-body">
+          En immeuble collectif et certifié RE2020, <strong>Cœur Nanterre</strong>
+          répond pleinement aux critères d'éligibilité.
+        </p>
+      </div>
+
+      <div class="investor-jeanbrun__actions" data-animate="jeanbrun-actions">
+        <Button href="#contact" variant="primary" class="btn--full-mobile js-contact-expert">
+          Consultez-nous
+        </Button>
+
+        <a
+          href="https://www.ecologie.gouv.fr/actualites/relance-logement-nouveau-dispositif-faciliter-lachat-location-logements"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="investor-jeanbrun__gov-link"
+          aria-label="Pour en savoir plus sur le dispositif Relance Logement — site officiel du gouvernement (ouvre dans un nouvel onglet)"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+          Pour en savoir plus
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: Stats card -->
+    <div class="investor-jeanbrun__card" data-animate="jeanbrun-card">
+      <div class="investor-jeanbrun__card-inner">
+        <div class="investor-jeanbrun__stats">
+          <div class="investor-jeanbrun__stat">
+            <span class="investor-jeanbrun__stat-prefix">Jusqu'à</span>
+            <span class="investor-jeanbrun__stat-number">12 000 €</span>
+            <span class="investor-jeanbrun__stat-label">d'amortissement par an</span>
+          </div>
+          <div class="investor-jeanbrun__stat">
+            <span class="investor-jeanbrun__stat-prefix">Jusqu'à</span>
+            <span class="investor-jeanbrun__stat-number">10 700 €</span>
+            <span class="investor-jeanbrun__stat-label">de déduction sur les revenus</span>
+          </div>
+        </div>
+
+        <hr class="investor-jeanbrun__divider" />
+
+        <ul class="investor-jeanbrun__card-list">
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Logements neufs ou rénovés (30 % travaux)
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Immeubles collectifs éligibles
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Location résidence principale, 9 ans
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Plafonds de loyers respectés
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Norme RE2020 & Performance énergétique
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Fort potentiel locatif à Nanterre
+          </li>
+        </ul>
+
+        <p class="investor-jeanbrun__card-note type-body-sm">
+          Dispositif soumis à conditions et plafonds de loyers. Nos conseillers vous accompagnent.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .investor-jeanbrun {
+    position: relative;
+    background: #fff;
+    padding: 8rem 2rem;
+    overflow: hidden;
+    color: var(--color-primary-dark);
+  }
+
+  /* Subtle decorative background */
+  .investor-jeanbrun::before {
+    content: "";
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(41, 70, 87, 0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .investor-jeanbrun__container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .investor-jeanbrun__container {
+      grid-template-columns: 1.1fr 0.9fr;
+    }
+  }
+
+  /* Text side */
+  .investor-jeanbrun__tag {
+    margin: 0 0 1.25rem;
+  }
+
+  .investor-jeanbrun__title {
+    margin: 0 0 2rem;
+    line-height: 1.15;
+  }
+
+  .investor-jeanbrun__highlight {
+    color: #eb585b;
+  }
+
+  .investor-jeanbrun__subtitle-group {
+    display: flex;
+    align-items: stretch;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .investor-jeanbrun__body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-left: calc(2px + 1.25rem);
+    margin-bottom: 2.5rem;
+  }
+
+  .investor-jeanbrun__body p {
+    max-width: 50ch;
+  }
+
+  .investor-jeanbrun__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-left: calc(2px + 1.25rem);
+  }
+
+  @media (min-width: 480px) {
+    .investor-jeanbrun__actions {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  .investor-jeanbrun__gov-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-family-base);
+    font-size: 0.9375rem;
+    color: var(--color-gray-500);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+  }
+
+  .investor-jeanbrun__gov-link:hover {
+    color: var(--color-primary-dark);
+  }
+
+  /* Card side */
+  .investor-jeanbrun__card {
+    display: flex;
+    justify-content: center;
+  }
+
+  .investor-jeanbrun__card-inner {
+    background: #fff;
+    border: 1px solid var(--color-gray-200);
+    border-radius: 8px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 420px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .investor-jeanbrun__card-inner:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Stats */
+  .investor-jeanbrun__stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .investor-jeanbrun__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .investor-jeanbrun__stat-prefix {
+    font-family: var(--font-family-base);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-gray-400);
+    line-height: 1;
+  }
+
+  .investor-jeanbrun__stat-number {
+    font-family: var(--font-family-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #eb585b;
+    letter-spacing: -0.02em;
+  }
+
+  .investor-jeanbrun__stat-label {
+    font-family: var(--font-family-base);
+    font-size: 0.9375rem;
+    color: var(--color-gray-600);
+    line-height: 1.4;
+  }
+
+  .investor-jeanbrun__divider {
+    border: none;
+    border-top: 1px solid var(--color-gray-200);
+    margin: 0;
+  }
+
+  /* Checklist */
+  .investor-jeanbrun__card-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .investor-jeanbrun__card-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    font-family: var(--font-family-base);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--color-gray-700);
+  }
+
+  .investor-jeanbrun__card-list svg {
+    color: #eb585b;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .investor-jeanbrun__card-note {
+    margin: 0;
+    color: var(--color-gray-400);
+    font-style: normal;
+  }
+
+  @media (max-width: 767px) {
+    .investor-jeanbrun {
+      padding: 5rem 1.5rem;
+    }
+
+    .investor-jeanbrun__body,
+    .investor-jeanbrun__actions {
+      margin-left: 0;
+    }
+
+    .investor-jeanbrun__subtitle-group {
+      margin-left: 0;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const section = document.querySelector(".investor-jeanbrun");
+    if (!section) return;
+
+    const ease = "power2.out";
+
+    [
+      '[data-animate="jeanbrun-text"]',
+      '[data-animate="jeanbrun-card"]',
+      '[data-animate="jeanbrun-actions"]',
+    ].forEach((sel, i) => {
+      const el = document.querySelector(sel);
+      if (!el) return;
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease,
+          delay: i * 0.15,
+          scrollTrigger: { trigger: section, start: "top 72%" },
+        }
+      );
+    });
+  });
+</script>

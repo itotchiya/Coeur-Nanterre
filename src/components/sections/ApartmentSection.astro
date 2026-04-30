@@ -1,0 +1,298 @@
+---
+/**
+ * Apartment Section
+ * L'exception côté appartement
+ */
+import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
+import { getImage } from "astro:assets";
+import asset1Raw from "../../assets/uploads/asset1.svg";
+import asset2Raw from "../../assets/uploads/asset2.svg";
+import asset3Raw from "../../assets/uploads/asset3.svg";
+import asset4Raw from "../../assets/uploads/asset4.svg";
+import asset5Raw from "../../assets/uploads/asset5.svg";
+import asset6Raw from "../../assets/uploads/asset6.svg";
+import apartmentHeroRaw from "../../assets/NAN_RF_502_VUE_APP.jpg";
+
+const apartmentHero = await getImage({ src: apartmentHeroRaw, format: "webp", width: 1600, quality: 88 });
+const asset1 = await getImage({ src: asset1Raw });
+const asset2 = await getImage({ src: asset2Raw });
+const asset3 = await getImage({ src: asset3Raw });
+const asset4 = await getImage({ src: asset4Raw });
+const asset5 = await getImage({ src: asset5Raw });
+const asset6 = await getImage({ src: asset6Raw });
+---
+
+<section
+  class="apartment"
+  data-section="apartment"
+  id="apartment"
+  aria-labelledby="apartment-title"
+>
+  <div class="apartment__container">
+    <!-- Top: Hero image -->
+    <div class="apartment__hero-image" data-animate="image-reveal">
+      <img
+        src={apartmentHero.src}
+        alt="Vue de la résidence — appartement"
+        class="apartment__hero-img"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+
+    <!-- Title & Intro -->
+    <div class="apartment__header">
+      <h2
+        id="apartment-title"
+        class="apartment__title type-h2"
+        data-animate="fade-up"
+      >
+        L'exception côté appartement
+      </h2>
+
+      <p
+        class="apartment__intro type-body"
+        data-animate="fade-up"
+      >
+        Les appartements déclinés du T1 au T5 ont été pensés avec le plus grand soin pour optimiser au maximum les volumes et offrir à chacun de l'espace que vous vivez seul, en couple ou en famille.
+      </p>
+
+
+    </div>
+
+    <!-- 6 Content Cards Grid -->
+    <div class="apartment__grid" data-animate="fade-up">
+      <!-- Card 1: Light -->
+      <div class="apartment__card">
+        <div class="apartment__card-illustration">
+          <img src={asset1.src} alt="Fenêtre / Lumière" class="apartment__card-icon" />
+        </div>
+        <p class="apartment__card-text type-body">
+          Traversant ou bi orienté, les appartements sont gorgés de lumière grâce aux grandes ouvertures.
+        </p>
+      </div>
+
+      <!-- Card 2: Dining -->
+      <div class="apartment__card">
+        <div class="apartment__card-illustration">
+          <img src={asset2.src} alt="Table à manger / Convivialité" class="apartment__card-icon" />
+        </div>
+        <p class="apartment__card-text type-body">
+          Les pièces de vie mettent à l'honneur la convivialité et le partage avec la cuisine ouverte sur le séjour.
+        </p>
+      </div>
+
+      <!-- Card 3: Bedroom -->
+      <div class="apartment__card">
+        <div class="apartment__card-illustration">
+          <img src={asset3.src} alt="Chambre / Espace nuit" class="apartment__card-icon" />
+        </div>
+        <p class="apartment__card-text type-body">
+          Les espaces de nuit, bien séparés, préservent la tranquillité de chacun.
+        </p>
+      </div>
+
+      <!-- Card 4: Terrace -->
+      <div class="apartment__card">
+        <div class="apartment__card-illustration">
+          <img src={asset4.src} alt="Terrasse / Balcon" class="apartment__card-icon" />
+        </div>
+        <p class="apartment__card-text type-body">
+          La plupart des appartements se prolongent sur un agréable balcon ou une grande terrasse.
+        </p>
+      </div>
+
+      <!-- Card 5: Outdoor lounge -->
+      <div class="apartment__card">
+        <div class="apartment__card-illustration">
+          <img src={asset5.src} alt="Détente / Espace extérieur" class="apartment__card-icon" />
+        </div>
+        <p class="apartment__card-text type-body">
+          Ces espaces de vie supplémentaires sont la promesse de moments de détente à vivre intensément.
+        </p>
+      </div>
+
+      <!-- Card 6: Rooftop -->
+      <div class="apartment__card">
+        <div class="apartment__card-illustration">
+          <img src={asset6.src} alt="Terrasse sur le toit / Appartement d'exception" class="apartment__card-icon" />
+        </div>
+        <p class="apartment__card-text type-body">
+          Appartement d'exception de 5 pièces avec terrasse de 68 m² sur le toit, pour une atmosphère unique.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .apartment {
+    padding: 6rem 0;
+    background: #fff;
+  }
+
+  .apartment__container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* Hero Image */
+  .apartment__hero-image {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 4rem;
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 2 / 1;
+  }
+
+  .apartment__hero-img {
+    width: 100%;
+    height: 115%;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+    will-change: transform;
+  }
+
+  /* Header */
+  .apartment__header {
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    text-align: center;
+  }
+
+  .apartment__title {
+    margin-bottom: 1.5rem;
+  }
+
+  .apartment__intro {
+    max-width: 640px;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
+    color: var(--color-text-muted, #555);
+  }
+
+  .apartment__subtitle-group {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .apartment__subtitle {
+    padding-top: 0.25rem;
+  }
+
+  /* Grid */
+  .apartment__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Cards */
+  .apartment__card {
+    background: white;
+    border-radius: 8px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+    border: 1px solid var(--color-gray-200);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .apartment__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  }
+
+  .apartment__card-illustration {
+    width: 96px;
+    height: 96px;
+    color: var(--color-primary, #2c3e3a);
+    flex-shrink: 0;
+    margin: 0 auto 0.75rem;
+  }
+
+  .apartment__card-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .apartment__card-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-text, #333);
+    margin: 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .apartment__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .apartment {
+      padding: 4rem 0;
+    }
+
+    .apartment__grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .apartment__hero-image {
+      margin: 0 auto 3rem;
+      aspect-ratio: 16 / 9;
+    }
+
+    .apartment__header {
+      margin-bottom: 3rem;
+    }
+
+    .apartment__subtitle-group {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const heroImg = document.querySelector(".apartment__hero-img");
+    const heroContainer = document.querySelector(".apartment__hero-image");
+
+    if (heroImg && heroContainer) {
+      gsap.fromTo(
+        heroImg,
+        { yPercent: 8 },
+        {
+          yPercent: -8,
+          ease: "none",
+          scrollTrigger: {
+            trigger: heroContainer,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        }
+      );
+    }
+  });
+</script>

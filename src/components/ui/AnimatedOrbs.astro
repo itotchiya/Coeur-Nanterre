@@ -1,0 +1,79 @@
+---
+/**
+ * AnimatedOrbs.astro
+ * Reusable animated background blobs/orbs
+ */
+---
+
+<div class="animated-orbs" aria-hidden="true">
+  <span class="animated-orb animated-orb--1"></span>
+  <span class="animated-orb animated-orb--2"></span>
+  <span class="animated-orb animated-orb--3"></span>
+</div>
+
+<style>
+  .animated-orbs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+    /* The core "feel" background gradient */
+    background: linear-gradient(
+      135deg,
+      rgba(37, 32, 103, 0.03) 0%,
+      rgba(37, 32, 103, 0.08) 100%
+    );
+  }
+
+  .animated-orb {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(37, 32, 103, 0.15) 0%,
+      transparent 70%
+    );
+    animation: float-orb 8s ease-in-out infinite;
+    will-change: transform, opacity;
+  }
+
+  .animated-orb--1 {
+    width: 300px;
+    height: 300px;
+    top: -100px;
+    right: 5%;
+    animation-delay: 0s;
+  }
+
+  .animated-orb--2 {
+    width: 250px;
+    height: 250px;
+    bottom: -50px;
+    left: 10%;
+    animation-delay: -3s;
+  }
+
+  .animated-orb--3 {
+    width: 180px;
+    height: 180px;
+    top: 30%;
+    left: 35%;
+    animation-delay: -5s;
+  }
+
+  @keyframes float-orb {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translate(30px, -30px) scale(1.1);
+      opacity: 0.8;
+    }
+  }
+</style>

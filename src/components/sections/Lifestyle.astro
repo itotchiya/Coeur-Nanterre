@@ -1,0 +1,407 @@
+---
+/**
+ * Lifestyle Section
+ * Une expérience de vie à imaginer
+ * Immersive editorial gallery with spec anchors
+ */
+import InteractiveImageCard from "../ui/InteractiveImageCard.astro";
+import AnimatedOrbs from "../ui/AnimatedOrbs.astro";
+import Button from "../ui/Button.astro";
+import {
+  PTZ_LIFESTYLE_TEXT,
+  PTZ_SUPPORT_TEXT,
+} from "../../lib/site-config";
+
+// Import Lifestyle Images
+import arch04 from "../../assets/arch04.avif";
+import arch15 from "../../assets/arch15.avif";
+import arch32 from "../../assets/arch32.avif";
+import arch24 from "../../assets/arch24.avif";
+import arch26 from "../../assets/arch26.avif";
+import arch06 from "../../assets/arch06.avif";
+import arch12 from "../../assets/arch12.avif";
+import arch01 from "../../assets/arch01.avif";
+---
+
+<section
+  class="lifestyle"
+  data-section="lifestyle"
+  id="lifestyle"
+  aria-labelledby="lifestyle-title"
+>
+  <div class="lifestyle__container">
+    <!-- 1. INTRODUCTION -->
+    <header class="lifestyle__header" data-animate="lifestyle-header">
+      <h2 id="lifestyle-title" class="lifestyle__title type-h2">
+        Se projeter dans les futurs espaces de vie
+      </h2>
+      <p class="lifestyle__subtitle type-body-lg">
+        Des vues d'ambiance et des rendus 3D pour imaginer les volumes, la
+        lumière et les usages au quotidien.
+      </p>
+    </header>
+
+    <!-- 3. IMMERSIVE IMAGE GALLERY — 2×2 Grid -->
+    <div class="lifestyle__gallery">
+      <!-- 2. LIFESTYLE MARQUEE (Infinite Loop) - Moved inside gallery -->
+      <div class="lifestyle__marquee" data-animate="lifestyle-marquee">
+        <AnimatedOrbs />
+
+        <div class="lifestyle__marquee-inner">
+          {
+            /* Render list twice for seamless loop */
+            [1, 3].map(() => (
+              <ul class="lifestyle__marquee-list">
+                <li>Terrasses privatives</li>
+                <li class="dot" />
+                <li>Jardins au rez-de-chaussée</li>
+                <li class="dot" />
+                <li>Séjours baignés de lumière</li>
+                <li class="dot" />
+                <li>Volets roulants</li>
+                <li class="dot" />
+                <li>Parking sécurisé</li>
+                <li class="dot" />
+                <li>Ascenseur 630 kg</li>
+                <li class="dot" />
+                <li>Local vélos</li>
+                <li class="dot" />
+                <li>Dressings intégrés</li>
+                <li class="dot" />
+                <li>Portes-fenêtres</li>
+                <li class="dot" />
+              </ul>
+            ))
+          }
+        </div>
+      </div>
+      <!-- Row 1 -->
+      <div class="lifestyle__row" data-animate="lifestyle-row-1">
+        <InteractiveImageCard
+          title="Séjour / Cuisine Ouvert"
+          description="Un séjour grand, ouvert sur la cuisine, avec la lumière des deux côtés pour beaucoup d'entre eux. La terrasse est juste là, sans marche."
+          placeholderText="Séjour – rendu à venir"
+          src={arch04.src}
+          specs={[
+            { icon: "◎", text: "Open-plan lumineux" },
+            { icon: "◎", text: "Portes-fenêtres" },
+            { icon: "◎", text: "Volets roulants" },
+          ]}
+        />
+        <InteractiveImageCard
+          title="Terrasses Privatives"
+          description="Chaque appartement a sa propre terrasse — du petit balcon aux 67 m² du dernier étage. Pas une terrasse collective. La vôtre."
+          placeholderText="Terrasse – rendu à venir"
+          src={arch15.src}
+          specs={[
+            { icon: "◎", text: "Lames de bois mélèze" },
+            { icon: "◎", text: "Garde-corps acier gris" },
+            { icon: "◎", text: "Stores Dune 0681" },
+          ]}
+        />
+      </div>
+
+      <!-- Row 2 -->
+      <div class="lifestyle__row" data-animate="lifestyle-row-2">
+        <InteractiveImageCard
+          title="Jardins Privatifs au RDC"
+          description="Au rez-de-chaussée, les appartements ont un vrai jardin clos — entre 40 et 107 m². On sort du séjour, on est dehors. Simple."
+          placeholderText="Jardin – rendu à venir"
+          src={arch32.src}
+          specs={[
+            { icon: "◎", text: "De 40 m² à 107 m²" },
+            { icon: "◎", text: "Clôtures grillage vert RAL 6005" },
+            { icon: "◎", text: "Accès direct séjour" },
+          ]}
+        />
+        <InteractiveImageCard
+          title="Parking Sécurisé Sous-Sol"
+          description="Huit places en sous-sol, chacune assignée à un logement précis. La rampe est habillée d'une pergola bois — même le parking a été pensé."
+          placeholderText="Parking – rendu à venir"
+          src={arch24.src}
+          specs={[
+            { icon: "◎", text: "8 places + 1 PMR (3,50 m)" },
+            { icon: "◎", text: "Rampe 18% — pergola bois" },
+            { icon: "◎", text: "Zone deux-roues 7 m²" },
+          ]}
+        />
+      </div>
+
+      <!-- Row 3 -->
+      <div class="lifestyle__row" data-animate="lifestyle-row-3">
+        <InteractiveImageCard
+          title="Chambres & Dressings"
+          description="Dans les grands appartements, jusqu'à quatre chambres avec dressing intégré. Chaque chambre a une vraie fenêtre — rien d'aveugle ici."
+          placeholderText="Chambre – rendu à venir"
+          src={arch26.src}
+          specs={[
+            { icon: "◎", text: "Jusqu'à 4 chambres" },
+            { icon: "◎", text: "Dressings intégrés" },
+            { icon: "◎", text: "Cloisons démontables" },
+          ]}
+        />
+        <InteractiveImageCard
+          title="Salles de Bains & d'Eau"
+          description="Une salle de bains, des WC indépendants. Dans les grands logements, une deuxième salle d'eau. Rien d'extravagant — juste ce qu'il faut."
+          placeholderText="Salle de bains – rendu à venir"
+          src={arch06.src}
+          specs={[
+            { icon: "◎", text: "SdB + SdE selon type" },
+            { icon: "◎", text: "WC indépendant" },
+            { icon: "◎", text: "Sèche-serviette" },
+          ]}
+        />
+      </div>
+
+    </div>
+
+    <!-- 4. ACTION CTA -->
+    <div
+      style="display: flex; justify-content: center;"
+      data-animate="lifestyle-action"
+    >
+      <Button
+        href="#"
+        variant="primary"
+        class="js-download-brochure btn--full-mobile"
+      >
+        Télécharger la plaquette
+      </Button>
+    </div>
+
+    <section class="lifestyle__ptz" data-animate="lifestyle-ptz" aria-label="Information PTZ">
+      <img
+        class="lifestyle__ptz-logo"
+        src="/Assets/logo-ptz.png"
+        alt="Logo Pret a Taux Zero"
+        loading="lazy"
+      />
+      <div class="lifestyle__ptz-content">
+        <h3 class="type-h4">PTZ et accession aidee</h3>
+        <p class="type-body">{PTZ_LIFESTYLE_TEXT}</p>
+        <p class="type-body-sm">{PTZ_SUPPORT_TEXT}</p>
+      </div>
+    </section>
+
+  </div>
+</section>
+
+<style>
+  @import "../../styles/lifestyle.css";
+
+  .lifestyle__ptz {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.25rem;
+    align-items: start;
+    margin: 3rem auto 0;
+    max-width: 980px;
+    padding: 1.5rem;
+    border: 1px solid rgba(41, 70, 87, 0.12);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(10px);
+  }
+
+  .lifestyle__ptz-logo {
+    width: auto;
+    height: clamp(88px, 10vw, 132px);
+    object-fit: contain;
+    align-self: center;
+  }
+
+  .lifestyle__ptz-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .lifestyle__ptz-content p {
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .lifestyle__ptz {
+      grid-template-columns: 1fr;
+    }
+
+    .lifestyle__ptz-logo {
+      justify-self: center;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const section = document.querySelector(".lifestyle");
+    if (!section) return;
+
+    const ease = "power2.out";
+
+    // ========================================
+    // 2. HEADER REVEAL
+    // ========================================
+    gsap.fromTo(
+      '[data-animate="lifestyle-header"]',
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.2,
+        ease,
+        scrollTrigger: {
+          trigger: '[data-animate="lifestyle-header"]',
+          start: "top 80%",
+          once: true,
+        },
+      },
+    );
+
+    // ========================================
+    // 3. SCROLL-INTERACTIVE MARQUEE
+    // ========================================
+    gsap.to(".lifestyle__marquee-inner", {
+      xPercent: -50,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".lifestyle",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1.5, // Slightly loose for elegant secondary motion
+      },
+    });
+
+    // ========================================
+    // 4. RESPONSIVE SCALE ANIMATION
+    // ========================================
+    const rows = document.querySelectorAll(".lifestyle__row");
+
+    ScrollTrigger.matchMedia({
+      // Desktop: Animate entire row together
+      "(min-width: 900px)": function () {
+        rows.forEach((row) => {
+          gsap.fromTo(
+            row,
+            { scale: 0.92, opacity: 1 },
+            {
+              scale: 1,
+              opacity: 1,
+              ease: "none",
+              scrollTrigger: {
+                trigger: row,
+                start: "top 92%",
+                end: "top 60%",
+                scrub: 1,
+              },
+            },
+          );
+        });
+      },
+
+      // Mobile: Animate each card individually
+      "(max-width: 899px)": function () {
+        rows.forEach((row) => {
+          const cards = row.querySelectorAll(".interactive-card");
+          cards.forEach((card) => {
+            // 1. Scale Animation (Visual entry)
+            gsap.fromTo(
+              card,
+              { scale: 0.92, opacity: 1 },
+              {
+                scale: 1,
+                opacity: 1,
+                ease: "none",
+                scrollTrigger: {
+                  trigger: card,
+                  start: "top 85%",
+                  end: "top 55%",
+                  scrub: 1,
+                },
+              },
+            );
+
+            // 2. Active Toggle (Interaction imitation)
+            ScrollTrigger.create({
+              trigger: card,
+              start: "top 20%", // Trigger around center (slightly lower to ensure it activates when dominant)
+              end: "bottom top",
+              toggleClass: "is-active",
+            });
+          });
+        });
+      },
+    });
+
+    // Parallax (Shared logic, safe to keep outside or duplicated if needed)
+    rows.forEach((row) => {
+      const images = row.querySelectorAll(".interactive-card__img");
+      images.forEach((img) => {
+        gsap.to(img, {
+          y: "15%",
+          ease: "none",
+          scrollTrigger: {
+            trigger: row,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      });
+    });
+
+    // ========================================
+    // 5. CLOSING NOTE
+    // ========================================
+    gsap.fromTo(
+      '[data-animate="lifestyle-note"]',
+      { opacity: 0 },
+      {
+        opacity: 1,
+        duration: 1,
+        ease,
+        scrollTrigger: {
+          trigger: '[data-animate="lifestyle-note"]',
+          start: "top 85%",
+          once: true,
+        },
+      },
+    );
+
+    gsap.fromTo(
+      '[data-animate="lifestyle-action"]',
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease,
+        scrollTrigger: {
+          trigger: '[data-animate="lifestyle-action"]',
+          start: "top 85%",
+          once: true,
+        },
+      },
+    );
+
+    gsap.fromTo(
+      '[data-animate="lifestyle-ptz"]',
+      { opacity: 0, y: 24 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease,
+        scrollTrigger: {
+          trigger: '[data-animate="lifestyle-ptz"]',
+          start: "top 85%",
+          once: true,
+        },
+      },
+    );
+  });
+</script>

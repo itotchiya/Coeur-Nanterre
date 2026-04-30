@@ -1,0 +1,711 @@
+/* Program Overview Section — Static Timeline Layout */
+
+.program-overview {
+  position: relative;
+  background-color: var(--color-white);
+  padding: 8rem 2rem;
+}
+
+.program-overview__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+/* ============================================
+   1. HEADER
+   ============================================ */
+.program-overview__header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.program-overview__title {
+  /* Inherits .type-h2 via HTML class */
+  margin-bottom: 1.5rem;
+}
+
+.program-overview__subtitle {
+  /* Inherits .type-body via HTML class */
+  max-width: 60ch;
+  margin: 0 auto;
+}
+
+/* ============================================
+   2. PROGRAM SNAPSHOT — Compact Animated Strip
+   ============================================ */
+.program-overview__snapshot {
+  position: relative;
+  /* Background now handled by AnimatedOrbs component */
+  border-radius: 12px;
+  padding: 3rem;
+  overflow: hidden;
+}
+
+@keyframes float-orb {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(20px, -20px) scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+/* Main Strip Layout — Vertical */
+.program-overview__strip {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Number Block (Top) */
+.program-overview__number-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.program-overview__number {
+  /* Inherits .type-display via HTML class */
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    text-shadow: 0 0 20px rgba(37, 32, 103, 0.2);
+  }
+  50% {
+    text-shadow: 0 0 40px rgba(37, 32, 103, 0.4);
+  }
+}
+
+.program-overview__number-label {
+  /* Inherits .type-label via HTML class */
+  text-align: center;
+}
+
+/* Features List (Bottom) */
+.program-overview__features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.program-overview__snapshot-divider {
+  width: min(100%, 720px);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(37, 32, 103, 0),
+    rgba(37, 32, 103, 0.18),
+    rgba(37, 32, 103, 0)
+  );
+}
+
+.program-overview__prestations-block {
+  width: 100%;
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.875rem;
+  text-align: center;
+}
+
+.program-overview__prestations-title {
+  font-family: var(--font-family-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.program-overview__prestations-copy {
+  margin: 0;
+  color: var(--color-gray-700);
+}
+
+.program-overview__features--secondary {
+  gap: 0.85rem;
+}
+
+.program-overview__features--secondary .program-overview__feature-dot {
+  display: none;
+}
+
+.program-overview__features--secondary .program-overview__feature {
+  padding-inline: 1.1rem;
+}
+
+.program-overview__prestations-note {
+  margin: 0;
+  max-width: 60ch;
+  color: var(--color-gray-600);
+}
+
+.program-overview__feature {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-white);
+  padding: 0.6rem 1rem;
+  border-radius: 100px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.program-overview__feature-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+.program-overview__feature:nth-child(2) .program-overview__feature-dot {
+  animation-delay: -0.5s;
+}
+.program-overview__feature:nth-child(3) .program-overview__feature-dot {
+  animation-delay: -1s;
+}
+.program-overview__feature:nth-child(4) .program-overview__feature-dot {
+  animation-delay: -1.5s;
+}
+
+.program-overview__feature-text {
+  /* Inherits .type-body-sm via HTML class */
+  font-weight: 500;
+}
+
+/* Responsive Strip */
+@media (max-width: 900px) {
+  .program-overview__strip {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .program-overview__number-block {
+    width: 100%;
+  }
+  
+  .program-overview__features {
+    justify-content: center;
+  }
+
+  .program-overview__prestations-block {
+    max-width: 100%;
+  }
+  
+  .program-overview__image-placeholder {
+    width: 100%;
+    height: 120px;
+  }
+  
+  .program-overview__image-inner {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 600px) {
+  .program-overview__snapshot {
+    padding: 2rem 1.5rem;
+  }
+  
+  .program-overview__number {
+    font-size: 3rem;
+  }
+  
+  .program-overview__feature {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .program-overview__prestations-note {
+    text-align: left;
+  }
+}
+
+/* ============================================
+   3. LOTS TABLE
+   ============================================ */
+.program-overview__lots {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.program-overview__lots-title {
+  margin: 0;
+}
+
+.program-overview__lots-table-wrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid var(--color-gray-200);
+}
+
+.program-overview__lots-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-family-base);
+  font-size: 0.9375rem;
+  white-space: nowrap;
+}
+
+.program-overview__lots-table thead tr {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.program-overview__lots-table th {
+  padding: 0.875rem 1.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: left;
+}
+
+.program-overview__lots-table tbody tr {
+  border-bottom: 1px solid var(--color-gray-200);
+  transition: background-color 0.15s ease;
+}
+
+.program-overview__lots-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.program-overview__lots-table tbody tr:hover {
+  background-color: var(--color-gray-50);
+}
+
+.program-overview__lot-row--interactive {
+  cursor: pointer;
+}
+
+.program-overview__lot-row--interactive:hover {
+  background-color: var(--color-gray-50);
+}
+
+.program-overview__lot-row--interactive:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+  background-color: var(--color-gray-50);
+}
+
+.program-overview__lots-table td {
+  padding: 0.875rem 1.25rem;
+  color: var(--color-gray-700);
+}
+
+.program-overview__lots-table td:first-child {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.lots-table__maison {
+  background-color: var(--color-gray-50);
+}
+
+.lots-table__maison td:first-child {
+  color: var(--color-gray-600) !important;
+}
+
+.lot-badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  background-color: var(--color-gray-100);
+  border-radius: 100px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.lot-badge--maison {
+  background-color: var(--color-gray-200);
+  color: var(--color-gray-600);
+}
+
+.lot-status {
+  display: inline-block;
+  padding: 0.2rem 0.75rem;
+  border-radius: 100px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.lot-status--available {
+  background-color: rgba(34, 197, 94, 0.12);
+  color: #15803d;
+}
+
+.lot-status--reserved {
+  background-color: rgba(234, 179, 8, 0.12);
+  color: #a16207;
+}
+
+.lot-status--sold {
+  background-color: rgba(239, 68, 68, 0.12);
+  color: #b91c1c;
+}
+
+.lot-price {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+.lot-price-sqm {
+  font-variant-numeric: tabular-nums;
+  color: var(--color-gray-500);
+  white-space: nowrap;
+  font-size: 0.875rem;
+}
+
+.lot-price-muted {
+  color: var(--color-gray-400);
+  font-style: italic;
+  font-size: 0.875rem;
+}
+
+.lots-table__total td {
+  border-top: 1px solid var(--color-gray-200);
+  padding-top: 0.75rem;
+}
+
+.lots-table__no-parking td {
+  opacity: 0.55;
+}
+
+.program-overview__lots--secondary {
+  margin-top: 0;
+}
+
+/* ============================================
+   PRIX/M² STRIP — Compact metric layout
+   ============================================ */
+.prix-strip {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-gray-200);
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 0.875rem;
+}
+
+.prix-strip__head {
+  display: grid;
+  grid-template-columns: 7rem 7rem 1fr 6rem;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  background: var(--color-gray-50);
+  border-bottom: 1px solid var(--color-gray-200);
+  color: var(--color-gray-400);
+  font-size: 0.7rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.prix-strip__bar-col {
+  /* label for the bar column */
+}
+
+.prix-strip__row {
+  display: grid;
+  grid-template-columns: 7rem 7rem 1fr 6rem;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.45rem 1rem;
+  border-bottom: 1px solid var(--color-gray-100);
+  transition: background 0.15s ease;
+}
+
+.prix-strip__row:last-of-type {
+  border-bottom: none;
+}
+
+.prix-strip__row:hover {
+  background: var(--color-gray-50);
+}
+
+.prix-strip__surf {
+  color: var(--color-gray-500);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.8125rem;
+}
+
+.prix-strip__bar-wrap {
+  height: 5px;
+  background: var(--color-gray-100);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.prix-strip__bar {
+  display: block;
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: 3px;
+}
+
+.prix-strip__bar--high {
+  background: #2d6a4f;
+}
+
+.prix-strip__bar--low {
+  background: var(--color-gray-300);
+}
+
+.prix-strip__val {
+  text-align: right;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-primary);
+  font-size: 0.8125rem;
+  white-space: nowrap;
+}
+
+.prix-strip__val--high {
+  color: #2d6a4f;
+}
+
+.prix-strip__val--low {
+  color: var(--color-gray-500);
+  font-weight: 400;
+}
+
+.prix-strip__summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 1rem;
+  padding: 0.6rem 1rem;
+  background: var(--color-gray-50);
+  border-top: 1px solid var(--color-gray-200);
+  font-size: 0.8rem;
+  color: var(--color-gray-500);
+}
+
+.prix-strip__sep {
+  color: var(--color-gray-300);
+}
+
+@media (max-width: 600px) {
+  .prix-strip__head,
+  .prix-strip__row {
+    grid-template-columns: 6rem 6rem 1fr 5.5rem;
+    gap: 0.5rem;
+    padding: 0.45rem 0.75rem;
+  }
+  .prix-strip__bar-col {
+    display: none;
+  }
+}
+
+.program-overview__lots-note {
+  margin: 0;
+  color: var(--color-gray-400);
+  font-style: italic;
+}
+
+/* ============================================
+   4. VERTICAL TIMELINE — Static
+   ============================================ */
+.program-overview__timeline {
+  position: relative;
+  padding-left: 3rem;
+}
+
+/* The Spine Line — Static, always visible */
+.program-overview__timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--color-gray-200);
+}
+
+/* Timeline Node */
+.program-overview__node {
+  position: relative;
+  padding-bottom: 3rem;
+}
+
+.program-overview__node:last-child {
+  padding-bottom: 0;
+}
+
+/* Node Dot — Base */
+.program-overview__node-dot {
+  position: absolute;
+  left: -3rem;
+  top: 0.25rem;
+  width: 16px;
+  height: 16px;
+  background-color: var(--color-white);
+  border: 3px solid var(--color-gray-300);
+  border-radius: 50%;
+  transform: translateX(-50%) translateX(1px);
+  z-index: 2;
+}
+
+/* Completed Node (past steps) */
+.program-overview__node--completed .program-overview__node-dot {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* Current/Active Node — Pulsing Animation */
+.program-overview__node--current .program-overview__node-dot {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(37, 32, 103, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(37, 32, 103, 0);
+  }
+}
+
+/* Future Node (upcoming steps) */
+.program-overview__node--future .program-overview__node-dot {
+  border-color: var(--color-gray-300);
+  background-color: var(--color-gray-100);
+}
+
+.program-overview__node--future .program-overview__node-content {
+  opacity: 0.5;
+}
+
+/* Node Content */
+.program-overview__node-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.program-overview__node-label {
+  /* Inherits .type-label via HTML class */
+  display: block;
+}
+
+.program-overview__node-title {
+  /* Inherits .type-h5 via HTML class */
+  display: block;
+}
+
+.program-overview__node-description {
+  /* Inherits .type-body via HTML class */
+  max-width: 50ch;
+}
+
+/* ============================================
+   4. VISUAL PLACEHOLDER
+   ============================================ */
+.program-overview__visual {
+  background-color: var(--color-gray-100);
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.program-overview__visual-icon {
+  width: 64px;
+  height: 64px;
+  background-color: var(--color-gray-200);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.program-overview__visual-icon svg {
+  width: 32px;
+  height: 32px;
+  color: var(--color-gray-400);
+}
+
+.program-overview__visual-text {
+  /* Inherits .type-body via HTML class */
+  max-width: 40ch;
+}
+
+/* ============================================
+   5. NOTICE / DISCLAIMER
+   ============================================ */
+.program-overview__notice {
+  background-color: transparent;
+  padding: 2rem 0;
+  border-top: 1px solid var(--color-gray-200);
+  text-align: center;
+}
+
+.program-overview__discrete {
+  /* Inherits .type-body-sm via HTML class */
+  font-style: italic;
+  margin: 0;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .program-overview__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .program-overview__list {
+    grid-template-columns: 1fr;
+  }
+
+  .program-overview__timeline {
+    padding-left: 2.5rem;
+  }
+
+  .program-overview__node-dot {
+    left: -2.5rem;
+    width: 12px;
+    height: 12px;
+  }
+
+  .program-overview__visual {
+    padding: 4rem 2rem;
+  }
+}
+
+.lot-badge--rehab {
+  background-color: rgba(201, 179, 140, 0.15);
+  color: #8B6914;
+}
+
+.lots-table__maison-existante td {
+  background-color: rgba(201, 179, 140, 0.04);
+}

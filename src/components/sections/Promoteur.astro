@@ -1,0 +1,267 @@
+---
+/**
+ * Promoteur AGL Section
+ */
+import Button from "../ui/Button.astro";
+---
+
+<section
+  class="promoteur"
+  data-section="promoteur"
+  id="promoteur"
+  aria-labelledby="promoteur-title"
+>
+  <div class="promoteur__container">
+
+    <div class="promoteur__grid">
+
+      <!-- Left: AGL info -->
+      <div class="promoteur__text" data-animate="promoteur-text">
+        <p class="promoteur__tag type-label">Le promoteur</p>
+
+        <h2 id="promoteur-title" class="promoteur__title type-h2">
+          <img
+            src="/Assets/logo-agl.svg"
+            alt="AGL"
+            class="promoteur__logo"
+          />
+        </h2>
+
+        <p class="promoteur__lead type-body">
+          Le promoteur AGL de l'opération Cœur Nanterre s'inscrit dans une trajectoire
+          d'excellence, fondée sur une expertise reconnue et une présence solidement
+          établie dans l'univers de l'immobilier et de la construction.
+        </p>
+
+        <p class="promoteur__body type-body">
+          Fort de près de <strong>18 années d'expérience</strong> et d'un parcours
+          marqué par la conduite de projets majeurs, il incarne une vision exigeante,
+          structurée et durable du développement.
+        </p>
+
+        <div class="promoteur__stats" data-animate="promoteur-stats">
+          <div class="promoteur__stat">
+            <span class="promoteur__stat-value">1 000 000 m²</span>
+            <span class="promoteur__stat-label type-body-sm">réalisés</span>
+          </div>
+          <div class="promoteur__stat">
+            <span class="promoteur__stat-value">18 ans</span>
+            <span class="promoteur__stat-label type-body-sm">d'expérience</span>
+          </div>
+          <div class="promoteur__stat">
+            <span class="promoteur__stat-value">5 – 50 M€</span>
+            <span class="promoteur__stat-label type-body-sm">par opération</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Pourquoi investir -->
+      <div class="promoteur__invest" data-animate="promoteur-invest">
+        <h3 class="promoteur__invest-title type-h4">Pourquoi investir ici</h3>
+        <p class="type-body">
+          L'opération Cœur Nanterre n'est pas seulement une adresse, c'est une promesse
+          de qualité de vie et de valorisation patrimoniale. Situé dans un secteur
+          privilégié, bénéficiant d'excellentes liaisons de transport et de services
+          de proximité, ce projet s'impose comme une opportunité unique.
+        </p>
+        <p class="type-body">
+          Que vous cherchiez votre future résidence principale ou un investissement
+          locatif performant, Cœur Nanterre combine accessibilité et prestige, offrant
+          un cadre de vie durable et dynamique, certifié RE2020.
+        </p>
+
+        <div class="promoteur__atouts">
+          <div class="promoteur__atout">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Frais de notaire réduits
+          </div>
+          <div class="promoteur__atout">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Norme RE2020 &amp; Performance énergétique
+          </div>
+          <div class="promoteur__atout">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Faibles charges de copropriété
+          </div>
+          <div class="promoteur__atout">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Fort potentiel locatif
+          </div>
+        </div>
+
+        <div style="margin-top: 1.5rem;">
+          <Button href="#contact" variant="primary" class="js-contact-expert btn--full-mobile">
+            Nous contacter
+          </Button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .promoteur {
+    background: var(--color-bg, #FAF9F7);
+    padding: 8rem 2rem;
+    border-top: 1px solid var(--color-gray-200, #e8e6e2);
+  }
+
+  .promoteur__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .promoteur__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  @media (min-width: 900px) {
+    .promoteur__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+    }
+  }
+
+  /* Left */
+  .promoteur__tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-gray-400);
+    margin: 0 0 1.25rem;
+    display: block;
+  }
+
+  .promoteur__title {
+    margin: 0 0 1.5rem;
+  }
+
+  .promoteur__logo {
+    height: 60px;
+    width: auto;
+    max-width: 200px;
+    object-fit: contain;
+    object-position: left center;
+  }
+
+  .promoteur__lead {
+    font-size: 1.0625rem;
+    color: var(--color-primary-dark);
+    margin: 0 0 1rem;
+  }
+
+  .promoteur__body {
+    color: var(--color-gray-600);
+    margin: 0 0 2rem;
+  }
+
+  .promoteur__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--color-primary-dark, #282e69);
+    border-radius: 16px;
+  }
+
+  .promoteur__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.25rem;
+  }
+
+  .promoteur__stat-value {
+    font-family: var(--font-family-heading);
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .promoteur__stat-label {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  /* Right */
+  .promoteur__invest-title {
+    margin: 0 0 1rem;
+    color: var(--color-primary-dark);
+  }
+
+  .promoteur__invest p {
+    color: var(--color-gray-600);
+    margin: 0 0 1rem;
+  }
+
+  .promoteur__atouts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+    border: 1px solid rgba(41, 70, 87, 0.1);
+    border-radius: 16px;
+    background: rgba(255,255,255,0.6);
+  }
+
+  .promoteur__atout {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-family: var(--font-family-base);
+    font-size: 0.9375rem;
+    color: var(--color-primary-dark);
+  }
+
+  .promoteur__atout svg {
+    color: var(--color-primary, #3e4791);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 767px) {
+    .promoteur {
+      padding: 5rem 1.5rem;
+    }
+
+    .promoteur__stats {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const section = document.querySelector(".promoteur");
+    if (!section) return;
+
+    [
+      '[data-animate="promoteur-text"]',
+      '[data-animate="promoteur-invest"]',
+      '[data-animate="promoteur-stats"]',
+    ].forEach((sel, i) => {
+      const el = document.querySelector(sel);
+      if (!el) return;
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1, y: 0, duration: 1, ease: "power2.out",
+          delay: i * 0.15,
+          scrollTrigger: { trigger: section, start: "top 72%" },
+        }
+      );
+    });
+  });
+</script>

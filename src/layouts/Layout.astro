@@ -1,0 +1,161 @@
+---
+import { BUILD_VERSION } from "../lib/build-version";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "Programme immobilier à Nanterre - Réhabilitation et construction neuve au cœur de la ville",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Cœur Nanterre" />
+    <meta name="app-build-version" content={BUILD_VERSION} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+
+    <!-- reCAPTCHA v3 -->
+    <script src="https://www.google.com/recaptcha/api.js?render=6LehYM4sAAAAAObgQALjV_hmnmQTHfiAZAuRJhyV" async defer></script>
+  </head>
+  <body
+    data-build-version={BUILD_VERSION}
+    data-environment={import.meta.env.PROD ? "production" : "development"}
+  >
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  @import "../styles/global.css";
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+</style>
+
+<script>
+  import Lenis from "lenis";
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  if (typeof window !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+    });
+
+    lenis.on("scroll", ScrollTrigger.update);
+    ScrollTrigger.addEventListener("refresh", () => lenis.resize());
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
+    let refreshFrame = 0;
+    const scheduleScrollRefresh = () => {
+      cancelAnimationFrame(refreshFrame);
+      refreshFrame = requestAnimationFrame(() => {
+        lenis.resize();
+        ScrollTrigger.refresh();
+        ScrollTrigger.update();
+      });
+    };
+
+    const notifyScrollRefresh = () => {
+      window.dispatchEvent(new CustomEvent("app:scroll-refresh"));
+    };
+
+    const refreshAfterLoad = () => {
+      requestAnimationFrame(() => {
+        scheduleScrollRefresh();
+        notifyScrollRefresh();
+      });
+    };
+
+    if (document.readyState === "complete") {
+      refreshAfterLoad();
+    } else {
+      window.addEventListener("load", refreshAfterLoad, { once: true });
+    }
+
+    const buildVersion = document.body.dataset.buildVersion;
+    const environment = document.body.dataset.environment;
+
+    if (environment === "production" && buildVersion) {
+      const reloadStorageKey = "app-last-reloaded-build-version";
+
+      const pollForNewVersion = async () => {
+        try {
+          const response = await fetch(`/?version-check=${Date.now()}`, {
+            cache: "no-store",
+          });
+
+          if (!response.ok) return;
+
+          const html = await response.text();
+          const versionMatch = html.match(
+            /<meta name="app-build-version" content="([^"]+)"/i,
+          );
+          const version = versionMatch?.[1];
+
+          if (!version || version === buildVersion) return;
+
+          const alreadyReloadedFor = sessionStorage.getItem(reloadStorageKey);
+          if (alreadyReloadedFor === version) return;
+
+          sessionStorage.setItem(reloadStorageKey, version);
+          window.location.reload();
+        } catch (error) {
+          console.warn("Build version check failed", error);
+        }
+      };
+
+      window.setTimeout(pollForNewVersion, 15000);
+      window.setInterval(pollForNewVersion, 30000);
+    }
+  }
+</script>

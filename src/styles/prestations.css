@@ -1,0 +1,120 @@
+/* ========================================
+   PRESTATIONS SECTION
+   Finitions & Équipements — carte soft
+   ======================================== */
+
+.prestations {
+  position: relative;
+  background: #fff;
+  padding: 8rem 2rem;
+}
+
+.prestations__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.prestations__header {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.prestations__title-group {
+  display: flex;
+  align-items: stretch;
+  gap: 1.5rem;
+}
+
+.prestations__overline {
+  display: block;
+  color: var(--color-primary);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.prestations__title {
+  margin: 0;
+}
+
+.prestations__intro {
+  max-width: 60ch;
+  color: var(--color-gray-600);
+}
+
+/* ============================================
+   GRID — 2 cols, soft cards like apartment
+   ============================================ */
+.prestations__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.prestations__item {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.5rem 2rem;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid var(--color-gray-200);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.prestations__item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+.prestations__icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  color: var(--color-primary);
+}
+
+.prestations__text {
+  font-family: var(--font-family-base);
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  font-weight: 500;
+  color: var(--color-gray-800);
+  line-height: 1.4;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 900px) {
+  .prestations {
+    padding: 6rem 1.5rem;
+  }
+
+  .prestations__container {
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .prestations {
+    padding: 5rem 1rem;
+  }
+
+  .prestations__grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .prestations__item {
+    padding: 1.25rem 1.5rem;
+  }
+}

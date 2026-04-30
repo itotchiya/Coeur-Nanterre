@@ -1,0 +1,303 @@
+---
+/**
+ * Location Section
+ * Une adresse au cœur de la ville
+ */
+import { getImage } from "astro:assets";
+import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
+import Button from "../ui/Button.astro";
+
+// Address visual
+import planMasseRaw from "../../assets/address-image.avif";
+const planMasse = await getImage({
+  src: planMasseRaw,
+  format: "webp",
+  quality: 90,
+  width: 2800,
+});
+
+// Plan-masse insertion urbaine
+import planMasseInsertionRaw from "../../assets/plan-masse-insertion.jpg";
+const planMasseInsertion = await getImage({ src: planMasseInsertionRaw, format: "webp", quality: 90 });
+
+---
+
+<section
+  class="location"
+  data-section="adresse"
+  id="adresse"
+  aria-labelledby="location-title"
+>
+  <div class="location__track">
+    <div class="location__text-panel">
+      <div class="location__content-wrapper">
+        <h2
+          id="location-title"
+          class="location__title type-h2"
+          data-animate="fade-up"
+        >
+          Vivre Nanterre,<br />au plus près de l'essentiel
+        </h2>
+
+        <div class="location__subtitle-group">
+          <AnimatedVerticalLine height="100%" />
+          <address
+            class="location__address type-tagline"
+            data-animate="fade-up"
+          >
+            68 Boulevard du Couchant,<br />92200 Nanterre
+          </address>
+        </div>
+
+        <div class="location__narrative" data-animate="fade-up">
+          <p class="location__paragraph type-body">
+            Nanterre-Ville, c'est encore une ville où on vit à pied. Le projet est en plein centre — pas en périphérie, pas dans une zone sans âme.
+          </p>
+
+          <p class="location__paragraph type-body">
+            En bas : boulangerie, pharmacie, médecin, le marché trois fois par semaine. Tout ce dont on a besoin, sans prendre la voiture.
+          </p>
+        </div>
+
+        <div style="margin-top: 2rem;" data-animate="fade-up">
+          <Button
+            href="#"
+            variant="primary"
+            class="js-download-brochure btn--full-mobile"
+          >
+            Télécharger la plaquette
+          </Button>
+        </div>
+      </div>
+    </div>
+
+    <div class="location__map" data-animate="reveal">
+      <img
+        src={planMasse.src}
+        alt="Localisation aérienne — 68 Boulevard du Couchant, Nanterre"
+        class="location__map-image"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</section>
+
+<!-- Plan-masse — Insertion urbaine -->
+<section class="plan-masse" aria-label="Plan-masse — Insertion urbaine">
+  <div class="plan-masse__container">
+    <figure class="plan-masse__figure" data-animate="plan-masse-figure">
+      <img
+        src={planMasseInsertion.src}
+        alt="Plan-masse — Insertion urbaine, 68 Boulevard du Couchant, Nanterre"
+        class="plan-masse__img"
+        loading="lazy"
+      />
+    </figure>
+  </div>
+</section>
+
+<style>
+  @import "../../styles/location.css";
+
+  /* Plan-masse section */
+  .plan-masse {
+    background: #ffffff;
+    padding: 5rem 2rem;
+  }
+
+  .plan-masse__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .plan-masse__figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .plan-masse__img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    .plan-masse {
+      padding: 3rem 1.5rem;
+    }
+  }
+
+  /* Layout specific to the track approach */
+  .location__track {
+    display: flex;
+    height: 100%;
+    width: max-content; /* Allow horizontal expansion */
+  }
+
+  .location__title-group {
+    display: flex;
+    gap: 2rem;
+    height: 100%;
+    padding-top: 20vh; /* Optical vertical alignment */
+  }
+
+  .location__title {
+    writing-mode: horizontal-tb;
+    transform: none;
+    max-width: 15ch;
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+  let cleanupLocationScroll = () => {};
+
+  const initLocationScroll = () => {
+    const section = document.querySelector(".location");
+    const track = section?.querySelector(".location__track");
+    const images = section?.querySelectorAll("img") ?? [];
+
+    if (!(section instanceof HTMLElement) || !(track instanceof HTMLElement)) {
+      return;
+    }
+
+    cleanupLocationScroll();
+
+    let refreshFrame = 0;
+    const resizeObserver = new ResizeObserver(() => scheduleRefresh());
+    const imageCleanupFns = [];
+
+    const getTrackDistance = () =>
+      Math.max(track.scrollWidth - section.clientWidth, 0);
+
+    const scheduleRefresh = () => {
+      cancelAnimationFrame(refreshFrame);
+      refreshFrame = requestAnimationFrame(() => {
+        ScrollTrigger.refresh();
+      });
+    };
+
+    const context = gsap.context(() => {
+      gsap.set(track, { x: 0 });
+
+      gsap.to(track, {
+        x: () => -getTrackDistance(),
+        ease: "none",
+        overwrite: "auto",
+        scrollTrigger: {
+          trigger: section,
+          pin: true,
+          scrub: 1,
+          start: "top top",
+          invalidateOnRefresh: true,
+          end: () => `+=${getTrackDistance()}`,
+        },
+      });
+
+
+    }, section);
+
+    const onWindowLoad = () => scheduleRefresh();
+    const onViewportChange = () => scheduleRefresh();
+    const onAppRefresh = () => scheduleRefresh();
+
+    window.addEventListener("load", onWindowLoad);
+    window.addEventListener("resize", onViewportChange, { passive: true });
+    window.addEventListener("orientationchange", onViewportChange);
+    window.addEventListener("app:scroll-refresh", onAppRefresh);
+
+    resizeObserver.observe(track);
+
+    images.forEach((image) => {
+      if (!(image instanceof HTMLImageElement)) return;
+
+      if (image.complete) {
+        if (typeof image.decode === "function") {
+          image.decode().catch(() => undefined).finally(scheduleRefresh);
+        } else {
+          scheduleRefresh();
+        }
+        return;
+      }
+
+      const onImageSettled = () => scheduleRefresh();
+      image.addEventListener("load", onImageSettled, { once: true });
+      image.addEventListener("error", onImageSettled, { once: true });
+      imageCleanupFns.push(() => {
+        image.removeEventListener("load", onImageSettled);
+        image.removeEventListener("error", onImageSettled);
+      });
+    });
+
+    cleanupLocationScroll = () => {
+      cancelAnimationFrame(refreshFrame);
+      resizeObserver.disconnect();
+      window.removeEventListener("load", onWindowLoad);
+      window.removeEventListener("resize", onViewportChange);
+      window.removeEventListener("orientationchange", onViewportChange);
+      window.removeEventListener("app:scroll-refresh", onAppRefresh);
+      imageCleanupFns.forEach((cleanup) => cleanup());
+      context.revert();
+    };
+
+    scheduleRefresh();
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initLocationScroll, {
+      once: true,
+    });
+  } else {
+    initLocationScroll();
+  }
+
+  // Plan-masse reveal + scroll zoom
+  document.addEventListener("DOMContentLoaded", () => {
+    const figure = document.querySelector('[data-animate="plan-masse-figure"]');
+    if (!figure) return;
+
+    const img = figure.querySelector(".plan-masse__img");
+
+    // Fade in the figure
+    gsap.fromTo(
+      figure,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: { trigger: figure, start: "top 82%" },
+      }
+    );
+
+    // Smooth scroll zoom (subtle, reversible)
+    if (img) {
+      gsap.fromTo(
+        img,
+        { scale: 1 },
+        {
+          scale: 1.08,
+          ease: "none",
+          scrollTrigger: {
+            trigger: figure,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1,
+          },
+        }
+      );
+    }
+  });
+</script>

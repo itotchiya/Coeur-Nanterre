@@ -1,0 +1,130 @@
+---
+/**
+ * Greenery Section
+ * Espaces verts & Paysage
+ */
+import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
+---
+
+<section
+  class="greenery"
+  data-section="paysage"
+  id="paysage"
+  aria-labelledby="greenery-title"
+>
+  <div class="greenery__container">
+    <!-- Header -->
+    <header class="greenery__header" data-animate="greenery-header">
+      <span class="greenery__overline type-overline">Paysage & Nature</span>
+      <div class="greenery__title-group">
+        <AnimatedVerticalLine />
+        <h2 id="greenery-title" class="greenery__title type-h2">
+          La nature,<br />intégrée au projet
+        </h2>
+      </div>
+    </header>
+
+    <!-- Two column: stats left, content right -->
+    <div class="greenery__body">
+      <!-- Left: big stats -->
+      <div class="greenery__stats" data-animate="greenery-stats">
+        <div class="greenery__stat">
+          <span class="greenery__stat-number">5</span>
+          <span class="greenery__stat-label">arbres existants<br />préservés</span>
+        </div>
+        <div class="greenery__stat">
+          <span class="greenery__stat-number">1</span>
+          <span class="greenery__stat-label">véritable cœur vert<br />au fond du projet</span>
+        </div>
+        <div class="greenery__stat">
+          <span class="greenery__stat-number">9</span>
+          <span class="greenery__stat-label">arbres au total<br />dans la résidence</span>
+        </div>
+      </div>
+
+      <!-- Right: description + features -->
+      <div class="greenery__content" data-animate="greenery-content">
+        <p class="greenery__paragraph type-body">
+          Cinq arbres étaient déjà là avant les travaux — ils restent. On en
+          plante quatre autres, des espèces locales qui ont leur place ici. Le
+          vert du boulevard, on l'a gardé.
+        </p>
+
+        <ul class="greenery__features">
+          <li class="greenery__feature">
+            <span class="greenery__feature-icon">◉</span>
+            <div>
+              <strong>Nouvelles plantations</strong>
+              <span>De nouvelles essences viennent compléter le paysage pour renforcer l'impression de nature au quotidien.</span>
+            </div>
+          </li>
+          <li class="greenery__feature">
+            <span class="greenery__feature-icon">◉</span>
+            <div>
+              <strong>Jardins privatifs</strong>
+              <span>Les rez-de-chaussée profitent d'espaces extérieurs végétalisés, pensés comme de vraies prolongations du logement.</span>
+            </div>
+          </li>
+          <li class="greenery__feature">
+            <span class="greenery__feature-icon">◉</span>
+            <div>
+              <strong>Accès discrets</strong>
+              <span>Les accès et les circulations ont été pensés pour rester sobres, élégants et bien intégrés à l'ensemble.</span>
+            </div>
+          </li>
+          <li class="greenery__feature">
+            <span class="greenery__feature-icon">◉</span>
+            <div>
+              <strong>Cheminements paysagers</strong>
+              <span>On circule dans un cadre plus calme, plus doux et plus résidentiel, avec une vraie attention portée au confort visuel.</span>
+            </div>
+          </li>
+          <li class="greenery__feature">
+            <span class="greenery__feature-icon">◉</span>
+            <div>
+              <strong>Esprit jardin</strong>
+              <span>L'ensemble du projet garde une ambiance verdoyante et apaisée, rare pour une adresse aussi centrale.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @import "../../styles/greenery.css";
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const section = document.querySelector(".greenery");
+    if (!section) return;
+
+    const ease = "power2.out";
+
+    gsap.fromTo(
+      '[data-animate="greenery-header"]',
+      { opacity: 0, y: 40 },
+      { opacity: 1, y: 0, duration: 1.2, ease, scrollTrigger: { trigger: '[data-animate="greenery-header"]', start: "top 80%", once: true } }
+    );
+
+    gsap.fromTo(
+      '[data-animate="greenery-stats"]',
+      { opacity: 0, x: -30 },
+      { opacity: 1, x: 0, duration: 1, ease, scrollTrigger: { trigger: '[data-animate="greenery-stats"]', start: "top 80%", once: true } }
+    );
+
+    gsap.fromTo(
+      '[data-animate="greenery-content"]',
+      { opacity: 0, x: 30 },
+      { opacity: 1, x: 0, duration: 1, ease, scrollTrigger: { trigger: '[data-animate="greenery-content"]', start: "top 80%", once: true } }
+    );
+
+  });
+</script>

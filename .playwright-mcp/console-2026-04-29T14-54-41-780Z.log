@@ -1,0 +1,3 @@
+[60779131ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ https://nanterre.hdcontenu.com/?version-check=1777535260412:0
+[60779131ms] [WARNING] Build version check failed TypeError: Failed to fetch
+    at c (https://nanterre.hdcontenu.com/_astro/Layout.astro_astro_type_script_index_0_lang.CD6S4X17.js:1:17738) @ https://nanterre.hdcontenu.com/_astro/Layout.astro_astro_type_script_index_0_lang.CD6S4X17.js:0

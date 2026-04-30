@@ -1,0 +1,97 @@
+/* Location Section - Horizontal Scroll Layout */
+
+.location {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden; /* Hide overflow for pin */
+  background-color: var(--color-white);
+  
+  /* Horizontal Layout Container */
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+/* 1. Text Panel (Merged Title + Content) */
+.location__text-panel {
+  flex: 0 0 50vw; /* Desktop: Split screen */
+  height: 100%;
+  padding: 0 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.location__content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .location__text-panel {
+    flex: 0 0 100vw;
+    padding: 0 2rem;
+  }
+}
+
+.location__title {
+  /* Inherits .type-section-title */
+  position: relative;
+  writing-mode: horizontal-tb;
+  transform: none;
+}
+
+/* Address Group (Hero Style) */
+.location__subtitle-group {
+  display: flex;
+  align-items: stretch;
+  gap: 1.5rem;
+}
+
+.location__address {
+  /* Inherits .type-tagline via HTML class */
+  font-style: normal;
+  display: flex;
+  align-items: center;
+}
+
+.location__narrative {
+  /* Inherits .type-body via HTML class */
+  max-width: 45ch;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-left: calc(2px + 1.5rem); 
+}
+
+/* 3. Map Panel — full viewport width, image locked edge-to-edge */
+.location__map {
+  flex: 0 0 100vw;
+  height: 100%;
+  position: relative;
+  padding: 0;
+  margin-left: 0;
+  overflow: hidden;
+}
+
+.location__map-container {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+/* Floor Plan Image — absolute fill, no flex gaps possible */
+.location__map-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 8px;
+}

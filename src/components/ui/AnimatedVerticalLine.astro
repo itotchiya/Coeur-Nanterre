@@ -1,0 +1,89 @@
+---
+/**
+ * AnimatedVerticalLine.astro
+ * A reusable vertical line with an infinite "scrolling" thumb animation.
+ * Used in Hero, Project Essence, etc.
+ */
+interface Props {
+  class?: string;
+  height?: string; // Optional height override
+  theme?: "light" | "dark"; // New theme prop
+}
+
+const { class: className = "", height = "100%", theme = "light" } = Astro.props;
+---
+
+<div
+  class:list={["animated-line", `animated-line--${theme}`, className]}
+  style={`min-height: ${height};`}
+>
+  <div class="animated-line__track">
+    <div class="animated-line__thumb"></div>
+  </div>
+</div>
+
+<style>
+  .animated-line {
+    position: relative;
+    width: 2px;
+    min-width: 2px; /* Prevent flex shrinking < 2px */
+    flex-shrink: 0; /* Force fixed width in flex containers */
+    display: block;
+    overflow: hidden;
+  }
+
+  .animated-line__track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+    background-color: rgba(26, 22, 72, 0.1); /* Default (Light) track color */
+    border-radius: 1px;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+  }
+
+  .animated-line__thumb {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30%; /* Thumb size */
+    background-color: var(--color-primary); /* Default (Light) thumb color */
+    transform: translateY(-130%); /* Start position */
+    transition: background-color 0.3s ease;
+  }
+
+  /* Dark Theme Overrides */
+  .animated-line--dark .animated-line__track {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .animated-line--dark .animated-line__thumb {
+    background-color: var(--color-white);
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+
+  // Run animation for all instances present on the page
+  // This script runs once, so we select all current and future (if static) lines.
+  // Since Astro is MPA, this runs on page load.
+
+  const thumbs = document.querySelectorAll(".animated-line__thumb");
+
+  if (thumbs.length > 0) {
+    gsap.fromTo(
+      thumbs,
+      { top: "-30%" },
+      {
+        top: "160%",
+        duration: 1.8, // Configured speed
+        ease: "power2.out", // Start fast, end slow
+        repeat: -1,
+        stagger: 0, // Run all simultaneously, or add distinct delays if needed
+      },
+    );
+  }
+</script>

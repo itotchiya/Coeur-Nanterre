@@ -1,0 +1,70 @@
+---
+/**
+ * SimulatorStep Component
+ * Wrapper for each step in the credit simulator
+ */
+interface Props {
+  id: string;
+  question?: string;
+  isStep0?: boolean;
+}
+
+const { id, question, isStep0 = false } = Astro.props;
+---
+
+<div class:list={["credit-simulator__step", { "is-welcome": isStep0 }]} id={id}>
+  <div class="credit-simulator__step-content">
+    {
+      question &&
+        (isStep0 ? (
+          <h2 class="credit-simulator__step-question type-body">{question}</h2>
+        ) : (
+          <h3 class="credit-simulator__step-question type-body">{question}</h3>
+        ))
+    }
+    <slot />
+  </div>
+</div>
+
+<style>
+  .credit-simulator__step {
+    width: 20%; /* Each step is 20% of the 500% track */
+    min-height: 100%;
+    flex-shrink: 0;
+    padding: 72px 1.5rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border: none;
+    margin: 0;
+  }
+
+  /* Welcome step: center content vertically */
+  .is-welcome {
+    justify-content: center;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .credit-simulator__step-content {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .credit-simulator__step-question {
+    text-align: center;
+    max-width: 42rem;
+    color: var(--color-white);
+    margin-bottom: 0;
+    line-height: 1.55;
+    font-weight: 400;
+    opacity: 0.92;
+  }
+</style>

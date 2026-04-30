@@ -1,0 +1,343 @@
+---
+/**
+ * Navigation Header Component
+ * Company logo + Program logo + Section navigation + CTAs
+ */
+
+import Button from "../ui/Button.astro";
+import { Calculator, Phone } from "lucide-astro";
+import { SALES_CONTACT } from "../../lib/site-config";
+---
+
+<header class="header" data-component="header" role="banner">
+  <div class="header__container">
+    <div class="header__left">
+      <!-- Logos -->
+      <div class="header__branding">
+        <a
+          href="#"
+          class="header__logo-link"
+          aria-label="Programme Cœur Nanterre"
+        >
+          <img
+            src="/Assets/logo-nanterre.svg"
+            alt="Cœur Nanterre"
+            class="header__logo header__logo--program"
+            width="200"
+            height="56"
+          />
+        </a>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="header__nav" aria-label="Navigation principale">
+        <ul class="header__nav-list">
+          <li class="header__nav-item">
+            <a href="#projet" class="header__nav-link" data-nav="projet">Projet</a>
+          </li>
+          <li class="header__nav-item">
+            <a href="#adresse" class="header__nav-link" data-nav="adresse">Adresse</a>
+          </li>
+          <li class="header__nav-item">
+            <a href="#connectivite" class="header__nav-link" data-nav="connectivite">Atouts</a>
+          </li>
+          <li class="header__nav-item">
+            <a href="#apartment" class="header__nav-link" data-nav="apartment">Appartements</a>
+          </li>
+          <li class="header__nav-item">
+            <a href="#programme" class="header__nav-link" data-nav="programme">Programme</a>
+          </li>
+          <li class="header__nav-item">
+            <a href="#simulateur" class="header__nav-link" data-nav="simulateur">Simulateur</a>
+          </li>
+          <li class="header__nav-item">
+            <a href="#investisseur" class="header__nav-link" data-nav="investisseur">Investisseurs</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Actions -->
+    <div class="header__actions-wrapper">
+      <div class="header__actions">
+        <Button href="#simulateur" variant="secondary-light" size="lg" icon>
+          <Calculator size={18} />
+          Mon financement
+        </Button>
+        <Button
+          href="#"
+          variant="primary"
+          size="lg"
+          class="header__cta-btn js-download-brochure"
+        >
+          Télécharger la plaquette
+        </Button>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button
+        class="header__menu-toggle"
+        type="button"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        data-action="toggle-menu"
+      >
+        <span class="header__menu-bar"></span>
+        <span class="header__menu-bar"></span>
+        <span class="header__menu-bar"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Overlay (Full Screen) -->
+  <div
+    class="header__mobile-overlay"
+    id="mobile-menu"
+    aria-label="Navigation mobile"
+    hidden
+  >
+    <div class="header__mobile-content">
+      <div class="header__mobile-top">
+        <img
+          src="/Assets/logo-nanterre.svg"
+          alt="Cœur Nanterre"
+          class="header__mobile-logo"
+        />
+        <button
+          class="header__mobile-close"
+          data-action="toggle-menu"
+          aria-label="Fermer le menu"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><line x1="18" y1="6" x2="6" y2="18"></line><line
+              x1="6"
+              y1="6"
+              x2="18"
+              y2="18"></line></svg
+          >
+        </button>
+      </div>
+
+      <nav class="header__mobile-nav">
+        <ul class="header__mobile-list">
+          <li><a href="#projet" class="header__mobile-link">Projet</a></li>
+          <li><a href="#adresse" class="header__mobile-link">Adresse</a></li>
+          <li><a href="#connectivite" class="header__mobile-link">Atouts</a></li>
+          <li><a href="#apartment" class="header__mobile-link">Appartements</a></li>
+          <li><a href="#programme" class="header__mobile-link">Programme</a></li>
+          <li><a href="#simulateur" class="header__mobile-link">Simulateur</a></li>
+          <li><a href="#investisseur" class="header__mobile-link">Investisseurs</a></li>
+        </ul>
+
+        <div class="header__mobile-actions">
+          <Button
+            href="#simulateur"
+            variant="secondary-light"
+            size="lg"
+            icon
+            class="header__mobile-action-btn"
+          >
+            <Calculator size={20} />
+            Mon financement
+          </Button>
+          <Button
+            href="#"
+            variant="secondary-light"
+            size="lg"
+            icon
+            class="js-contact-expert header__mobile-action-btn"
+          >
+            <Phone size={20} />
+            Contacter un expert
+          </Button>
+          <Button
+            href="#"
+            variant="primary"
+            size="lg"
+            class="header__mobile-action-btn js-download-brochure"
+          >
+            Télécharger la plaquette
+          </Button>
+        </div>
+      </nav>
+
+      <div class="header__mobile-footer">
+        <div class="header__mobile-contact">
+          <p class="type-label">Contact</p>
+          <p class="type-body-sm">Commercialise par {SALES_CONTACT.operator}</p>
+          <p class="type-body-sm">Contact principal : {SALES_CONTACT.brand}</p>
+          <a href={`mailto:${SALES_CONTACT.email}`} class="type-lead"
+            >{SALES_CONTACT.email}</a
+          >
+          <span class="type-lead">{SALES_CONTACT.phoneDisplay}</span>
+        </div>
+
+        <div class="header__mobile-social">
+          <p class="type-label">Suivez-nous</p>
+          <div class="header__mobile-social-links">
+            <a href="https://www.instagram.com/coeurnanterre/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+            <a href="https://www.facebook.com/coeurnanterre/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+  @import "../../styles/header.css";
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // 1. Mobile Menu Toggle Logic (GSAP)
+    const toggles = document.querySelectorAll('[data-action="toggle-menu"]');
+    const menu = document.getElementById("mobile-menu");
+    const menuContent = document.querySelector(".header__mobile-content");
+    let isOpen = false;
+
+    // We create the timeline once
+    const menuTimeline = gsap.timeline({ paused: true });
+
+    if (menu) {
+      // Setup initial state: off-screen to the top
+      gsap.set(menu, { yPercent: -100, display: "none" });
+
+      menuTimeline
+        .to(menu, {
+          display: "flex",
+          yPercent: 0,
+          duration: 0.6,
+          ease: "expo.inOut",
+        })
+        .from(
+          ".header__mobile-link",
+          {
+            y: 30,
+            opacity: 0,
+            stagger: 0.05,
+            duration: 0.5,
+            ease: "power3.out",
+          },
+          "-=0.3",
+        )
+        .from(
+          ".header__mobile-footer",
+          {
+            opacity: 0,
+            y: 20,
+            duration: 0.5,
+          },
+          "-=0.4",
+        );
+
+      toggles.forEach((toggle) => {
+        toggle.addEventListener("click", () => {
+          if (!isOpen) {
+            menuTimeline.play();
+            document.body.style.overflow = "hidden";
+          } else {
+            menuTimeline.reverse();
+            document.body.style.overflow = "";
+          }
+          isOpen = !isOpen;
+
+          const mainToggle = document.querySelector(".header__menu-toggle");
+          mainToggle?.setAttribute("aria-expanded", isOpen.toString());
+        });
+      });
+
+      // Close menu when clicking a link
+      const mobileLinks = document.querySelectorAll(".header__mobile-link");
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          menuTimeline.reverse();
+          document.body.style.overflow = "";
+          isOpen = false;
+        });
+      });
+    }
+
+    // 2. Active State — scroll spy
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".header__nav-link");
+    const mobileNavLinks = document.querySelectorAll(".header__mobile-link[href^='#']");
+
+    // Map merged section IDs to their nav link target
+    const sectionNavMap: Record<string, string> = {
+      materiaux: "architecture",
+      paysage: "paysage",
+    };
+
+    function scrollToSection(hash: string) {
+      const target = document.querySelector(hash);
+      if (!target) return;
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    const smoothLinks = document.querySelectorAll(
+      '.header__nav-link[href^="#"], .header__mobile-link[href^="#"], .header__actions a[href^="#"]',
+    );
+
+    smoothLinks.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const href = link.getAttribute("href");
+        if (!href || href === "#") return;
+        event.preventDefault();
+        scrollToSection(href);
+      });
+    });
+
+    function setActive(id: string) {
+      const navId = sectionNavMap[id] || id;
+      const allLinks = [...navLinks, ...mobileNavLinks];
+      allLinks.forEach((link) => {
+        link.classList.toggle("is-active", link.getAttribute("href") === `#${navId}`);
+      });
+      const activeLink = document.querySelector(`.header__nav-link[href="#${navId}"]`);
+      activeLink?.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
+    }
+
+    let rafId: number;
+    function updateActiveSection() {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        const threshold = window.innerHeight * 0.45;
+        let activeId: string | null = null;
+
+        sections.forEach((section) => {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= threshold && rect.bottom > 80) {
+            activeId = section.getAttribute("id");
+          }
+        });
+
+        if (activeId) {
+          setActive(activeId);
+        } else {
+          [...navLinks, ...mobileNavLinks].forEach((link) =>
+            link.classList.remove("is-active")
+          );
+        }
+      });
+    }
+
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    updateActiveSection();
+  });
+</script>

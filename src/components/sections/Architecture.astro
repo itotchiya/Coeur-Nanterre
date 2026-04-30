@@ -1,0 +1,132 @@
+---
+/**
+ * Architecture Section
+ * Entre histoire et contemporain
+ */
+import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
+import Button from "../ui/Button.astro";
+
+import { getImage } from "astro:assets";
+import planT2Raw from "../../assets/plan-t2-1ch-terrasse.jpg";
+import planT4Raw from "../../assets/plan-t4-3ch-terrasse.jpg";
+
+const planT2 = await getImage({ src: planT2Raw, format: "webp", width: 900, quality: 88 });
+const planT4 = await getImage({ src: planT4Raw, format: "webp", width: 900, quality: 88 });
+---
+
+<section
+  class="architecture"
+  data-section="architecture"
+  id="architecture"
+  aria-labelledby="architecture-title"
+>
+  <div class="architecture__container">
+    <!-- Left Column: Sticky Text -->
+    <div class="architecture__text-col">
+      <h2
+        id="architecture-title"
+        class="architecture__title type-h2"
+        data-animate="fade-up"
+      >
+        Un dialogue entre<br />ancien et neuf
+      </h2>
+
+      <div class="architecture__subtitle-group">
+        <AnimatedVerticalLine height="100%" />
+        <span
+          class="architecture__subtitle type-tagline"
+          data-animate="fade-up"
+        >
+          Deux bâtiments,<br />une seule famille
+        </span>
+      </div>
+
+      <div class="architecture__content" data-animate="fade-up">
+        <p class="architecture__paragraph type-body">
+          Les appartements donnent au sud, souvent traversants — la lumière entre vraiment, l'air circule. On n'a pas optimisé des ratios, on a pensé à ceux qui allaient y vivre.
+        </p>
+
+        <p class="architecture__paragraph type-body">
+          La maison existante et le bâtiment neuf partagent la même ardoise, les mêmes briques, les mêmes tons. De loin, on ne sait pas vraiment lequel est ancien.
+        </p>
+
+        <div style="margin-top: 2rem;">
+          <Button
+            href="#"
+            variant="primary"
+            class="js-download-brochure btn--full-mobile"
+          >
+            Télécharger la plaquette
+          </Button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Selected plans only -->
+    <div class="architecture__image-col">
+      <figure class="architecture__figure" data-animate="image-reveal">
+        <div class="architecture__image-wrapper">
+          <img src={planT4.src} alt="Plan du bâtiment neuf — logement familial avec terrasse et jardin" class="architecture__image" loading="lazy" />
+        </div>
+        <figcaption class="architecture__caption">Bâtiment neuf</figcaption>
+      </figure>
+
+      <figure class="architecture__figure" data-animate="image-reveal">
+        <div class="architecture__image-wrapper">
+          <img src={planT2.src} alt="Plan d'un T2 avec terrasse" class="architecture__image" loading="lazy" />
+        </div>
+        <figcaption class="architecture__caption">Appartement T2</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<style>
+  @import "../../styles/architecture.css";
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Animate Images appearing with parallax
+    const figures = document.querySelectorAll(".architecture__figure");
+
+    figures.forEach((figure) => {
+      const img = figure.querySelector(".architecture__image");
+
+      // Fade in the figure
+      gsap.fromTo(
+        figure,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: figure,
+            start: "top 85%",
+          },
+        },
+      );
+
+      // Subtle parallax — kept small so plans stay fully visible
+      if (img) {
+        gsap.to(img, {
+          yPercent: -4,
+          ease: "none",
+          scrollTrigger: {
+            trigger: figure,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      }
+    });
+  });
+</script>

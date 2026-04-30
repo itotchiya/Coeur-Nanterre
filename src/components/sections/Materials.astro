@@ -1,0 +1,177 @@
+---
+/**
+ * Materials Section
+ * Matériaux & Finitions — La palette du projet
+ */
+import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
+import { PTZ_SUPPORT_TEXT } from "../../lib/site-config";
+import { getImage } from "astro:assets";
+import enduitBlancRaw from "../../assets/NAN_MAT_ENDUIT_BLANC.jpg";
+import briqueGriseRaw from "../../assets/NAN_MAT_BRIQUE_GRISE.jpg";
+import menuiserieRaw from "../../assets/NAN_MAT_MENUISERIE_PVC.jpg";
+import voletSableRaw from "../../assets/NAN_MAT_VOLET_SABLE.jpg";
+import boisCheneRaw from "../../assets/NAN_MAT_BOIS_CHENE.jpg";
+import ardoiseRaw from "../../assets/NAN_MAT_ARDOISE.jpg";
+
+const enduitBlanc = await getImage({ src: enduitBlancRaw, format: "webp", width: 600, quality: 85 });
+const briqueGrise = await getImage({ src: briqueGriseRaw, format: "webp", width: 600, quality: 85 });
+const menuiserie = await getImage({ src: menuiserieRaw, format: "webp", width: 600, quality: 85 });
+const voletSable = await getImage({ src: voletSableRaw, format: "webp", width: 600, quality: 85 });
+const boisChene = await getImage({ src: boisCheneRaw, format: "webp", width: 600, quality: 85 });
+const ardoise = await getImage({ src: ardoiseRaw, format: "webp", width: 600, quality: 85 });
+---
+
+<section
+  class="materials"
+  data-section="materiaux"
+  id="materiaux"
+  aria-labelledby="materials-title"
+>
+  <div class="materials__container">
+    <header class="materials__header" data-animate="materials-header">
+      <div class="materials__title-group">
+        <AnimatedVerticalLine />
+        <div>
+          <span class="materials__overline type-overline">Architecture</span>
+          <h2 id="materials-title" class="materials__title type-h2">
+            Une palette pensée<br />pour la durée
+          </h2>
+        </div>
+      </div>
+      <p class="materials__intro type-body">
+        Des matières sobres, durables et faciles à vivre au quotidien. L'idée
+        n'est pas d'en faire trop, mais de créer un ensemble élégant, chaleureux
+        et cohérent.
+      </p>
+      <div class="materials__ptz">
+        <img
+          class="materials__ptz-logo"
+          src="/Assets/logo-ptz.png"
+          alt="Logo Pret a Taux Zero"
+          loading="lazy"
+        />
+        <p class="materials__ptz-copy type-body-sm">
+          0% credit taux zero. {PTZ_SUPPORT_TEXT}
+        </p>
+      </div>
+    </header>
+
+    <!-- Facade Materials Grid -->
+    <div class="materials__grid" data-animate="materials-grid">
+      <!-- Swatch 1 -->
+      <article class="materials__item">
+        <img src={enduitBlanc.src} alt="Texture enduit façade blanc RAL 9010" class="materials__swatch materials__swatch--photo" loading="lazy" />
+        <div class="materials__item-content">
+          <h3 class="materials__item-title type-h5">Façades claires</h3>
+          <p class="materials__item-desc type-body-sm">Une teinte lumineuse et intemporelle qui donne au projet une présence douce et élégante.</p>
+        </div>
+      </article>
+
+      <!-- Swatch 2 -->
+      <article class="materials__item">
+        <img src={briqueGrise.src} alt="Texture brique moulée main RAL 7047 gris" class="materials__swatch materials__swatch--photo" loading="lazy" />
+        <div class="materials__item-content">
+          <h3 class="materials__item-title type-h5">Brique de caractère</h3>
+          <p class="materials__item-desc type-body-sm">Une matière qui apporte du relief, de la chaleur et une vraie personnalité aux façades.</p>
+        </div>
+      </article>
+
+      <!-- Swatch 3 -->
+      <article class="materials__item">
+        <img src={menuiserie.src} alt="Menuiserie PVC blanc RAL 9016" class="materials__swatch materials__swatch--photo" loading="lazy" />
+        <div class="materials__item-content">
+          <h3 class="materials__item-title type-h5">Ouvertures lumineuses</h3>
+          <p class="materials__item-desc type-body-sm">Des menuiseries claires pour laisser entrer la lumière et renforcer la sensation d'espace.</p>
+        </div>
+      </article>
+
+      <!-- Swatch 4 -->
+      <article class="materials__item">
+        <img src={voletSable.src} alt="Volet roulant beige sable RAL 1039" class="materials__swatch materials__swatch--photo" loading="lazy" />
+        <div class="materials__item-content">
+          <h3 class="materials__item-title type-h5">Finitions douces</h3>
+          <p class="materials__item-desc type-body-sm">Des tons naturels et apaisants, pensés pour s'intégrer sans rupture dans l'ensemble du projet.</p>
+        </div>
+      </article>
+
+      <!-- Swatch 5 -->
+      <article class="materials__item">
+        <img src={boisChene.src} alt="Texture bois chêne — encadrements et terrasses" class="materials__swatch materials__swatch--photo" loading="lazy" />
+        <div class="materials__item-content">
+          <h3 class="materials__item-title type-h5">Touches de bois</h3>
+          <p class="materials__item-desc type-body-sm">Le bois apporte un côté chaleureux et résidentiel, aussi bien à l'extérieur que dans l'esprit des lieux.</p>
+        </div>
+      </article>
+
+      <!-- Swatch 6 -->
+      <article class="materials__item">
+        <img src={ardoise.src} alt="Ardoise naturelle toiture mansardée" class="materials__swatch materials__swatch--photo" loading="lazy" />
+        <div class="materials__item-content">
+          <h3 class="materials__item-title type-h5">Toiture raffinée</h3>
+          <p class="materials__item-desc type-body-sm">Une finition plus noble qui souligne l'identité du projet et prolonge son élégance dans le temps.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  @import "../../styles/materials.css";
+
+  .materials__ptz {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  .materials__ptz-logo {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    flex: 0 0 auto;
+  }
+
+  .materials__ptz-copy {
+    margin: 0;
+    max-width: 36rem;
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const section = document.querySelector(".materials");
+    if (!section) return;
+
+    const ease = "power2.out";
+
+    gsap.fromTo(
+      '[data-animate="materials-header"]',
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1, y: 0, duration: 1.2, ease,
+        scrollTrigger: { trigger: '[data-animate="materials-header"]', start: "top 80%", once: true },
+      }
+    );
+
+    const items = section.querySelectorAll(".materials__item");
+    items.forEach((item, i) => {
+      gsap.fromTo(
+        item,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1, y: 0, duration: 0.8, ease,
+          delay: i * 0.08,
+          scrollTrigger: { trigger: '[data-animate="materials-grid"]', start: "top 80%", once: true },
+        }
+      );
+    });
+
+  });
+</script>

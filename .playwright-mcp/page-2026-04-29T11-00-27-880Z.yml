@@ -1,0 +1,729 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - link "Programme Cœur Nanterre" [ref=e6] [cursor=pointer]:
+          - /url: "#"
+          - img "Cœur Nanterre" [ref=e7]
+        - navigation "Navigation principale" [ref=e8]:
+          - list [ref=e9]:
+            - listitem [ref=e10]:
+              - link "Projet" [ref=e11] [cursor=pointer]:
+                - /url: "#projet"
+            - listitem [ref=e12]:
+              - link "Adresse" [ref=e13] [cursor=pointer]:
+                - /url: "#adresse"
+            - listitem [ref=e14]:
+              - link "Atouts" [ref=e15] [cursor=pointer]:
+                - /url: "#connectivite"
+            - listitem [ref=e16]:
+              - link "Architecture" [ref=e17] [cursor=pointer]:
+                - /url: "#architecture"
+            - listitem [ref=e18]:
+              - link "Programme" [ref=e19] [cursor=pointer]:
+                - /url: "#programme"
+            - listitem [ref=e20]:
+              - link "Nature" [ref=e21] [cursor=pointer]:
+                - /url: "#paysage"
+            - listitem [ref=e22]:
+              - link "Simulateur" [ref=e23] [cursor=pointer]:
+                - /url: "#simulateur"
+      - generic [ref=e25]:
+        - link "Mon financement" [ref=e26] [cursor=pointer]:
+          - /url: "#simulateur"
+          - img [ref=e27]
+          - text: Mon financement
+        - link "Plaquette commerciale" [ref=e29] [cursor=pointer]:
+          - /url: "#"
+  - main [ref=e30]:
+    - region "Cœur Nanterre" [ref=e31]:
+      - generic [ref=e32]:
+        - generic [ref=e33]:
+          - heading "Cœur Nanterre" [level=1] [ref=e34]:
+            - generic [ref=e35]: Cœur
+            - generic [ref=e36]: Nanterre
+          - paragraph [ref=e41]:
+            - generic [ref=e42]: Patrimoine & Modernité
+            - generic [ref=e43]: L'exception au cœur de la Ville
+        - generic [ref=e44]:
+          - heading "Au cœur de la vie urbaine, à l'abri de son tumulte." [level=2] [ref=e45]
+          - paragraph [ref=e46]: 9 logements d'exception — bâtiment XIXe réhabilité et extension contemporaine RE2020. De 29 à 92 m², du Studio au T5.
+          - generic "Avantage PTZ" [ref=e47]:
+            - img "Logo Pret a Taux Zero" [ref=e48]
+            - paragraph [ref=e49]: 9 logements seulement, dont 7 neufs et 2 rehabilites. Sous réserve d'éligibilité au Prêt à Taux Zéro.
+        - generic [ref=e50]:
+          - link "Contacter un expert" [ref=e51] [cursor=pointer]:
+            - /url: "#"
+          - link "Télécharger la plaquette" [ref=e52] [cursor=pointer]:
+            - /url: "#"
+      - generic [ref=e53]:
+        - figure [ref=e54]
+        - figure [ref=e55]
+    - region "Ce qui rend ce projet different" [ref=e56]:
+      - heading "Ce qui rend ce projet different" [level=2] [ref=e64]
+      - generic [ref=e65]:
+        - paragraph [ref=e66]: Coeur Nanterre, c'est 9 logements - une maison ancienne rehabilitee et un batiment neuf, construits cote a cote avec les memes materiaux, le meme soin.
+        - paragraph [ref=e67]: On a volontairement garde le projet petit. Neuf logements, pas plus. Assez pour que chacun se sente vraiment chez soi, pas dans une residence anonyme. L'idee etait simple, ne pas effacer ce qui existait, mais le faire coexister avec du neuf, ancien et contemporain, sans rupture.
+        - list [ref=e69]:
+          - listitem [ref=e70]:
+            - generic [ref=e71]: Rehabilitation
+            - generic [ref=e72]: Garder l'ame de la maison d'origine
+          - listitem [ref=e73]:
+            - generic [ref=e74]: Contemporain
+            - generic [ref=e75]: Du neuf qui s'integre sans crier
+          - listitem [ref=e76]:
+            - generic [ref=e77]: Echelle humaine
+            - generic [ref=e78]: Neuf logements, une vraie tranquillite
+          - listitem [ref=e79]:
+            - generic [ref=e80]: Dialogue urbain
+            - generic [ref=e81]: L'histoire du lieu, remise au present
+    - region "Vivre Nanterre, au plus près de l'essentiel" [ref=e83]:
+      - generic [ref=e84]:
+        - generic [ref=e86]:
+          - heading "Vivre Nanterre, au plus près de l'essentiel" [level=2] [ref=e87]:
+            - text: Vivre Nanterre,
+            - text: au plus près de l'essentiel
+          - generic [ref=e92]:
+            - text: 68 Boulevard du Couchant,
+            - text: 92200 Nanterre
+          - generic [ref=e93]:
+            - paragraph [ref=e94]: "Nanterre : Un Cœur de Ville Dynamique. Ancré sur les vestiges des remparts de la Renaissance, ce quartier historique relie harmonieusement le centre-ville à la gare RER à travers l'emblématique rue Maurice-Thorez."
+            - paragraph [ref=e95]: Ce secteur privilégié offre un cadre de vie unique, mêlant le charme de l'ancien bourg fortifié à un patrimoine prestigieux incluant le puits de Sainte-Geneviève et le parc des Anciennes-Mairies.
+            - paragraph [ref=e96]: Entre héritage pastoral et dynamisme urbain, vous profitez d'une adresse commerçante stratégique où chaque pas révèle une anecdote fascinante.
+          - link "Télécharger la plaquette" [ref=e98] [cursor=pointer]:
+            - /url: "#"
+        - img "Localisation aérienne — 64-68 Boulevard du Couchant, Nanterre" [ref=e100]
+    - region "Plan-masse — Insertion urbaine" [ref=e101]:
+      - generic [ref=e102]:
+        - generic [ref=e103]:
+          - heading "Plan-masse — Insertion urbaine" [level=3] [ref=e104]
+          - paragraph [ref=e105]: Vue d'ensemble du projet dans son environnement urbain.
+        - figure:
+          - img "Plan-masse — Insertion urbaine, 64-68 Boulevard du Couchant Nanterre"
+    - region "Quatre bonnes raisons d'être bien situé" [ref=e106]:
+      - generic [ref=e108]:
+        - heading "Quatre bonnes raisons d'être bien situé" [level=2] [ref=e112]:
+          - text: Quatre bonnes raisons
+          - text: d'être bien situé
+        - paragraph [ref=e113]:
+          - text: Le centre-ville de Nanterre, le marché du quartier,
+          - text: les commerces du quotidien — et le RER A en face du boulevard de la France.
+      - generic [ref=e114]:
+        - generic [ref=e118]:
+          - heading "Cœur de Ville" [level=3] [ref=e119]
+          - paragraph [ref=e120]: Le projet est dans le centre historique de Nanterre, classé Zone UA — un quartier vivant avec de vraies rues, de vrais habitants.
+        - generic [ref=e124]:
+          - heading "Commerces & Services" [level=3] [ref=e125]
+          - paragraph [ref=e126]: Boulangerie, pharmacie, épicerie, médecin. Tout est là, à deux minutes à pied. Pas besoin de voiture pour le quotidien.
+        - generic [ref=e130]:
+          - heading "Le Marché" [level=3] [ref=e131]
+          - paragraph [ref=e132]: Lundi, mercredi, samedi — le marché est là depuis des années. Fruits, légumes, fromages. Un vrai marché de quartier, pas un marché bio tendance.
+        - generic [ref=e136]:
+          - heading "Gare Nanterre-Ville · RER A" [level=3] [ref=e137]
+          - paragraph [ref=e138]: En face du boulevard de la France. La Défense en 8 min, Châtelet en 20 min.
+          - list [ref=e139]:
+            - listitem [ref=e140]: RER A
+            - listitem [ref=e141]: Bus 367
+            - listitem [ref=e142]: Bus 141
+            - listitem [ref=e143]: Bus 157
+            - listitem [ref=e144]: Bus 159
+            - listitem [ref=e145]: Bus 160
+            - listitem [ref=e146]: Noctilien
+    - region "Un dialogue entre ancien et neuf" [ref=e147]:
+      - generic [ref=e148]:
+        - generic [ref=e149]:
+          - heading "Un dialogue entre ancien et neuf" [level=2] [ref=e150]:
+            - text: Un dialogue entre
+            - text: ancien et neuf
+          - generic [ref=e155]:
+            - text: Deux bâtiments,
+            - text: une seule famille
+          - generic [ref=e156]:
+            - paragraph [ref=e157]: Les appartements donnent au sud, souvent traversants — la lumière entre vraiment, l'air circule. On n'a pas optimisé des ratios, on a pensé à ceux qui allaient y vivre.
+            - paragraph [ref=e158]: La maison existante et le bâtiment neuf partagent la même ardoise, les mêmes briques, les mêmes tons. De loin, on ne sait pas vraiment lequel est ancien.
+            - link "Télécharger la plaquette" [ref=e160] [cursor=pointer]:
+              - /url: "#"
+        - generic [ref=e161]:
+          - figure "Bâtiment neuf":
+            - generic:
+              - img "Plan du bâtiment neuf — logement familial avec terrasse et jardin"
+          - figure "Appartement T2":
+            - generic:
+              - img "Plan d'un T2 avec terrasse"
+    - region "Une palette pensée pour la durée" [ref=e162]:
+      - generic [ref=e163]:
+        - generic [ref=e164]:
+          - generic [ref=e169]:
+            - generic [ref=e170]: Architecture
+            - heading "Une palette pensée pour la durée" [level=2] [ref=e171]:
+              - text: Une palette pensée
+              - text: pour la durée
+          - paragraph [ref=e172]: Des matières sobres, durables et faciles à vivre au quotidien. L'idée n'est pas d'en faire trop, mais de créer un ensemble élégant, chaleureux et cohérent.
+          - generic [ref=e173]:
+            - img "Logo Pret a Taux Zero" [ref=e174]
+            - paragraph [ref=e175]: 0% credit taux zero. Sous réserve d'éligibilité au Prêt à Taux Zéro.
+        - generic [ref=e176]:
+          - article [ref=e177]:
+            - img "Texture enduit façade blanc RAL 9010" [ref=e178]
+            - generic [ref=e179]:
+              - heading "Façades claires" [level=3] [ref=e180]
+              - paragraph [ref=e181]: Une teinte lumineuse et intemporelle qui donne au projet une présence douce et élégante.
+          - article [ref=e182]:
+            - img "Texture brique moulée main RAL 7047 gris" [ref=e183]
+            - generic [ref=e184]:
+              - heading "Brique de caractère" [level=3] [ref=e185]
+              - paragraph [ref=e186]: Une matière qui apporte du relief, de la chaleur et une vraie personnalité aux façades.
+          - article [ref=e187]:
+            - img "Menuiserie PVC blanc RAL 9016" [ref=e188]
+            - generic [ref=e189]:
+              - heading "Ouvertures lumineuses" [level=3] [ref=e190]
+              - paragraph [ref=e191]: Des menuiseries claires pour laisser entrer la lumière et renforcer la sensation d'espace.
+          - article [ref=e192]:
+            - img "Volet roulant beige sable RAL 1039" [ref=e193]
+            - generic [ref=e194]:
+              - heading "Finitions douces" [level=3] [ref=e195]
+              - paragraph [ref=e196]: Des tons naturels et apaisants, pensés pour s'intégrer sans rupture dans l'ensemble du projet.
+          - article [ref=e197]:
+            - img "Texture bois chêne — encadrements et terrasses" [ref=e198]
+            - generic [ref=e199]:
+              - heading "Touches de bois" [level=3] [ref=e200]
+              - paragraph [ref=e201]: Le bois apporte un côté chaleureux et résidentiel, aussi bien à l'extérieur que dans l'esprit des lieux.
+          - article [ref=e202]:
+            - img "Ardoise naturelle toiture mansardée" [ref=e203]
+            - generic [ref=e204]:
+              - heading "Toiture raffinée" [level=3] [ref=e205]
+              - paragraph [ref=e206]: Une finition plus noble qui souligne l'identité du projet et prolonge son élégance dans le temps.
+    - region "Le programme en quelques mots" [ref=e207]:
+      - generic [ref=e208]:
+        - generic [ref=e209]:
+          - heading "Le programme en quelques mots" [level=2] [ref=e210]
+          - paragraph [ref=e211]: Dans un style Mansart, emblème de l'architecture classique, Cœur Nanterre s'inscrit avec une réelle volonté contemporaine — bâtiment XIXe réhabilité et extension RE2020. De 29 à 92 m², du Studio au T5.
+        - generic [ref=e212]:
+          - generic [ref=e213]:
+            - generic [ref=e214]:
+              - generic [ref=e215]: "9"
+              - generic [ref=e216]: Logements — du T1 au T5
+            - generic [ref=e217]:
+              - generic [ref=e220]: Programme Mixte
+              - generic [ref=e223]: Réhabilitation + Neuf
+              - generic [ref=e226]: Taille Humaine
+              - generic [ref=e229]: Architecture Cohérente
+            - generic [ref=e231]:
+              - heading "Des appartements du T1 au T5, pensés avec le plus grand soin" [level=3] [ref=e232]
+              - generic [ref=e233]:
+                - generic [ref=e235]: Volet roulant électrique
+                - generic [ref=e237]: Carrelage 60×60 — pièces de jour
+                - generic [ref=e239]: Parquet contrecollé — chambres
+                - generic [ref=e241]: Carrelage 45×45 — salle de bain & WC
+                - generic [ref=e243]: Faïence toute hauteur — douche & baignoire
+                - generic [ref=e245]: Hall d'entrée sécurisé décoré
+                - generic [ref=e247]: Robinetterie Hansgrohe ou équivalent
+                - generic [ref=e249]: Système de vidéophone
+                - generic [ref=e251]: Local vélo sécurisé
+                - generic [ref=e253]: Jardins privatifs + espaces verts collectifs
+          - generic:
+            - img "Vue extérieure — Cœur Nanterre, 64-68 Boulevard du Couchant"
+        - generic [ref=e254]:
+          - heading "Les logements" [level=3] [ref=e255]
+          - table [ref=e257]:
+            - rowgroup [ref=e258]:
+              - row "Lot Etage Type Surface hab. Annexes Action" [ref=e259]:
+                - columnheader "Lot" [ref=e260]
+                - columnheader "Etage" [ref=e261]
+                - columnheader "Type" [ref=e262]
+                - columnheader "Surface hab." [ref=e263]
+                - columnheader "Annexes" [ref=e264]
+                - columnheader "Action" [ref=e265]
+            - rowgroup [ref=e266]:
+              - row "A1 RDC T4 76,00 m² Jardin 48 m² Télécharger le plan" [ref=e267]:
+                - cell "A1" [ref=e268]
+                - cell "RDC" [ref=e269]
+                - cell "T4" [ref=e270]:
+                  - generic [ref=e271]: T4
+                - cell "76,00 m²" [ref=e272]
+                - cell "Jardin 48 m²" [ref=e273]
+                - cell "Télécharger le plan" [ref=e274]:
+                  - generic [ref=e275] [cursor=pointer]: Télécharger le plan
+              - row "A2 RDC T2 51,50 m² Jardin 46 m² Télécharger le plan" [ref=e276]:
+                - cell "A2" [ref=e277]
+                - cell "RDC" [ref=e278]
+                - cell "T2" [ref=e279]:
+                  - generic [ref=e280]: T2
+                - cell "51,50 m²" [ref=e281]
+                - cell "Jardin 46 m²" [ref=e282]
+                - cell "Télécharger le plan" [ref=e283]:
+                  - generic [ref=e284] [cursor=pointer]: Télécharger le plan
+              - row "A3 RDC / R+1 T3 duplex 60,00 m² Jardin 56 m² Télécharger le plan" [ref=e285]:
+                - cell "A3" [ref=e286]
+                - cell "RDC / R+1" [ref=e287]
+                - cell "T3 duplex" [ref=e288]:
+                  - generic [ref=e289]: T3 duplex
+                - cell "60,00 m²" [ref=e290]
+                - cell "Jardin 56 m²" [ref=e291]
+                - cell "Télécharger le plan" [ref=e292]:
+                  - generic [ref=e293] [cursor=pointer]: Télécharger le plan
+              - row "A4 R+1 T4 77,50 m² — Télécharger le plan" [ref=e294]:
+                - cell "A4" [ref=e295]
+                - cell "R+1" [ref=e296]
+                - cell "T4" [ref=e297]:
+                  - generic [ref=e298]: T4
+                - cell "77,50 m²" [ref=e299]
+                - cell "—" [ref=e300]
+                - cell "Télécharger le plan" [ref=e301]:
+                  - generic [ref=e302] [cursor=pointer]: Télécharger le plan
+              - row "A5 R+1 T2 46,50 m² Balcon 10 m² Télécharger le plan" [ref=e303]:
+                - cell "A5" [ref=e304]
+                - cell "R+1" [ref=e305]
+                - cell "T2" [ref=e306]:
+                  - generic [ref=e307]: T2
+                - cell "46,50 m²" [ref=e308]
+                - cell "Balcon 10 m²" [ref=e309]
+                - cell "Télécharger le plan" [ref=e310]:
+                  - generic [ref=e311] [cursor=pointer]: Télécharger le plan
+              - row "A6 R+2 T3 54,00 m² Balcon 26 m² Télécharger le plan" [ref=e312]:
+                - cell "A6" [ref=e313]
+                - cell "R+2" [ref=e314]
+                - cell "T3" [ref=e315]:
+                  - generic [ref=e316]: T3
+                - cell "54,00 m²" [ref=e317]
+                - cell "Balcon 26 m²" [ref=e318]
+                - cell "Télécharger le plan" [ref=e319]:
+                  - generic [ref=e320] [cursor=pointer]: Télécharger le plan
+              - row "A7 R+2 T1 bis 39,00 m² Balcon 56 m² Télécharger le plan" [ref=e321]:
+                - cell "A7" [ref=e322]
+                - cell "R+2" [ref=e323]
+                - cell "T1 bis" [ref=e324]:
+                  - generic [ref=e325]: T1 bis
+                - cell "39,00 m²" [ref=e326]
+                - cell "Balcon 56 m²" [ref=e327]
+                - cell "Télécharger le plan" [ref=e328]:
+                  - generic [ref=e329] [cursor=pointer]: Télécharger le plan
+              - row "A8 R+3 T3 51,50 m² — Télécharger le plan" [ref=e330]:
+                - cell "A8" [ref=e331]
+                - cell "R+3" [ref=e332]
+                - cell "T3" [ref=e333]:
+                  - generic [ref=e334]: T3
+                - cell "51,50 m²" [ref=e335]
+                - cell "—" [ref=e336]
+                - cell "Télécharger le plan" [ref=e337]:
+                  - generic [ref=e338] [cursor=pointer]: Télécharger le plan
+              - row "A9 R+3 T1 bis 36,50 m² — Télécharger le plan" [ref=e339]:
+                - cell "A9" [ref=e340]
+                - cell "R+3" [ref=e341]
+                - cell "T1 bis" [ref=e342]:
+                  - generic [ref=e343]: T1 bis
+                - cell "36,50 m²" [ref=e344]
+                - cell "—" [ref=e345]
+                - cell "Télécharger le plan" [ref=e346]:
+                  - generic [ref=e347] [cursor=pointer]: Télécharger le plan
+        - generic [ref=e348]:
+          - heading "Engagement & Qualité — Certification RE2020" [level=3] [ref=e349]
+          - generic [ref=e350]:
+            - generic [ref=e351]:
+              - img [ref=e352]
+              - generic [ref=e353]: Garantie décennale
+            - generic [ref=e354]:
+              - img [ref=e355]
+              - generic [ref=e356]: Garantie de parfait achèvement
+            - generic [ref=e357]:
+              - img [ref=e358]
+              - generic [ref=e359]: Garantie biennale
+            - generic [ref=e360]:
+              - img [ref=e361]
+              - generic [ref=e362]: Certification RE2020
+        - link "Télécharger la plaquette" [ref=e364] [cursor=pointer]:
+          - /url: "#"
+        - region "Information PTZ" [ref=e365]:
+          - img "Logo Prêt à Taux Zéro" [ref=e366]
+          - generic [ref=e367]:
+            - heading "Pour habiter — PTZ 0%" [level=3] [ref=e368]
+            - paragraph [ref=e369]: Ce programme est éligible au Prêt à Taux Zéro. Grâce au PTZ, augmentez votre capacité d'achat en bénéficiant d'un prêt à 0%.
+            - paragraph [ref=e370]: Sous réserve d'éligibilité au Prêt à Taux Zéro.
+    - region "La nature, intégrée au projet" [ref=e371]:
+      - generic [ref=e372]:
+        - generic [ref=e373]:
+          - generic [ref=e374]: Paysage & Nature
+          - heading "La nature, intégrée au projet" [level=2] [ref=e379]:
+            - text: La nature,
+            - text: intégrée au projet
+        - generic [ref=e380]:
+          - generic [ref=e381]:
+            - generic [ref=e382]:
+              - generic [ref=e383]: "5"
+              - generic [ref=e384]:
+                - text: arbres existants
+                - text: préservés
+            - generic [ref=e385]:
+              - generic [ref=e386]: "1"
+              - generic [ref=e387]:
+                - text: véritable cœur vert
+                - text: au fond du projet
+            - generic [ref=e388]:
+              - generic [ref=e389]: "9"
+              - generic [ref=e390]:
+                - text: arbres au total
+                - text: dans la résidence
+          - generic [ref=e391]:
+            - paragraph [ref=e392]: Cinq arbres étaient déjà là avant les travaux — ils restent. On en plante quatre autres, des espèces locales qui ont leur place ici. Le vert du boulevard, on l'a gardé.
+            - list [ref=e393]:
+              - listitem [ref=e394]:
+                - generic [ref=e395]: ◉
+                - generic [ref=e396]:
+                  - strong [ref=e397]: Nouvelles plantations
+                  - generic [ref=e398]: De nouvelles essences viennent compléter le paysage pour renforcer l'impression de nature au quotidien.
+              - listitem [ref=e399]:
+                - generic [ref=e400]: ◉
+                - generic [ref=e401]:
+                  - strong [ref=e402]: Jardins privatifs
+                  - generic [ref=e403]: Les rez-de-chaussée profitent d'espaces extérieurs végétalisés, pensés comme de vraies prolongations du logement.
+              - listitem [ref=e404]:
+                - generic [ref=e405]: ◉
+                - generic [ref=e406]:
+                  - strong [ref=e407]: Accès discrets
+                  - generic [ref=e408]: Les accès et les circulations ont été pensés pour rester sobres, élégants et bien intégrés à l'ensemble.
+              - listitem [ref=e409]:
+                - generic [ref=e410]: ◉
+                - generic [ref=e411]:
+                  - strong [ref=e412]: Cheminements paysagers
+                  - generic [ref=e413]: On circule dans un cadre plus calme, plus doux et plus résidentiel, avec une vraie attention portée au confort visuel.
+              - listitem [ref=e414]:
+                - generic [ref=e415]: ◉
+                - generic [ref=e416]:
+                  - strong [ref=e417]: Esprit jardin
+                  - generic [ref=e418]: L'ensemble du projet garde une ambiance verdoyante et apaisée, rare pour une adresse aussi centrale.
+    - region [ref=e419]:
+      - generic [ref=e420]:
+        - generic:
+          - generic:
+            - generic: Faisons connaissance
+            - generic: 1/4
+        - generic [ref=e421]:
+          - generic [ref=e424]:
+            - paragraph [ref=e425]: Simulateur de Crédit
+            - img "Logo Pret a Taux Zero" [ref=e426]
+            - heading "Estimez votre capacité d'emprunt" [level=2] [ref=e427]:
+              - text: Estimez votre capacité
+              - text: d'emprunt
+            - paragraph [ref=e428]: Découvrez en quelques clics les mensualités de votre futur projet immobilier. Une simulation simple, rapide et sans engagement.
+            - paragraph [ref=e429]: 0% - Pret a Taux Zero. Sous réserve d'éligibilité au Prêt à Taux Zéro.
+            - button "Commencer" [ref=e430] [cursor=pointer]
+          - generic [ref=e432]:
+            - heading "Avant de commencer, faisons connaissance" [level=3] [ref=e433]
+            - generic [ref=e434]:
+              - textbox "Nom *" [ref=e437]
+              - textbox "Prénom *" [ref=e440]
+              - textbox "Téléphone" [ref=e443]
+              - textbox "Email *" [ref=e446]
+            - button "Continuer" [ref=e448] [cursor=pointer]:
+              - text: Continuer
+              - img [ref=e449]
+          - generic [ref=e452]:
+            - heading "Votre situation actuelle" [level=3] [ref=e453]
+            - generic [ref=e454]:
+              - generic [ref=e457]:
+                - combobox [ref=e458] [cursor=pointer]:
+                  - option "Sélectionnez votre région *" [disabled] [selected]
+                  - option "Île-de-France"
+                  - option "Auvergne-Rhône-Alpes"
+                  - option "Bourgogne-Franche-Comté"
+                  - option "Bretagne"
+                  - option "Centre-Val de Loire"
+                  - option "Corse"
+                  - option "Grand Est"
+                  - option "Hauts-de-France"
+                  - option "Normandie"
+                  - option "Nouvelle-Aquitaine"
+                  - option "Occitanie"
+                  - option "Pays de la Loire"
+                  - option "Provence-Alpes-Côte d'Azur"
+                - img
+              - generic [ref=e461]:
+                - combobox [ref=e462] [cursor=pointer]:
+                  - option "Sélectionnez votre ville *" [disabled] [selected]
+                - img
+            - generic [ref=e465]:
+              - combobox [ref=e466] [cursor=pointer]:
+                - option "Votre situation professionnelle *" [disabled] [selected]
+                - option "CDI"
+                - option "CDD"
+                - option "Intérimaire"
+                - option "Profession libérale"
+                - option "Artisan / Commerçant"
+                - option "Freelance / Auto-entrepreneur"
+                - option "Chef d'entreprise"
+                - option "Fonctionnaire"
+                - option "Contractuel"
+                - option "Retraité"
+                - option "Étudiant"
+                - option "Sans emploi"
+                - option "Intermittent du spectacle"
+              - img
+            - generic [ref=e467]:
+              - generic [ref=e468]: Revenus nets mensuels (foyer)
+              - generic [ref=e469]:
+                - generic [ref=e470] [cursor=pointer]:
+                  - radio "< 2 000 €"
+                  - generic [ref=e472]: < 2 000 €
+                - generic [ref=e473] [cursor=pointer]:
+                  - radio "2 000 - 4 000 €" [checked]
+                  - generic [ref=e475]: 2 000 - 4 000 €
+                - generic [ref=e476] [cursor=pointer]:
+                  - radio "4 000 - 6 000 €"
+                  - generic [ref=e478]: 4 000 - 6 000 €
+                - generic [ref=e479] [cursor=pointer]:
+                  - radio "+ 6 000 €"
+                  - generic [ref=e481]: + 6 000 €
+            - generic [ref=e482]:
+              - generic [ref=e483]: Avez-vous un crédit en cours ?
+              - generic [ref=e485]:
+                - generic [ref=e486] [cursor=pointer]:
+                  - radio "Non" [checked]
+                  - generic [ref=e488]: Non
+                - generic [ref=e489] [cursor=pointer]:
+                  - radio "Oui"
+                  - generic [ref=e491]: Oui
+            - generic [ref=e492]:
+              - button "Retour" [ref=e493] [cursor=pointer]:
+                - img [ref=e494]
+                - generic [ref=e496]: Retour
+              - button "Continuer" [ref=e497] [cursor=pointer]:
+                - text: Continuer
+                - img [ref=e498]
+          - generic [ref=e501]:
+            - heading "Votre futur projet" [level=3] [ref=e502]
+            - generic [ref=e503]:
+              - generic [ref=e504]: Type de bien souhaité
+              - generic [ref=e505]:
+                - generic [ref=e506] [cursor=pointer]:
+                  - radio "T1 bis" [checked]
+                  - generic [ref=e508]: T1 bis
+                - generic [ref=e509] [cursor=pointer]:
+                  - radio "T2"
+                  - generic [ref=e511]: T2
+                - generic [ref=e512] [cursor=pointer]:
+                  - radio "T3"
+                  - generic [ref=e514]: T3
+                - generic [ref=e515] [cursor=pointer]:
+                  - radio "T4"
+                  - generic [ref=e517]: T4
+                - generic [ref=e518] [cursor=pointer]:
+                  - radio "Maison T15"
+                  - generic [ref=e520]: Maison T15
+              - generic [ref=e521]:
+                - img "Logo Pret a Taux Zero" [ref=e522]
+                - generic [ref=e523]:
+                  - text: Ce programme est sujet aux possibilites du
+                  - strong [ref=e524]: PTZ
+                  - text: sous reserve de validation.
+            - generic [ref=e525]:
+              - generic [ref=e526]:
+                - generic [ref=e527]: Montant du projet
+                - generic [ref=e528]:
+                  - generic [ref=e529]: 249 000
+                  - generic [ref=e530]: €
+              - generic [ref=e531]:
+                - generic [ref=e532]: Durée
+                - generic [ref=e533]:
+                  - generic [ref=e534]: "20"
+                  - generic [ref=e535]: ans
+                - slider [ref=e538] [cursor=pointer]: "20"
+            - generic [ref=e539]:
+              - generic [ref=e540]: Taux d'intérêt (%)
+              - spinbutton "Taux d'intérêt (%)" [ref=e542]: "3.80"
+            - generic [ref=e543]:
+              - button "Retour" [ref=e544] [cursor=pointer]:
+                - img [ref=e545]
+                - generic [ref=e547]: Retour
+              - button "Calculer ma mensualité" [ref=e548] [cursor=pointer]:
+                - text: Calculer ma mensualité
+                - img [ref=e549]
+          - generic [ref=e552]:
+            - heading "Votre résultat personnalisé" [level=3] [ref=e553]
+            - generic [ref=e554]:
+              - region [ref=e555]:
+                - generic [ref=e557]:
+                  - term [ref=e558]: Mensualité estimée
+                  - definition [ref=e559]: 1 250 €
+                - generic [ref=e560]:
+                  - text: "Taux estimé:"
+                  - strong [ref=e561]: "3.80"
+                  - text: "% sur"
+                  - strong [ref=e562]: "20"
+                  - text: ans
+              - generic [ref=e563]:
+                - generic [ref=e564]:
+                  - img "Logo Pret a Taux Zero" [ref=e565]
+                  - generic [ref=e566]:
+                    - strong [ref=e567]: Prêt à Taux Zéro
+                    - generic [ref=e568]: Ce programme est sujet aux possibilités du PTZ sur réserve de validation de votre dossier.
+                - generic [ref=e569]:
+                  - generic [ref=e570]: Conseil
+                  - generic [ref=e571]:
+                    - strong [ref=e572]: Apport personnel conseillé
+                    - generic [ref=e573]: Une petite recommandation peut être faite au cas par cas selon votre dossier et votre montage de financement.
+              - paragraph [ref=e574]: "*Simulation indicative. Ces résultats ne constituent pas une offre de prêt. Taux hors assurance. Validation finale selon votre situation et l'éligibilité PTZ."
+              - button "Nouvelle simulation" [ref=e576] [cursor=pointer]:
+                - img [ref=e577]
+                - text: Nouvelle simulation
+    - region "Vous êtes investisseur ? Profitez des avantages de la loi Jeanbrun" [ref=e580]:
+      - generic [ref=e581]:
+        - generic [ref=e582]:
+          - paragraph [ref=e583]: Pour les investisseurs
+          - heading "Vous êtes investisseur ? Profitez des avantages de la loi Jeanbrun" [level=2] [ref=e584]:
+            - text: Vous êtes investisseur ?
+            - text: Profitez des avantages
+            - text: de la loi Jeanbrun
+          - paragraph [ref=e589]: Dispositif d'investissement locatif neuf
+          - generic [ref=e590]:
+            - paragraph [ref=e591]: La loi Jeanbrun est le nouveau dispositif fiscal qui remplace la loi Pinel. Elle permet aux investisseurs d'acquérir un bien neuf et de bénéficier d'une réduction d'impôt sur le revenu en contrepartie d'un engagement de location.
+            - paragraph [ref=e592]: Ce programme est éligible à ce dispositif. Nos conseillers vous accompagnent dans le montage de votre dossier.
+          - generic [ref=e593]:
+            - link "En savoir plus sur la loi Jeanbrun — site officiel du gouvernement (ouvre dans un nouvel onglet)" [ref=e594] [cursor=pointer]:
+              - /url: https://www.service-public.fr/particuliers/recherche?keyword=loi+Jeanbrun
+              - img [ref=e595]
+              - text: En savoir plus sur le site officiel
+            - link "Consultez-nous" [ref=e599] [cursor=pointer]:
+              - /url: "#contact"
+        - generic [ref=e601]:
+          - img [ref=e603]
+          - heading "Loi Jeanbrun" [level=3] [ref=e605]
+          - paragraph [ref=e606]: Réduction d'impôt sur le revenu pour l'acquisition d'un logement neuf destiné à la location.
+          - list [ref=e607]:
+            - listitem [ref=e608]:
+              - img [ref=e609]
+              - text: Investissement locatif neuf
+            - listitem [ref=e611]:
+              - img [ref=e612]
+              - text: Réduction d'impôt sur le revenu
+            - listitem [ref=e614]:
+              - img [ref=e615]
+              - text: Fort potentiel locatif à Nanterre
+            - listitem [ref=e617]:
+              - img [ref=e618]
+              - text: Faibles charges de copropriété
+          - paragraph [ref=e620]: Dispositif soumis à conditions. Renseignez-vous auprès de nos conseillers.
+    - region "Tout le projet, dans un seul document" [ref=e621]:
+      - generic [ref=e622]:
+        - generic [ref=e623]:
+          - heading "Tout le projet, dans un seul document" [level=2] [ref=e624]:
+            - text: Tout le projet,
+            - text: dans un seul document
+          - generic [ref=e629]: Plaquette commerciale
+          - generic [ref=e630]:
+            - paragraph [ref=e631]: Plans, finitions, prix, surfaces — tout est dans la plaquette. Téléchargez-la, lisez-la à votre rythme.
+            - paragraph [ref=e632]: Si vous avez des questions après, on est là pour y répondre.
+            - link "Télécharger la plaquette" [ref=e634] [cursor=pointer]:
+              - /url: "#"
+        - generic:
+          - figure:
+            - generic:
+              - img "Plaquette commerciale Cœur Nanterre"
+    - region "AGL" [ref=e635]:
+      - generic [ref=e637]:
+        - generic [ref=e638]:
+          - paragraph [ref=e639]: Le promoteur
+          - heading "AGL" [level=2] [ref=e640]:
+            - img "AGL" [ref=e641]
+          - paragraph [ref=e642]: Le promoteur AGL de l'opération Cœur Nanterre s'inscrit dans une trajectoire d'excellence, fondée sur une expertise reconnue et une présence solidement établie dans l'univers de l'immobilier et de la construction.
+          - paragraph [ref=e643]:
+            - text: Fort de près de
+            - strong [ref=e644]: 18 années d'expérience
+            - text: et d'un parcours marqué par la conduite de projets majeurs, il incarne une vision exigeante, structurée et durable du développement.
+          - generic [ref=e645]:
+            - generic [ref=e646]:
+              - generic [ref=e647]: 1 000 000 m²
+              - generic [ref=e648]: réalisés
+            - generic [ref=e649]:
+              - generic [ref=e650]: 18 ans
+              - generic [ref=e651]: d'expérience
+            - generic [ref=e652]:
+              - generic [ref=e653]: 5 – 50 M€
+              - generic [ref=e654]: par opération
+        - generic [ref=e655]:
+          - heading "Pourquoi investir ici" [level=3] [ref=e656]
+          - paragraph [ref=e657]: L'opération Cœur Nanterre n'est pas seulement une adresse, c'est une promesse de qualité de vie et de valorisation patrimoniale. Situé dans un secteur privilégié, bénéficiant d'excellentes liaisons de transport et de services de proximité, ce projet s'impose comme une opportunité unique.
+          - paragraph [ref=e658]: Que vous cherchiez votre future résidence principale ou un investissement locatif performant, Cœur Nanterre combine accessibilité et prestige, offrant un cadre de vie durable et dynamique, certifié RE2020.
+          - generic [ref=e659]:
+            - generic [ref=e660]:
+              - img [ref=e661]
+              - text: Frais de notaire réduits
+            - generic [ref=e663]:
+              - img [ref=e664]
+              - text: Norme RE2020 & Performance énergétique
+            - generic [ref=e666]:
+              - img [ref=e667]
+              - text: Faibles charges de copropriété
+            - generic [ref=e669]:
+              - img [ref=e670]
+              - text: Fort potentiel locatif
+          - link "Nous contacter" [ref=e673] [cursor=pointer]:
+            - /url: "#contact"
+    - region "Mentions légales" [ref=e674]:
+      - generic [ref=e676]:
+        - paragraph [ref=e677]: À propos de ce projet
+        - generic [ref=e678]:
+          - paragraph [ref=e679]: Ce projet est actuellement en cours de développement. Les visuels, textes et caractéristiques présents sur ce site sont fournis à titre indicatif.
+          - paragraph [ref=e680]: Les informations définitives vous seront communiquées après validation administrative et remise de la notice descriptive officielle.
+        - paragraph [ref=e681]: Cœur Nanterre — Un projet développé avec transparence.
+  - contentinfo [ref=e682]:
+    - generic [ref=e684]:
+      - generic [ref=e685]:
+        - img "Cœur Nanterre" [ref=e687]
+        - generic [ref=e688]:
+          - heading "Plan du site" [level=4] [ref=e689]
+          - navigation [ref=e690]:
+            - list [ref=e691]:
+              - listitem [ref=e692]:
+                - link "Projet" [ref=e693] [cursor=pointer]:
+                  - /url: "#projet"
+              - listitem [ref=e694]:
+                - link "Adresse" [ref=e695] [cursor=pointer]:
+                  - /url: "#adresse"
+              - listitem [ref=e696]:
+                - link "Atouts" [ref=e697] [cursor=pointer]:
+                  - /url: "#connectivite"
+              - listitem [ref=e698]:
+                - link "Architecture" [ref=e699] [cursor=pointer]:
+                  - /url: "#architecture"
+              - listitem [ref=e700]:
+                - link "Programme" [ref=e701] [cursor=pointer]:
+                  - /url: "#programme"
+              - listitem [ref=e702]:
+                - link "Nature" [ref=e703] [cursor=pointer]:
+                  - /url: "#paysage"
+              - listitem [ref=e704]:
+                - link "Simulateur" [ref=e705] [cursor=pointer]:
+                  - /url: "#simulateur"
+        - generic [ref=e706]:
+          - heading "Contact" [level=4] [ref=e707]
+          - generic [ref=e708]:
+            - paragraph [ref=e709]: 68 Boulevard du Couchant
+            - paragraph [ref=e710]: 92200 Nanterre
+          - generic [ref=e711]:
+            - link "contact@coeurnanterre.fr" [ref=e712] [cursor=pointer]:
+              - /url: mailto:contact@coeurnanterre.fr
+            - link "06 07 32 96 16" [ref=e713] [cursor=pointer]:
+              - /url: tel:+33607329616
+            - button "Nous contacter →" [ref=e714] [cursor=pointer]
+        - generic [ref=e715]:
+          - heading "Commercialisation" [level=4] [ref=e716]
+          - img "Neo Vimo" [ref=e718]
+          - img "Habiter Investir" [ref=e720]
+          - generic [ref=e721]:
+            - link "Instagram" [ref=e722] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e723]
+            - link "Facebook" [ref=e726] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e727]
+      - generic [ref=e729]:
+        - paragraph [ref=e730]: © 2026 Cœur Nanterre — Tous droits réservés
+        - generic [ref=e731]:
+          - link "Mentions légales" [ref=e732] [cursor=pointer]:
+            - /url: "#"
+          - link "Politique de confidentialité" [ref=e733] [cursor=pointer]:
+            - /url: "#"
+  - iframe [ref=e736]:
+    - generic [ref=f1e6]:
+      - text: protected by
+      - strong [ref=f1e7]: reCAPTCHA
