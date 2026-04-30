@@ -8,7 +8,7 @@ import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
 import Button from "../ui/Button.astro";
 
 // Address visual
-import planMasseRaw from "../../assets/address-image.avif";
+import planMasseRaw from "../../assets/address-image.webp";
 const planMasse = await getImage({
   src: planMasseRaw,
   format: "webp",
@@ -17,7 +17,7 @@ const planMasse = await getImage({
 });
 
 // Plan-masse insertion urbaine
-import planMasseInsertionRaw from "../../assets/plan-masse-insertion.jpg";
+import planMasseInsertionRaw from "../../assets/plan-masse-insertion.webp";
 const planMasseInsertion = await getImage({ src: planMasseInsertionRaw, format: "webp", quality: 90 });
 
 ---
