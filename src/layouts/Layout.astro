@@ -1,5 +1,6 @@
 ---
 import { BUILD_VERSION } from "../lib/build-version";
+import CookieBanner from "../components/sections/CookieBanner.astro";
 
 interface Props {
   title: string;
@@ -44,6 +45,7 @@ const {
     data-environment={import.meta.env.PROD ? "production" : "development"}
   >
     <slot />
+    <CookieBanner />
   </body>
 </html>
 
