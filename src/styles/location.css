@@ -95,3 +95,34 @@
   object-position: center center;
   border-radius: 8px;
 }
+
+/* Mobile: vertical stacked layout, each panel full viewport */
+@media (max-width: 768px) {
+  .location {
+    height: auto;
+    overflow: visible;
+  }
+
+  .location__track {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+
+  .location__text-panel {
+    flex: 0 0 auto;
+    width: 100vw;
+    height: 100vh;
+    padding: 0 2rem;
+  }
+
+  .location__map {
+    flex: 0 0 auto;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .location__map-image {
+    border-radius: 0;
+  }
+}

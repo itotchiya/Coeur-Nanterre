@@ -172,6 +172,13 @@ const planMasseInsertion = await getImage({ src: planMasseInsertionRaw, format: 
       return;
     }
 
+    // Skip horizontal scroll on mobile — vertical stacked layout takes over
+    if (window.matchMedia("(max-width: 768px)").matches) {
+      cleanupLocationScroll();
+      gsap.set(track, { x: 0 });
+      return;
+    }
+
     cleanupLocationScroll();
 
     let refreshFrame = 0;
