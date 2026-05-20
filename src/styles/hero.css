@@ -43,7 +43,7 @@
 @media (min-width: 1024px) {
   .hero__text-column {
     padding-left: 0; /* Alignment handled by hero container padding */
-    max-width: 50%; /* Take up half width */
+    max-width: 38%; /* Take up left portion */
     height: 100%; /* Full height for vertical centering */
   }
 
@@ -152,7 +152,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: 50%;
+    width: 58%;
     height: 100%;
     margin-top: 0;
   }
@@ -169,42 +169,13 @@
   visibility: hidden; 
 }
 
-/* Primary Image */
+/* Primary Image — fills entire media container */
 .hero__image-container:nth-child(1) {
   z-index: 1;
   top: 0;
   right: 0;
-  /* Aspect ratio or size adjustments */
-}
-
-@media (min-width: 1024px) {
-  .hero__image-container:nth-child(1) {
-    width: 45vw;
-    right: 0; /* Touch right edge */
-    height: 100vh; /* Full height */
-    top: 0; /* Start from top */
-  }
-}
-
-/* Secondary Image - Overlap conceptual */
-.hero__image-container:nth-child(2) {
-  display: none; /* Hide secondary on mobile for simplicity */
-}
-
-@media (min-width: 1024px) {
-  .hero__image-container:nth-child(2) {
-    display: block;
-    z-index: 2;
-    width: 20vw;
-    height: 25vw;
-    bottom: 5vh;
-    left: -5vw; /* Relative to hero__media container */
-    border: 8px solid var(--color-white);
-  }
-}
-
-/* Background images now applied via inline styles in Hero.astro */
-.hero__image-container:nth-child(1) {
+  width: 100%;
+  height: 100%;
   filter: grayscale(20%);
 }
 

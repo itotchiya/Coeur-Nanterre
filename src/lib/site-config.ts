@@ -1,7 +1,7 @@
 export const SALES_CONTACT = {
   operator: "Neo Vimo",
   brand: "Neo Vimo",
-  email: "contact@coeurnanterre.fr",
+  email: "sebastien@neowimmo.com",
   phoneDisplay: "06 07 32 96 16",
   phoneHref: "tel:+33607329616",
 };

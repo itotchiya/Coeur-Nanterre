@@ -68,8 +68,8 @@ export const POST: APIRoute = async ({ request }) => {
   // Send email via Resend API
   const resendKey = import.meta.env.RESEND_API_KEY;
   // Use client's domain for better deliverability (emails forwarded from their Toi server)
-  const resendFrom = import.meta.env.RESEND_FROM_ADDRESS ?? "contact@coeurnanterre.fr";
-  const leadTo = import.meta.env.LEAD_TO ?? "contact@coeurnanterre.fr";
+  const resendFrom = import.meta.env.RESEND_FROM_ADDRESS ?? "sebastien@neowimmo.com";
+  const leadTo = import.meta.env.LEAD_TO ?? "sebastien@neowimmo.com";
   // BCC the client for immediate notification
   const leadBcc = import.meta.env.LEAD_BCC;
 

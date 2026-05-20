@@ -73,8 +73,8 @@ export const POST: APIRoute = async ({ request }) => {
 
   // Send email via Resend API
   const resendKey = import.meta.env.RESEND_API_KEY;
-  const resendFrom = import.meta.env.RESEND_FROM_ADDRESS ?? "contact@coeurnanterre.fr";
-  const leadTo = import.meta.env.LEAD_TO ?? "contact@coeurnanterre.fr";
+  const resendFrom = import.meta.env.RESEND_FROM_ADDRESS ?? "sebastien@neowimmo.com";
+  const leadTo = import.meta.env.LEAD_TO ?? "sebastien@neowimmo.com";
   const leadBcc = import.meta.env.LEAD_BCC;
 
   if (!resendKey) {

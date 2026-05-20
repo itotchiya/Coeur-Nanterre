@@ -8,9 +8,7 @@ import AnimatedVerticalLine from "../ui/AnimatedVerticalLine.astro";
 import { SALES_CONTACT } from "../../lib/site-config";
 
 import { getImage } from "astro:assets";
-import heroPrimaryRaw from "../../assets/NAN_RF_501_VUE_EXT.jpg";
-import heroSecondaryRaw from "../../assets/NAN_RF_502_VUE_APP.jpg";
-
+import heroPrimaryRaw from "../../assets/hero.png";
 // Compress & convert to WebP at build time via Sharp
 const heroPrimaryOpt = await getImage({
   src: heroPrimaryRaw,
@@ -18,15 +16,8 @@ const heroPrimaryOpt = await getImage({
   quality: 82,
   width: 1920,
 });
-const heroSecondaryOpt = await getImage({
-  src: heroSecondaryRaw,
-  format: "webp",
-  quality: 80,
-  width: 900,
-});
 
 const heroPrimaryBg = heroPrimaryOpt.src;
-const heroSecondaryBg = heroSecondaryOpt.src;
 ---
 
 <section class="hero" data-section="hero" aria-labelledby="hero-title">
@@ -52,7 +43,7 @@ const heroSecondaryBg = heroSecondaryOpt.src;
       </h2>
 
       <p class="hero__accroche type-body reveal-opacity">
-        9 logements du T1 au T5 — bâtiment XIXe réhabilité et extension contemporaine RE2020, ancrés dans le quartier historique de Nanterre, entre héritage et dynamisme urbain.
+        8 logements du T1 au T5 — bâtiment XIXe réhabilité et extension contemporaine RE2020, ancrés dans le quartier historique de Nanterre, entre héritage et dynamisme urbain.
       </p>
 
     </div>
@@ -76,12 +67,6 @@ const heroSecondaryBg = heroSecondaryOpt.src;
     <figure
       class="hero__image-container hero__image-primary"
       style={`background-image: url('${heroPrimaryBg}'); background-size: cover; background-position: center;`}
-    >
-      <div class="hero__image-inner"></div>
-    </figure>
-    <figure
-      class="hero__image-container hero__image-secondary"
-      style={`background-image: url('${heroSecondaryBg}'); background-size: cover; background-position: center;`}
     >
       <div class="hero__image-inner"></div>
     </figure>
@@ -426,16 +411,6 @@ const heroSecondaryBg = heroSecondaryOpt.src;
         duration: 1.4,
         ease: "expo.out",
       },
-    ).fromTo(
-      ".hero__image-secondary",
-      { clipPath: "inset(0 0 100% 0)", scale: 1.1 },
-      {
-        clipPath: "inset(0 0 0% 0)",
-        scale: 1,
-        duration: 1.2,
-        ease: "expo.out",
-      },
-      "-=1.0",
     );
 
     // 3. Text Staggered Reveal
@@ -464,17 +439,6 @@ const heroSecondaryBg = heroSecondaryOpt.src;
     // 4. Parallax on Scroll
     gsap.to(".hero__image-primary", {
       yPercent: 20,
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".hero",
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-      },
-    });
-
-    gsap.to(".hero__image-secondary", {
-      yPercent: -10, // Reverse parralax for depth
       ease: "none",
       scrollTrigger: {
         trigger: ".hero",

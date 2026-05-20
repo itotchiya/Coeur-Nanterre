@@ -87,13 +87,18 @@ import { SALES_CONTACT } from "../../lib/site-config";
         <!-- Commercialisation Column -->
         <div class="footer__commercialisation">
           <h4 class="footer__heading">Commercialisation</h4>
-          <div class="footer__partner footer__partner--logo">
+          <a
+            href="https://neowimmo.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer__partner footer__partner--logo"
+          >
             <img
               src="/Assets/logo-neo-vimo.svg"
               alt="Neo Vimo"
               class="footer__partner-logo footer__partner-logo--neo-vimo"
             />
-          </div>
+          </a>
         </div>
       </div>
 
@@ -275,6 +280,15 @@ import { SALES_CONTACT } from "../../lib/site-config";
   .footer__partner-logo--neo-vimo {
     height: 88px;
     max-width: 240px;
+  }
+
+  .footer__partner--logo {
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+
+  .footer__partner--logo:hover {
+    transform: scale(1.03);
   }
 
   /* Social */
