@@ -303,9 +303,27 @@ import { SALES_CONTACT } from "../../lib/site-config";
         const href = link.getAttribute("href");
         if (!href || href === "#") return;
         event.preventDefault();
+        if (window.location.pathname !== "/") {
+          window.location.href = "/" + href;
+          return;
+        }
         scrollToSection(href);
       });
     });
+
+    // Scroll to hash on home page load (e.g. coming from legal pages)
+    if (window.location.pathname === "/" && window.location.hash) {
+      const hash = window.location.hash;
+      const attemptScroll = () => {
+        const target = document.querySelector(hash);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      };
+      setTimeout(attemptScroll, 100);
+      setTimeout(attemptScroll, 300);
+      setTimeout(attemptScroll, 600);
+    }
 
     function setActive(id: string) {
       const navId = sectionNavMap[id] || id;
