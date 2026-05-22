@@ -1,4 +1,5 @@
 import type { APIRoute } from "astro";
+import nodemailer from "nodemailer";
 
 export const prerender = false;
 
@@ -65,16 +66,17 @@ export const POST: APIRoute = async ({ request }) => {
     return json({ error: "Impossible de vérifier le reCAPTCHA" }, 502);
   }
 
-  // Send email via Resend API
-  const resendKey = import.meta.env.RESEND_API_KEY;
-  // Use client's domain for better deliverability (emails forwarded from their Toi server)
-  const resendFrom = import.meta.env.RESEND_FROM_ADDRESS ?? "sebastien@neowimmo.com";
-  const leadTo = import.meta.env.LEAD_TO ?? "sebastien@neowimmo.com";
-  // BCC the client for immediate notification
+  // SMTP configuration
+  const smtpHost = import.meta.env.SMTP_HOST;
+  const smtpPort = Number(import.meta.env.SMTP_PORT) || 465;
+  const smtpUser = import.meta.env.SMTP_USER;
+  const smtpPass = import.meta.env.SMTP_PASS;
+  const smtpFrom = import.meta.env.SMTP_FROM ?? "service@coeurnanterre.fr";
+  const leadTo = import.meta.env.LEAD_TO ?? "contact@coeurnanterre.fr";
   const leadBcc = import.meta.env.LEAD_BCC;
 
-  if (!resendKey) {
-    return json({ error: "Configuration Resend manquante" }, 500);
+  if (!smtpHost || !smtpUser || !smtpPass) {
+    return json({ error: "Configuration SMTP manquante" }, 500);
   }
 
   const lotLabel = payload.lot ? `Lot ${esc(payload.lot)}` : "Plaquette générale";
@@ -107,28 +109,25 @@ export const POST: APIRoute = async ({ request }) => {
 </html>`;
 
   try {
-    const resendRes = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${resendKey}`,
+    const transporter = nodemailer.createTransport({
+      host: smtpHost,
+      port: smtpPort,
+      secure: smtpPort === 465,
+      auth: {
+        user: smtpUser,
+        pass: smtpPass,
       },
-      body: JSON.stringify({
-        from: `Cœur Nanterre <${resendFrom}>`,
-        to: leadTo,
-        ...(leadBcc ? { bcc: leadBcc } : {}),
-        subject: `Nouvelle demande plaquette — ${lotLabel} — ${esc(lastName)} ${esc(firstName)}`,
-        html,
-      }),
     });
 
-    if (!resendRes.ok) {
-      const errData = await resendRes.json().catch(() => ({}));
-      console.error("Resend error:", errData);
-      return json({ error: "Erreur d'envoi email" }, 502);
-    }
+    await transporter.sendMail({
+      from: `Cœur Nanterre <${smtpFrom}>`,
+      to: leadTo,
+      ...(leadBcc ? { bcc: leadBcc } : {}),
+      subject: `Nouvelle demande plaquette — ${lotLabel} — ${esc(lastName)} ${esc(firstName)}`,
+      html,
+    });
   } catch (err) {
-    console.error("Resend error:", err);
+    console.error("SMTP error:", err);
     return json({ error: "Erreur d'envoi email" }, 502);
   }
 
