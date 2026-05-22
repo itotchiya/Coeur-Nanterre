@@ -28,7 +28,7 @@ Ce document liste **toutes les variables d'environnement** requises pour le bon 
 La **clé site** reCAPTCHA (publique) est actuellement **en dur** dans le code source :
 
 ```
-6LehYM4sAAAAAObgQALjV_hmnmQTHfiAZAuRJhyV
+6LdbYfcsAAAAALNgEbbq-RkkmPBT15ITV8V2KSUT
 ```
 
 Elle apparaît dans :

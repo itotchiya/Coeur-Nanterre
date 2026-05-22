@@ -30,3 +30,6 @@ pnpm-debug.log*
 
 # office lock files
 .~lock.*#
+
+# astro config
+astro.config.mjs

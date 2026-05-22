@@ -55,7 +55,7 @@ export const POST: APIRoute = async ({ request }) => {
   }
 
   // Verify reCAPTCHA
-  const secret = import.meta.env.RECAPTCHA_SECRET;
+  const secret = process.env.RECAPTCHA_SECRET;
   if (!secret) return json({ error: "Configuration serveur manquante" }, 500);
 
   try {
@@ -73,13 +73,13 @@ export const POST: APIRoute = async ({ request }) => {
   }
 
   // SMTP configuration
-  const smtpHost = import.meta.env.SMTP_HOST;
-  const smtpPort = Number(import.meta.env.SMTP_PORT) || 465;
-  const smtpUser = import.meta.env.SMTP_USER;
-  const smtpPass = import.meta.env.SMTP_PASS;
-  const smtpFrom = import.meta.env.SMTP_FROM ?? "service@coeurnanterre.fr";
-  const leadTo = import.meta.env.LEAD_TO ?? "contact@coeurnanterre.fr";
-  const leadBcc = import.meta.env.LEAD_BCC;
+  const smtpHost = process.env.SMTP_HOST;
+  const smtpPort = Number(process.env.SMTP_PORT) || 465;
+  const smtpUser = process.env.SMTP_USER;
+  const smtpPass = process.env.SMTP_PASS;
+  const smtpFrom = process.env.SMTP_FROM ?? "service@coeurnanterre.fr";
+  const leadTo = process.env.LEAD_TO ?? "contact@coeurnanterre.fr";
+  const leadBcc = process.env.LEAD_BCC;
 
   if (!smtpHost || !smtpUser || !smtpPass) {
     return json({ error: "Configuration SMTP manquante" }, 500);
